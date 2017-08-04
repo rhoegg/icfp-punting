@@ -11,6 +11,11 @@ defmodule LivegamesTest do
       |> Enum.map( &(&1.port) )
       assert Enum.member?(ports, 9001)
   end
+
+  test "lists empty games" do
+      games = Livegames.list_empty()
+      assert Enum.count(games) == 28
+  end
 end
 
 defmodule LivegamesTest.TestWebClient do
@@ -20,7 +25,6 @@ defmodule LivegamesTest.TestWebClient do
         %HTTPoison.Response{
             body: contents
         }
-        |> IO.inspect
     end
     def get!(_) do
         %HTTPoison.Response{
