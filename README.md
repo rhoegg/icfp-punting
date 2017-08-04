@@ -3,4 +3,4 @@
 ## Moves
 
 * Setup: `{:setup, id, punters, map}`
-* Move: `{:move, moves}`
+* Move: `{:move, moves, state}`
