@@ -1,4 +1,4 @@
-defmodule GraphTest do
+defmodule DataStructureTest do
   use ExUnit.Case
   test "process setup" do
     game_map =
@@ -10,12 +10,12 @@ defmodule GraphTest do
         "mines"=>[1,5]}
 
     setup_message = {:setup, 0, 2, game_map}
-    initial_state = Graph.process(setup_message)
+    initial_state = DataStructure.process(setup_message)
 
 
     moves = [%{"claim"=>%{"punter"=>0,"source"=>0,"target"=>1}},%{"claim"=>%{"punter"=>1,"source"=>1,"target"=>2}}]
     moves_message = {:move, moves, initial_state}
-    result = Graph.process(moves_message)
+    result = DataStructure.process(moves_message)
 
     assert 2 == Map.get(result, "turns_taken")
     assert punter_moves(result, 0) == %{0 => [1], 1 => [0]}

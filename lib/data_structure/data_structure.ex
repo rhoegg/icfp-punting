@@ -1,4 +1,4 @@
-defmodule Graph do
+defmodule DataStructure do
   @moduledoc """
   Primary Datastructure for keeping track of the game state
 
