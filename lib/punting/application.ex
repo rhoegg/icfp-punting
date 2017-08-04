@@ -9,7 +9,7 @@ defmodule Punting.Application do
     # List all child processes to be supervised
     children = [
       # Starts a worker by calling: Punting.Worker.start_link(arg)
-      # {Punting.Worker, arg},
+      {Punting.Player, Punting.OnlineMode},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

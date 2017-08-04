@@ -38,6 +38,9 @@ defmodule Punting.Parser do
     }
   end
 
+  defp parse_message(%{"you" => name}) do
+    {:you, name}
+  end
   defp parse_message(%{"punter" => id, "punters" => punters, "map" => map}) do
     {:setup, id, punters, map}
   end
@@ -51,5 +54,8 @@ defmodule Punting.Parser do
       Map.fetch!(moves_and_score, "scores"),
       message["state"]
     }
+  end
+  defp parse_message(%{"timeout" => seconds}) do
+    {:timeout, seconds}
   end
 end
