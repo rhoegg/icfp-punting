@@ -8,7 +8,7 @@ defmodule Client do
   end
 
   def send_my_name(server, my_name) do
-    :gen_tcp.send(server, '{"me": "#{my_name}"}\n')
+    :gen_tcp.send(server, '{"me": "#{my_name}"}')
   end
   
 end
