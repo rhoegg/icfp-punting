@@ -2,12 +2,11 @@ defmodule Punting.OnlineMode do
   defstruct ~w[socket]a
 
   @server 'punter.inf.ed.ac.uk'
-  @port    9011
 
-  def handshake(name) do
+  def handshake(port, name) do
     {:ok, socket} = :gen_tcp.connect(
       @server,
-      @port,
+      choose_port(port),
       active: false, mode: :binary, packet: :raw
     )
     send_json(socket, %{"me" => name})
@@ -36,5 +35,13 @@ defmodule Punting.OnlineMode do
   defp send_json(socket, message) do
     json = Poison.encode!(message)
     :gen_tcp.send(socket, "#{byte_size(json)}:#{json}")
+  end
+
+  defp choose_port(nil) do
+    System.get_env("ICFP_PORT")
+    |> String.to_integer
+  end
+  defp choose_port(port) when is_integer(port) do
+    port
   end
 end
