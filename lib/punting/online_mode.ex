@@ -2,7 +2,7 @@ defmodule Punting.OnlineMode do
   defstruct ~w[socket]a
 
   @server 'punter.inf.ed.ac.uk'
-  @port    9003
+  @port    9011
 
   def handshake(name) do
     {:ok, socket} = :gen_tcp.connect(
@@ -19,12 +19,18 @@ defmodule Punting.OnlineMode do
     data
   end
 
-  def send_ready(%__MODULE__{socket: socket}, _state) do
-    IO.puts "Sending ready."
+  def send_ready(%__MODULE__{socket: socket}, id, _state) do
+    send_json(socket, %{"ready" => id})
   end
 
-  def send_move(%__MODULE__{socket: socket}, move, _state) do
-    IO.puts "Sending move."
+  def send_move(%__MODULE__{socket: socket}, {id, source, target}, _state) do
+    send_json(
+      socket,
+      %{"claim" => %{"punter" => id, "source" => source, "target" => target}}
+    )
+  end
+  def send_move(%__MODULE__{socket: socket}, id, _state) do
+    send_json(socket, %{"pass" => %{"punter" => id}})
   end
 
   defp send_json(socket, message) do

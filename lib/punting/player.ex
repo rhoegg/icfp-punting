@@ -1,7 +1,7 @@
 defmodule Punting.Player do
   use GenServer
 
-  defstruct mode: nil, mode_state: nil, buffer: ""
+  defstruct mode: nil, mode_state: nil, buffer: "", game: nil
 
   ### Server
 
@@ -26,30 +26,43 @@ defmodule Punting.Player do
     :process_message,
     %{mode: mode, mode_state: mode_state, buffer: buffer} = player
   ) do
-    message = mode.receive_message(mode_state)
-    buffer  = buffer <> message
-    buffer  = process_messages(buffer)
+    message    = mode.receive_message(mode_state)
+    new_player = process_messages(buffer <> message, player)
     send(self(), :process_message)
-    {:noreply, %__MODULE__{player | buffer: buffer}}
+    {:noreply, new_player}
   end
 
   ### Helpers
 
-  defp process_messages(buffer) do
+  defp process_messages(buffer, player) do
     case Punting.Parser.parse(buffer) do
       {nil, ^buffer} ->
-        buffer
+        %__MODULE__{player | buffer: buffer}
       {message, remainder} ->
-        process_message(message)
+        new_game = process_message(message, player)
         if remainder == "" do
-          remainder
+          %__MODULE__{player | buffer: "", game: new_game}
         else
-          process_messages(remainder)
+          process_messages(remainder, player)
         end
     end
   end
 
-  defp process_message(message) do
+  defp process_message({:setup, _id, _punters, _map} = setup, player) do
+    new_game = DataStructure.process(setup)
+    player.mode.send_ready(player.mode_state, new_game["id"], new_game)
+    new_game
+  end
+  defp process_message({:move, moves, state}, player) do
+    new_game = DataStructure.process({:move, moves, state || player.game})
+    player.mode.send_move(player.mode_state, new_game["id"], new_game)# FIXME
+    new_game
+  end
+  defp process_message(message, player) do
     IO.inspect(message)
+    if is_tuple(message) && elem(message, 0) == :stop do
+      System.halt
+    end
+    player
   end
 end
