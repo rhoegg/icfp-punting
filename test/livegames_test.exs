@@ -22,6 +22,13 @@ defmodule LivegamesTest do
       |> Enum.filter( &(&1.map_name == "Sierpinski-triangle.json") )
       assert Enum.count(sierpinski_games) == 10
   end
+
+  test "games have the map itself" do
+      a_circle_game = Livegames.list()
+      |> Enum.find( &( &1.map_name == "circle.json" ) )
+      assert a_circle_game.map_json ==
+        File.read!(Path.expand("data/circle.json", __DIR__))
+  end
 end
 
 defmodule LivegamesTest.TestWebClient do
@@ -32,9 +39,15 @@ defmodule LivegamesTest.TestWebClient do
             body: contents
         }
     end
+    def get!("http://punter.inf.ed.ac.uk/maps/circle.json") do
+        contents = File.read!(Path.expand("data/circle.json", __DIR__))
+        %HTTPoison.Response{
+            body: contents
+        }
+    end
     def get!(_) do
         %HTTPoison.Response{
-            body: ""
+            body: "test data"
         }
     end
  end
