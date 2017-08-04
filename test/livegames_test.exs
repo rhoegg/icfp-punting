@@ -16,6 +16,12 @@ defmodule LivegamesTest do
       games = Livegames.list_empty()
       assert Enum.count(games) == 28
   end
+
+  test "games have a map name" do
+      sierpinski_games = Livegames.list()
+      |> Enum.filter( &(&1.map_name == "Sierpinski-triangle.json") )
+      assert Enum.count(sierpinski_games) == 10
+  end
 end
 
 defmodule LivegamesTest.TestWebClient do

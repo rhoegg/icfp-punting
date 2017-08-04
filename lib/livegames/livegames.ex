@@ -24,14 +24,16 @@ defmodule Livegames do
         [
             {"td", _, [who]},
             _,
-            {"td", _, [port_string]}
-            | _ 
+            {"td", _, [port_string]},
+            {"td", _, [{"a", _, [map_name]}]}
+            | _
         ] = cells
         {status, open_count, player_count} = parse_who(who)
         %{
             players: player_count, 
             seats: open_count, 
-            port: String.to_integer(port_string)
+            port: String.to_integer(port_string),
+            map_name: map_name
         }
     end
 
