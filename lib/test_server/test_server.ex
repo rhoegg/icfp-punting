@@ -1,4 +1,3 @@
-
 defmodule TestServer do
   def open do
     {:ok, socket} = :gen_tcp.listen(1234,
@@ -21,6 +20,6 @@ defmodule TestServer do
 
 end
 
-TestServer.open
-|> TestServer.accept
-|> TestServer.recv_forever
+# TestServer.open
+# |> TestServer.accept
+# |> TestServer.recv_forever
