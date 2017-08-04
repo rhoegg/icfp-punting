@@ -15,7 +15,7 @@ defmodule Punting.Mixfile do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Punting.Application, []}
+      mod: {Punting.Application, [Mix.env]}
     ]
   end
 

@@ -5,20 +5,24 @@ defmodule Punting.Player do
             mode_arg:   nil,
             mode_state: nil,
             strategy:   Punting.Strategy.AlwaysPass,
+            scores:     :halt,
             buffer:     "",
             game:       nil
 
   ### Server
 
   def start_link(mode, options \\ [ ]) do
-    GenServer.start_link(__MODULE__, {mode, options[:mode_arg]})
+    GenServer.start_link(
+      __MODULE__,
+      {mode, options[:mode_arg], options[:scores]}
+    )
   end
 
   ### Client
 
-  def init({mode, mode_arg}) do
+  def init({mode, mode_arg, scores}) do
     send(self(), :handshake)
-    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg}}
+    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg, scores: scores}}
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
@@ -33,8 +37,12 @@ defmodule Punting.Player do
   ) do
     message    = mode.receive_message(mode_state)
     new_player = process_messages(buffer <> message, player)
-    send(self(), :process_message)
-    {:noreply, new_player}
+    if is_nil(new_player) do
+      {:stop, :normal, nil}
+    else
+      send(self(), :process_message)
+      {:noreply, new_player}
+    end
   end
 
   ### Helpers
@@ -72,8 +80,15 @@ defmodule Punting.Player do
   defp process_message(message, player) do
     IO.inspect(message)
     if is_tuple(message) && elem(message, 0) == :stop do
-      System.halt
+      case player.scores do
+        pid when is_pid(pid) ->
+          send(pid, message)
+        :halt ->
+          System.halt
+      end
+      nil
+    else
+      player
     end
-    player
   end
 end

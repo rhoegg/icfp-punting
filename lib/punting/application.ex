@@ -5,12 +5,13 @@ defmodule Punting.Application do
 
   use Application
 
-  def start(_type, _args) do
+  def start(_type, args) do
     # List all child processes to be supervised
-    children = [
-      # Starts a worker by calling: Punting.Worker.start_link(arg)
-      {Punting.Player, Punting.OnlineMode},
-    ]
+    children =
+      case args do
+        [:prod] -> [{Punting.Player, Punting.OnlineMode}]
+        _       -> [ ]
+      end
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
