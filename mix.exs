@@ -22,7 +22,7 @@ defmodule Punting.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
       {:floki, "~> 0.17.0"},
       {:httpoison, "~> 0.12"}
       # {:dep_from_hexpm, "~> 0.3.0"},
