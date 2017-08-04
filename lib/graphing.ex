@@ -1,5 +1,34 @@
 defmodule Graph do
- def process({:setup, id, punters, %{"rivers" => rivers, "mines" => mines}}) do
+  @moduledoc """
+  Primary Datastructure for keeping track of the game state
+
+  ```
+  %{
+    "initial"     => intial state of the game,
+    "available"   => available moves,
+    "total_turns" => Enum.count(rivers) / punters,
+    "turns_taken" => turn counter,
+    "mines"       => mine locations,
+    "id"          => punter id
+    x             => other punters moves structure
+  }
+  ```
+
+  Initial state, available state, and the punter's moves structure
+  all follow the same pattern:
+
+  `%{ point => [ connected points ] }`
+
+  When a move is made, connected points are removed from the available moves
+  key, and are added to the `x` punter's data structure
+  """
+
+
+  @doc """
+  Handles processing of messaging, supports {:setup, id, punters, game}
+  and {:move, moves, state}
+  """
+  def process({:setup, id, punters, %{"rivers" => rivers, "mines" => mines}}) do
     initial =
       rivers
       |> Enum.map_reduce(%{}, &add_river/2)

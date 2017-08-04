@@ -18,11 +18,19 @@ defmodule GraphTest do
     result = Graph.process(moves_message)
 
     assert 2 == Map.get(result, "turns_taken")
-    assert Map.get(result, 0) == %{0 => [1], 1 => [0]}
-    assert Map.get(result, 1) == %{1 => [2], 2 => [1]}
+    assert punter_moves(result, 0) == %{0 => [1], 1 => [0]}
+    assert punter_moves(result, 1) == %{1 => [2], 2 => [1]}
 
     available_moves = Map.get(result, "available")
-    refute Enum.member?(Map.get(available_moves, 0), 1)
-    refute Enum.member?(Map.get(available_moves, 2), 1)
+    refute has_move?(available_moves, 0, 1)
+    refute has_move?(available_moves, 2, 1)
+  end
+
+  defp has_move?(available_moves, site, move) do
+    Enum.member?(Map.get(available_moves, site), move)
+  end
+
+  defp punter_moves(result, id) do
+    Map.get(result, id)
   end
 end
