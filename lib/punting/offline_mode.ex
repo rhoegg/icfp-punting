@@ -7,20 +7,8 @@ defmodule Punting.OfflineMode do
 
   def receive_message(%__MODULE__{name: name}) do
     send_message(%{"me" => name})
-    {:ok, header} = IO.read(10)
-    case Integer.parse(header) do
-      {size, ":" <> start_of_data} ->
-        {:ok, rest_of_data} =
-          IO.read(size - byte_size(start_of_data))
-        file = File.open!("input.log")
-        IO.puts file, (DateTime.utc_now |> to_string)
-        IO.puts file, start_of_data <> rest_of_data
-        File.close(file)
-        Punting.OnlineMode.parse_json(start_of_data <> rest_of_data)
-        |> deserialize_state
-      _error ->
-        raise "Error:  No message length"
-    end
+    read_message  # discard "You" message
+    read_message
   end
 
   def send_ready(_mode_state, id, state) do
@@ -35,6 +23,23 @@ defmodule Punting.OfflineMode do
   end
   def send_move(_mode_state, id, state) do
     send_message(%{"pass" => %{"punter" => id}}, state)
+  end
+
+  defp read_message do
+    {:ok, header} = IO.read(10)
+    case Integer.parse(header) do
+      {size, ":" <> start_of_data} ->
+        {:ok, rest_of_data} =
+          IO.read(size - byte_size(start_of_data))
+        file = File.open!("input.log")
+        IO.puts file, (DateTime.utc_now |> to_string)
+        IO.puts file, start_of_data <> rest_of_data
+        File.close(file)
+        Punting.OnlineMode.parse_json(start_of_data <> rest_of_data)
+        |> deserialize_state
+      _error ->
+        raise "Error:  No message length"
+    end
   end
 
   defp send_message(message, state \\ nil)
