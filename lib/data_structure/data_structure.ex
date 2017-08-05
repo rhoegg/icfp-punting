@@ -45,7 +45,7 @@ defmodule DataStructure do
       "id"          => id,
       "number_of_punters" => punters,
       "total_rivers" => total_rivers,
-    } |> Map.merge(MineRoutes.start(mines, initial, max_turns)) |> IO.inspect
+    } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
   def process({:move, moves, state}) do
     moves
