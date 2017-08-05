@@ -14,8 +14,15 @@ defmodule Punting.OnlineMode do
   end
 
   def receive_message(%__MODULE__{socket: socket}) do
-    {:ok, data} = :gen_tcp.recv(socket, 0)
-    data
+    {:ok, header} = :gen_tcp.recv(socket, 10)
+    case Integer.parse(header) do
+      {size, ":" <> start_of_data} ->
+        {:ok, rest_of_data} =
+          :gen_tcp.recv(socket, size - byte_size(start_of_data))
+        parse_json(start_of_data <> rest_of_data)
+      _error ->
+        raise "Error:  No message length"
+    end
   end
 
   def send_ready(%__MODULE__{socket: socket}, id, _state) do
@@ -32,20 +39,51 @@ defmodule Punting.OnlineMode do
     send_json(socket, %{"pass" => %{"punter" => id}})
   end
 
+  def parse_json(json) do
+    case Poison.decode(json) do
+      {:ok, message} ->
+        parse_message(message)
+      _error ->
+        raise "Error:  Invalid JSON"
+    end
+  end
+
+  def parse_message(%{"you" => name}) do
+    {:you, name}
+  end
+  def parse_message(%{"punter" => id, "punters" => punters, "map" => map}) do
+    {:setup, id, punters, map}
+  end
+  def parse_message(%{"move" => move} = message) do
+    {:move, Map.fetch!(move, "moves"), message["state"]}
+  end
+  def parse_message(%{"stop" => moves_and_score} = message) do
+    {
+      :stop,
+      Map.fetch!(moves_and_score, "moves"),
+      Map.fetch!(moves_and_score, "scores"),
+      message["state"]
+    }
+  end
+  def parse_message(%{"timeout" => seconds}) do
+    {:timeout, seconds}
+  end
+
   defp send_json(socket, message) do
     json = Poison.encode!(message)
     :gen_tcp.send(socket, "#{byte_size(json)}:#{json}")
   end
 
   defp choose_port(nil) do
-    System.get_env("ICFP_PORT")
-    |> String.to_integer
+    case System.get_env("ICFP_PORT") do
+      nil ->
+        IO.puts "Please set ICFP_PORT."
+        System.halt(1)
+      port ->
+        String.to_integer(port)
+    end
   end
   defp choose_port(port) when is_integer(port) do
     port
-  end
-
-  def deserialize(nil) do
-    nil
   end
 end

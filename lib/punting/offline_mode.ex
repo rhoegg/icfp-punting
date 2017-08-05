@@ -2,13 +2,21 @@ defmodule Punting.OfflineMode do
   defstruct ~w[name]a
 
   def handshake(nil, name) do
-    send_message(%{"me" => name})
     %__MODULE__{name: name}
   end
 
   def receive_message(%__MODULE__{name: name}) do
-    handshake(nil, name)
-    IO.read(:all)
+    send_message(%{"me" => name})
+    {:ok, header} = IO.read(10)
+    case Integer.parse(header) do
+      {size, ":" <> start_of_data} ->
+        {:ok, rest_of_data} =
+          IO.read(size - byte_size(start_of_data))
+        Punting.OnlineMode.parse_json(start_of_data <> rest_of_data)
+        |> deserialize_state
+      _error ->
+        raise "Error:  No message length"
+    end
   end
 
   def send_ready(_mode_state, id, state) do
@@ -34,15 +42,23 @@ defmodule Punting.OfflineMode do
     send_message(Map.put(message, "state", serialize(state)), nil)
   end
 
-  def serialize(term) do
+  defp serialize(term) do
     term
     |> :erlang.term_to_binary
     |> Base.encode64
   end
 
-  def deserialize(binary) do
+  defp deserialize(binary) do
     binary
     |> Base.decode64!
     |> :erlang.binary_to_term
   end
+
+  defp deserialize_state({:move, moves, state}) do
+    {:move, moves, deserialize(state)}
+  end
+  defp deserialize_state({:stop, moves, scores, state}) do
+    {:stop, moves, scores, deserialize(state)}
+  end
+  defp deserialize_state(message), do: message
 end
