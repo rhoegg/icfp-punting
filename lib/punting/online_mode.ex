@@ -4,11 +4,13 @@ defmodule Punting.OnlineMode do
   @server 'punter.inf.ed.ac.uk'
 
   def handshake(port, name) do
+    IO.inspect(name)
     {:ok, socket} = :gen_tcp.connect(
       @server,
       choose_port(port),
       active: false, mode: :binary, packet: :raw
     )
+    IO.inspect(%{"me" => name})
     send_json(socket, %{"me" => name})
     %__MODULE__{socket: socket}
   end

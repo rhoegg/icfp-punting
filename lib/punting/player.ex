@@ -5,7 +5,7 @@ defmodule Punting.Player do
   defstruct mode:       nil,
             mode_arg:   nil,
             mode_state: nil,
-            strategy:   Punting.Strategy.AlwaysPass,
+            strategy:   Punting.Strategy.BasicMineConnections,
             scores:     :halt,
             game:       nil
 
