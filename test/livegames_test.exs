@@ -29,6 +29,13 @@ defmodule LivegamesTest do
       assert a_circle_game.map_json ==
         File.read!(Path.expand("data/circle.json", __DIR__))
   end
+
+  test "games have extensions" do
+      games_with_futures_extensions = Livegames.list()
+        |> Enum.filter( &( &1.extensions == ["futures"]) )
+
+      assert games_with_futures_extensions |> Enum.count == 120
+  end
 end
 
 defmodule LivegamesTest.TestWebClient do

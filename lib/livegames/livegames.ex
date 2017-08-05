@@ -48,10 +48,9 @@ defmodule Livegames do
         [
             {"td", _, [who]},
             _,
-            _,
+            {"td", _, extension_cell},
             {"td", _, [port_string]},
             {"td", _, [{"a", _, [map_name]}]}
-            | _
         ] = cells
         {status, player_count, seat_count} = parse_who(who)
         %{
@@ -59,8 +58,14 @@ defmodule Livegames do
             players: player_count,
             seats: seat_count, 
             port: String.to_integer(port_string),
+            extensions: parse_extensions(extension_cell),
             map_name: map_name
         }
+    end
+
+    def parse_extensions([]), do: []
+    def parse_extensions([e]) do
+        List.wrap(e)
     end
 
     def parse_who(who) do
