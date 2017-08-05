@@ -28,6 +28,15 @@ defmodule CompositeStrategyTest do
         ])
     assert move == {1, 2}
   end
+
+  test "uses first that matches and returns a move" do
+    move = Punting.Strategy.Composite.move(nil,
+        [
+            Punting.Strategy.AlwaysPass,
+            PuntingTest.Strategy.AlwaysOneTwo
+        ])
+    assert move == {1, 2}
+  end
 end
 
 defmodule PuntingTest.Strategy.NeverTwoThree do
