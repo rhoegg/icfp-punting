@@ -4,6 +4,7 @@ defmodule Punting.Strategy.RollDice do
   defstruct ~w[target sides success fail seed]a
 
   # Client
+
   def strategy(target, sides, success, fail, seed \\ nil) do
     {:ok, roller} = start_link(target, sides, success, fail, seed)
     fn :move ->
@@ -33,9 +34,9 @@ defmodule Punting.Strategy.RollDice do
   end
 
   def handle_call({:move, game}, _from, state) do
-    {roll, new_seed} = :rand.uniform_s(state.sides, IO.inspect(state.seed))
+    {roll, new_seed} = :rand.uniform_s(state.sides, state.seed)
     strategy =
-      if IO.inspect(roll) >= state.target do
+      if roll >= state.target do
         state.success
       else
         state.fail
