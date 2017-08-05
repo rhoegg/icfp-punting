@@ -7,8 +7,8 @@ defmodule Punting.OfflineMode do
 
   def receive_message(%__MODULE__{name: name}) do
     send_message(%{"me" => name})
-    read_message  # discard "You" message
-    read_message
+    read_message()  # discard "You" message
+    read_message()
   end
 
   def send_ready(_mode_state, id, state) do
@@ -31,7 +31,7 @@ defmodule Punting.OfflineMode do
       {size, ":" <> start_of_data} ->
         {:ok, rest_of_data} =
           IO.read(size - byte_size(start_of_data))
-        file = File.open!("input.log")
+        file = File.open!("input.log", [:append])
         IO.puts file, (DateTime.utc_now |> to_string)
         IO.puts file, start_of_data <> rest_of_data
         File.close(file)
@@ -45,7 +45,7 @@ defmodule Punting.OfflineMode do
   defp send_message(message, state \\ nil)
   defp send_message(message, nil) do
     json = Poison.encode!(message)
-    file = File.open!("output.log")
+    file = File.open!("output.log", [:append])
     IO.puts file, (DateTime.utc_now |> to_string)
     IO.puts file, json
     File.close(file)
