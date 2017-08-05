@@ -19,7 +19,7 @@ defmodule Livegames do
 
     def list_empty() do
         list()
-        |> Enum.filter( &(&1.seats == 0) )
+        |> Enum.filter( &(&1.players == 0) )
     end
 
     defp attach_maps(games) do
@@ -48,15 +48,16 @@ defmodule Livegames do
         [
             {"td", _, [who]},
             _,
+            _,
             {"td", _, [port_string]},
             {"td", _, [{"a", _, [map_name]}]}
             | _
         ] = cells
-        {status, open_count, player_count} = parse_who(who)
+        {status, player_count, seat_count} = parse_who(who)
         %{
             status: status,
             players: player_count,
-            seats: open_count, 
+            seats: seat_count, 
             port: String.to_integer(port_string),
             map_name: map_name
         }
@@ -64,13 +65,13 @@ defmodule Livegames do
 
     def parse_who(who) do
         if String.match?(who, ~r/Waiting for punters. .*/) do
-            %{"open" => open, "players" => players} = Regex.named_captures(
-                ~r/Waiting for punters. \((?<open>\d+)\/(?<players>\d+)\)/, 
+            %{"players" => players, "seats" => seats} = Regex.named_captures(
+                ~r/Waiting for punters. \((?<players>\d+)\/(?<seats>\d+)\)/, 
                 who)
             {
                 "Waiting for punters",
-                String.to_integer(open),
-                String.to_integer(players)
+                String.to_integer(players),
+                String.to_integer(seats)
             }
         else
             {who, -1, -1}
