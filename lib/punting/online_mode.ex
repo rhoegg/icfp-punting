@@ -44,4 +44,8 @@ defmodule Punting.OnlineMode do
   defp choose_port(port) when is_integer(port) do
     port
   end
+
+  def deserialize(nil) do
+    nil
+  end
 end

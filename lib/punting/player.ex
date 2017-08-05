@@ -71,7 +71,14 @@ defmodule Punting.Player do
     new_game
   end
   defp process_message({:move, moves, state}, player) do
-    new_game = DataStructure.process({:move, moves, state || player.game})
+    new_game =
+      DataStructure.process(
+        {
+          :move,
+          moves,
+          player.mode.deserialize(state) || player.game
+        }
+      )
     move =
       case player.strategy.move(new_game) do
         nil              -> new_game["id"]
