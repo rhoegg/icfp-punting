@@ -14,7 +14,7 @@ defmodule Punting.Player do
   def start_link(mode, options \\ [ ]) do
     GenServer.start_link(
       __MODULE__,
-      {mode, options[:mode_arg], options[:scores]}
+      {mode, options[:mode_arg], options[:scores] || :halt}
     )
   end
 
@@ -53,10 +53,14 @@ defmodule Punting.Player do
         %__MODULE__{player | buffer: buffer}
       {message, remainder} ->
         new_game = process_message(message, player)
-        if remainder == "" do
-          %__MODULE__{player | buffer: "", game: new_game}
+        if is_tuple(message) && elem(message, 0) == :stop do
+          nil
         else
-          process_messages(remainder, player)
+          if remainder == "" do
+            %__MODULE__{player | buffer: "", game: new_game}
+          else
+            process_messages(remainder, player)
+          end
         end
     end
   end
@@ -77,18 +81,15 @@ defmodule Punting.Player do
     player.mode.send_move(player.mode_state, move, new_game)
     new_game
   end
-  defp process_message(message, player) do
-    IO.inspect(message)
-    if is_tuple(message) && elem(message, 0) == :stop do
-      case player.scores do
-        pid when is_pid(pid) ->
-          send(pid, message)
-        :halt ->
-          System.halt
-      end
-      nil
-    else
-      player
+  defp process_message({:stop, _moves, _scores, _state} = message, player) do
+    case player.scores do
+      pid when is_pid(pid) ->
+        send(pid, message)
+      :halt ->
+        IO.inspect(message)
+        System.halt
     end
+    player.game
   end
+  defp process_message(_message, player), do: player.game
 end
