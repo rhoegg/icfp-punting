@@ -1,24 +1,6 @@
 defmodule MineRoutes do
 
     def start(mines, edge_map, max_length) do
-        mines = [2,3,4]
-        edge_map = %{
-            0 => [7, 1],
-            1 => [2, 7, 3, 0],
-            2 => [1, 3],
-            3 => [5, 1, 2, 4],
-            4 => [5, 3],
-            5 => [7, 3, 4, 6],
-            6 => [7, 5],
-            7 => [0, 1, 5, 6]
-        }
-        # represents to maximum number of turns in any game
-        max_length = 5
-        # edge_map = %{
-        #     0 => [1],
-        #     1 => [2, 0],
-        #     2 => [1 ]
-        # }
         all_trees = build_trees(mines, edge_map, max_length)
         trees_with_mine_bookends = all_trees
         |> Enum.reduce([], fn(item, a) -> money_trees(item, mines, a) end)
