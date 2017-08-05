@@ -33,7 +33,8 @@ defmodule DataStructure do
       rivers
       |> Enum.map_reduce(%{}, &add_river/2)
       |> elem(1)
-    max_turns = Enum.count(rivers) / punters
+    total_rivers = Enum.count(rivers)
+    max_turns = total_rivers / punters
 
    %{
       "initial"     => initial,
@@ -41,7 +42,9 @@ defmodule DataStructure do
       "total_turns" => max_turns,
       "turns_taken" => 0,
       "mines"       => mines,
-      "id"          => id
+      "id"          => id,
+      "number_of_punters" => punters,
+      "total_rivers" => total_rivers,
     } |> Map.merge(MineRoutes.start(mines, initial, max_turns)) |> IO.inspect
   end
   def process({:move, moves, state}) do

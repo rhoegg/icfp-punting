@@ -14,6 +14,19 @@ defmodule MineRoutes do
         }
     end
 
+    # assumes only ever plays mines
+    # treats any site adjacent to a mine as a mine
+    def onMoveMinePlaysOnly(game) do
+        max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
+        id = game["id"]
+        taken_ids = game[id]
+            |> Map.keys
+        all_mines = taken_ids
+            |> Enum.reduce(game["mines"], fn(taken, mines) -> [taken | mines] end)
+            |> Enum.uniq
+        start(all_mines, game["available"], max_length)
+    end
+
     def build_trees(mines, edge_map, max_length) do
         acc = []
         lists = mines
