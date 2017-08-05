@@ -1,24 +1,46 @@
 defmodule Punting.Strategy.RollDice do
-    def move(game, target, sides, strategy1, strategy2) do
-        s = if roll(target, sides), do: strategy1, else: strategy2
-        s.move(game)
-    end
+    use GenServer
 
-    def roll(target, sides) do
-        result = maybe_cheat() 
-        || random_roll(sides)
-        result < target
-    end
+  defstruct ~w[target sides success fail seed]a
 
-    defp random_roll(sides) do
-        Range.new(1, sides)
-        |> Enum.random
+  # Client
+  def strategy(target, sides, success, fail, seed \\ nil) do
+    {:ok, roller} = start_link(target, sides, success, fail, seed)
+    fn :move ->
+        fn game -> move(roller, game) end
     end
+  end
 
-    defp maybe_cheat() do
-        if result = Application.get_env(:punting, :next_dice_roll) do
-            Application.delete_env(:punting, :next_dice_roll)
-        end
-        result
-    end
+  def start_link(target, sides, success, fail, seed) do
+    GenServer.start_link(__MODULE__, {target, sides, success, fail, seed})
+  end
+
+  def move(roller, game) do
+    GenServer.call(roller, {:move, game})
+  end
+
+  # Server
+
+  def init({target, sides, success, fail, seed}) do
+    state =
+      %__MODULE__{
+        target: target, 
+        sides: sides, 
+        success: success, 
+        fail: fail,
+        seed: seed || :random.seed(:os.timestamp)}
+    {:ok, state}
+  end
+
+  def handle_call({:move, game}, _from, state) do
+    {roll, new_seed} = :rand.uniform_s(state.sides, IO.inspect(state.seed))
+    strategy =
+      if IO.inspect(roll) >= state.target do
+        state.success
+      else
+        state.fail
+      end
+    move = strategy.move(game)
+    { :reply, move, %{state | seed: new_seed} }
+  end
 end
