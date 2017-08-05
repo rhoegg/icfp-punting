@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+MIX_ENV=prod mix clean
+MIX_ENV=prod mix release --env=prod
+cd _build/prod/rel/punting
+tar -czf ../../../../icfp-bcf56290-bef0-40d0-8812-4e4ced85789b.tar.gz *
