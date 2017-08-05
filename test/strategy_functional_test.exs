@@ -6,6 +6,7 @@ defmodule StrategyFunctionalTest do
 
   test "slacker match" do
     game = hd(Livegames.list_empty()
+        |> Enum.filter( &(Enum.empty?(&1.extensions)) )
         |> Enum.filter( &(&1.map_name == "lambda.json") ))
     IO.puts("Found a game with #{game.seats} seats.")
     Range.new(0, game.seats)
@@ -22,6 +23,9 @@ defmodule StrategyFunctionalTest do
   end
 
   def go_play(n, port, strategy) do
-      Punting.Player.start_link(Punting.OnlineMode, mode_arg: port, scores: self())
+      Punting.Player.start_link(Punting.OnlineMode, 
+        mode_arg: port, 
+        scores: self(), 
+        strategy: strategy)
   end
 end
