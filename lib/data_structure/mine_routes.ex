@@ -35,6 +35,9 @@ defmodule MineRoutes do
         |> Enum.uniq
     end
 
+    def money_trees([], mines, acc) do
+        acc
+    end
     def money_trees(tree = [head | tail], mines, acc) do
         case head in mines do
             true -> [tree | acc]

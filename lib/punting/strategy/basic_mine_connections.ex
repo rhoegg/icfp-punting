@@ -15,6 +15,7 @@ defmodule Punting.Strategy.BasicMineConnections do
       IO.puts("going with random")
       Punting.Strategy.RandomChoice.move(game)
     else
+      IO.inspect(new_game["mine_route_map"])
       [source | targets] = Map.values(new_game["mine_route_map"]) |> hd |> hd
       target = hd(targets)
       IO.puts("source #{source}, target #{target}")

@@ -6,10 +6,23 @@ defmodule Punting.Application do
   use Application
 
   def start(_type, args) do
+    if System.get_env("ICFP_VERBOSE") do
+      Logger.configure(level: :debug)
+    else
+      Logger.configure(level: :error)
+    end
+
+    mode =
+      if System.get_env("ICFP_ONLINE") do
+        Punting.OnlineMode
+      else
+        Punting.OfflineMode
+      end
+
     # List all child processes to be supervised
     children =
       case args do
-        [:prod] -> [{Punting.Player, Punting.OnlineMode}]
+        [:prod] -> [{Punting.Player, mode}]
         _       -> [ ]
       end
 
