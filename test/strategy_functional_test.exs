@@ -27,8 +27,6 @@ defmodule StrategyFunctionalTest do
       end)
       |> Enum.map(fn t -> Task.await(t, :infinity) end)
       |> Enum.filter(fn result -> not is_nil(result) end)
-
-    IO.inspect(result)
   end
 
   def go_play(port, strategy) do
