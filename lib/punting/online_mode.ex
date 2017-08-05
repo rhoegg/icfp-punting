@@ -4,7 +4,6 @@ defmodule Punting.OnlineMode do
   @server 'punter.inf.ed.ac.uk'
 
   def handshake(port, name) do
-    IO.inspect(name)
     {:ok, socket} = :gen_tcp.connect(
       @server,
       choose_port(port),
