@@ -41,8 +41,8 @@ defmodule Punting.OfflineMode do
   defp send_message(message, nil) do
     json = Poison.encode!(message)
     file = File.open!("output.log")
-    IO.puts file, json
     IO.puts file, (DateTime.utc_now |> to_string)
+    IO.puts file, json
     File.close(file)
     IO.write("#{byte_size(json)}:#{json}")
   end
