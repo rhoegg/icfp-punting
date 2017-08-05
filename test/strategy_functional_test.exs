@@ -14,15 +14,14 @@ defmodule StrategyFunctionalTest do
         Task.async( fn -> go_play(n, game.port, Punting.Strategy.AlwaysPass) end )
     end)
 
-    result = receive do
+    receive do
         {:stop, info} -> info
     end
 
-    #IO.inspect(result)
     flunk("why am I using a test?")
   end
 
-  def go_play(n, port, strategy) do
+  def go_play(_player, port, strategy) do
       Punting.Player.start_link(Punting.OnlineMode, 
         mode_arg: port, 
         scores: self(), 
