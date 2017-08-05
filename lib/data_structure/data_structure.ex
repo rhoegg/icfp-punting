@@ -43,6 +43,7 @@ defmodule DataStructure do
       "turns_taken" => 0,
       "mines"       => mines,
       "id"          => id,
+      id            => %{},
       "number_of_punters" => punters,
       "total_rivers" => total_rivers,
     } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
