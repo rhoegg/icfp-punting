@@ -4,10 +4,11 @@ defmodule MineRoutes do
 
     def start(game) do
         max_length =  (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
-        case max_length > 6 do
-            true -> max_length = 6
-            false -> nil
-        end
+        max_length = 
+          case max_length > 6 do
+              true -> 6 
+              false -> max_length
+          end
         start(game["mines"], game["available"], max_length)
 
     end
@@ -15,6 +16,11 @@ defmodule MineRoutes do
         start(game["mines"], game["available"], max_length)
     end
     def start(mines, edge_map, max_length) do
+        max_length = 
+          case max_length > 6 do
+              true -> 6 
+              false -> max_length
+          end
         all_trees = build_trees(mines, edge_map, max_length)
         mine_to_mine_routes = m2m_routes(all_trees, mines)
         other_routes = other_routes(all_trees, mines)
@@ -131,7 +137,6 @@ defmodule MineRoutes do
 
     # use this one to limit the cal
     def onMoveMinePlaysOnly(game, max_length) do
-        max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         id = game["id"]
         taken_ids = game
             |> Map.get(id, Map.new)
