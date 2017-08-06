@@ -1,5 +1,6 @@
 import strategies
 import process_jsons
+import logging
 
 def one_bet(game, **kwargs):
     graph = process_jsons.initial_state_map(game)

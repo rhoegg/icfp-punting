@@ -5,8 +5,9 @@ from networkx.algorithms.connectivity import minimum_st_edge_cut
 import json
 from graph_utils import *
 from scoring import score_available_map, get_score
+import logging
 
-
+DEBUG=True
 
 def rank_segments(graph, source, target, path=None):
     if path is None:
@@ -37,8 +38,9 @@ def compute_futures(graph, mines, n_players,
     deg = networkx.degree(graph)
     md = filter(lambda x: x[1]<min_degree,
                 mine_degrees(deg, mines))
-    sd = filter(lambda x: x[1]<min_degree,
-                most_connected_points(deg, N=max_pts_to_consider))
+    sd = filter(lambda x: x in mines,
+                filter(lambda x: x[1]<min_degree,
+                       most_connected_points(deg, N=max_pts_to_consider)))
     #fbridges = []
     fsources = []
     ftargets = []
@@ -105,31 +107,36 @@ def compute_future_old(graph, mines, n_players, min_degree = 3,
                                       receiver.  default=2
                                        
     """
+    
     deg = networkx.degree(graph)
+    #logging.debug("degrees")
     md = filter(lambda x: x[1]<min_degree,
                 mine_degrees(deg, mines)[:max_mines_to_consider])
-    sd = filter(lambda x: x[1]<min_degree,
-                most_connected_points(deg, N=max_pts_to_consider))
-    sorted_distances=sorted(mine_to_target_with_path(graph, md, sd),
+    #logging.debug("mines")
+    sd = filter(lambda x: x in mines,
+                filter(lambda x: x[1]<min_degree,
+                       most_connected_points(deg, N=max_pts_to_consider)))
+    #logging.debug("targets")
+    sorted_distances=sorted(mines_to_target_with_path(graph, md, sd),
                             key=lambda x:x[1], reverse=True)
+    #logging.debug("distances")
     #fbridges = None
     fsource = None
     ftarget = None
-    while True:
-        for (source, target), path in sorted_distances:
-            if target in mines:
-                continue
-            segment_rank = rank_segments(graph, source, target, path)
-            if len(filter(lambda x: x[-1]>bridge_dist_threshold,
-                          segment_rank))<bridge_cut_threshold:
+    for (source, target), path in sorted_distances:
+        if target in mines:
+            continue
+        segment_rank = rank_segments(graph, source, target, path)
+        if len(filter(lambda x: x[-1]>bridge_dist_threshold,
+                      segment_rank))<bridge_cut_threshold:
                 #we will probably keep this one.
-                bridges = networkx.minimum_edge_cut(graph, source, target)
-                if len(bridges) < bridge_cut_threshold:
-                    continue
+            bridges = networkx.minimum_edge_cut(graph, source, target)
+            if len(bridges) < bridge_cut_threshold:
+                continue
                 #fbridges = bridges
-                fsource = source
-                ftarget = target
-                break
+            fsource = source
+            ftarget = target
+            break
             
     return [[fsource, ftarget]]
     
