@@ -8,11 +8,11 @@ defmodule MineRoutes do
             true -> max_length = 6
             false -> nil
         end
-        start(game["mines"], game["availabe"], max_length)
+        start(game["mines"], game["available"], max_length)
 
     end
     def start(game, max_length) do
-        start(game["mines"], game["availabe"], max_length)
+        start(game["mines"], game["available"], max_length)
     end
     def start(mines, edge_map, max_length) do
         all_trees = build_trees(mines, edge_map, max_length)
@@ -45,11 +45,11 @@ defmodule MineRoutes do
     # this method return all trees to all mines, you must specify
     # the max length. Calls to start will default to a length of 6
     def get_all_trees(game, max_length) do
-        build_trees(game["mines"], game["availabe"], max_length)
+        build_trees(game["mines"], game["available"], max_length)
     end
     def get_all_trees(game, max_length, score_keeper) do
 
-        build_trees(game["mines"], game["availabe"], max_length, score_keeper)
+        build_trees(game["mines"], game["available"], max_length, score_keeper)
     end
 
     # send in a list of trees and the mines
