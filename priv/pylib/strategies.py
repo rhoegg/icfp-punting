@@ -195,7 +195,6 @@ def choose_highest_score(scored_map):
             max_score = score
             max_edge = edge
     return max_edge
-
     
 def future_score_move(available_map, our_graph, futures, my_id):
     future_scoring(available_map, our_graph, futures)
