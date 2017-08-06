@@ -14,7 +14,12 @@ defmodule Punting.Player do
   def start_link(mode, options \\ [ ]) do
     GenServer.start_link(
       __MODULE__,
-      {mode, options[:mode_arg], options[:scores] || :halt, options[:strategy]}
+      {
+        mode,
+        options[:mode_arg],
+        options[:scores]   || :halt,
+        options[:strategy] || Punting.Strategy.AlwaysPass
+      }
     )
   end
 
@@ -22,7 +27,15 @@ defmodule Punting.Player do
 
   def init({mode, mode_arg, scores, strategy}) do
     send(self(), :handshake)
-    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg, scores: scores, strategy: strategy}}
+    {
+      :ok,
+      %__MODULE__{
+        mode:     mode,
+        mode_arg: mode_arg,
+        scores:   scores,
+        strategy: strategy
+      }
+    }
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
