@@ -37,17 +37,7 @@ defmodule Punting.Player do
   ) do
     message = mode.receive_message(mode_state)
     Logger.debug "IN:  #{inspect message}"
-    new_game =
-      # try do
-        process_message(message, player)
-      # rescue
-      #   error ->
-      #     f = File.open!("error.log", [:append])
-      #     IO.puts f, Exception.format(:error, error)
-      #     IO.puts f, Poison.encode!(elem(message, 1))
-      #     IO.puts f, Poison.encode!(elem(message, 2))
-      #     File.close(f)
-      # end
+    new_game = process_message(message, player)
     case message do
       {:stop, _moves, _scores, _state} ->
         {:stop, :normal, nil}
@@ -66,9 +56,6 @@ defmodule Punting.Player do
     new_game
   end
   defp process_message({:move, moves, state}, player) do
-    # f = File.open!("error.log", [:append])
-    # IO.puts f, Poison.encode!(moves)
-    # File.close(f)
     new_game = DataStructure.process({:move, moves, state || player.game})
     move =
       case strategy_move(player.strategy).(new_game) do
