@@ -12,7 +12,7 @@ def add_score(graph, edge, score):
     if 'score' in graph[edge[0]][edge[1]]:
         graph[edge[0]][edge[1]]['score'] += score
     else:
-        graph[edge[0]][edge[1]]['score'] += score
+        graph[edge[0]][edge[1]]['score'] = score
 
 def get_score(graph, edge):
     if 'score' in graph[edge[0]][edge[1]]:
@@ -46,7 +46,7 @@ def score_segments(graph, source, target, path=None):
     if path is None:
         path = networkx.shortest_path(graph, source, target)
     for segment in path_edge_iter(path):
-        graph.remove(*segment)
+        graph.remove_edge(*segment)
         try:
             p = networkx.shortest_path_length(graph, source, target)
         except networkx.NetworkXNoPath:

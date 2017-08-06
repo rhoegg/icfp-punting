@@ -48,21 +48,20 @@ def compute_futures(graph, mines, n_players,
         #Compute the best future for each mine
         sorted_distances = sorted(mine_to_target_with_path(graph, mine, sd),
                                   key=lambda x:x[1], reverse=True)
-        while True:
-            for (source, target), path in sorted_distances:
-                if target in mines:
+        for (source, target), path in sorted_distances:
+            if target in mines:
+                continue
+            segment_rank = rank_segments(graph, source, target, path)
+            if len(filter(lambda x:x[-1]> bridge_dist_threshold,
+                          segment_rank))<bridge_cut_threshold:
+                #we will probably keep this one
+                bridges = networkx.minimum_edge_cut(graph, source, target)
+                if len(bridges) < bridge_cut_threshold:
                     continue
-                segment_rank = rank_segments(graph, source, target, path)
-                if len(filter(lambda x:x[-1]> bridge_dist_threshold,
-                              segment_rank))<bridge_cut_threshold:
-                    #we will probably keep this one
-                    bridges = networkx.minimum_edge_cut(graph, source, target)
-                    if len(bridges) < bridge_cut_threshold:
-                        continue
                     #fbridges+=bridges
-                    fsources.append(source)
-                    ftargets.append(target)
-                    break
+                fsources.append(source)
+                ftargets.append(target)
+                break
     if len(fsources)==0 or ftargets==0:
         return None
     return list(map(list, zip(fsources, ftargets)))
