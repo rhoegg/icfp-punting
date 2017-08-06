@@ -10,8 +10,8 @@ defmodule Punting.DataStructure.FutureFinder do
         # starting_mine = 1
         starting_mine = Enum.random(game["mines"])
         max_length = (game["total_rivers"]) / (game["number_of_punters"] * 2)
-        futures_length = (game["total_rivers"]) / (game["number_of_punters"] * 3)
-        all_trees = MineRoutes.build_trees([starting_mine], game["initial"], futures_length, score_keeper)
+        futures_length = (game["total_rivers"] * 3) / (game["number_of_punters"] * 7)
+        all_trees = MineRoutes.build_trees([starting_mine], game["initial"], max_length, score_keeper)
         scores = ScoreKeeper.scores(score_keeper)
         median = median_score(scores)
         score_to_site_map = map_scores_from_one_mine_to_terminal_sites(scores)
