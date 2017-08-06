@@ -9,7 +9,6 @@ defmodule PythonPhoneTest do
   end
 
   test "We can echo good" do
-      assert true
   end
 
 end
