@@ -1,6 +1,7 @@
 alias Punting.Strategy.{BuildFromMines,Voyager,RollDice,RandomChoice,Composite}
 alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
 alias Punting.Strategy.GrabMinesWithMostAvailableSpokes, as: MineCollector
+alias Punting.Strategy.BuildToMinesWeDontOwn, as: MineSeeker
 
 defmodule BuildFromMinesOrRandom do
     def move(game) do
@@ -38,6 +39,16 @@ defmodule HoardThenVoyager do
             RandomChoice
         ])
     end
+end
+
+defmodule SeekerThenBuildThenRandom do
+  def move(game) do
+    Composite.move(game, [
+          MineSeeker,
+          BuildFromMines,
+          RandomChoice
+        ])
+  end
 end
 
 defmodule Compete.Experiment do
@@ -87,7 +98,8 @@ defmodule Compete.Experiment do
             "H V" => HoardThenVoyager,
             "B" => BuildFromMinesOrRandom,
             "V" => VoyagerOrRandom,
-            "Ct5 V" => GrabMinesThenVoyager
+            "Ct5 V" => GrabMinesThenVoyager,
+            "S B" => SeekerThenBuildThenRandom,
         }
     end
 
