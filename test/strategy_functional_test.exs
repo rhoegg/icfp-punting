@@ -11,7 +11,7 @@ defmodule StrategyFunctionalTest do
       |> Enum.filter( &(&1.map_name == "lambda.json") )
       |> hd
     IO.puts("Found a game with #{game.seats} seats.")
-    result =
+
       Range.new(0, game.seats - 1)
       |> Enum.map(fn _n ->
         Task.async(fn ->
