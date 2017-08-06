@@ -1,12 +1,13 @@
 alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
 alias Punting.Strategy.Compose
+alias Punting.Strategy.Python.Isaac.Awesome
 
 
 defmodule Compete.Experiment do
 
     def pretty_scores(scores) do
         scores
-        |> Enum.map(fn %{"punter" => p, "score" => s} -> "#{p}: #{s}" end)
+        |> Enum.map(fn {p, {n, s}} -> "#{p}:   #{s} = #{n}" end)
         |> Enum.join("\n")
     end
 
@@ -16,7 +17,7 @@ defmodule Compete.Experiment do
             "B" => BuildFromMinesOrRandom,
             "V" => VoyagerOrRandom,
             "Ct5 V" => GrabMinesThenVoyager,
-            "S B" => SeekerThenBuildThenRandom,
+            "S B" => SeekerThenBuildThenRandom
         }
     end
 
@@ -41,21 +42,22 @@ defmodule Compete.Experiment do
             scores:   self(),
             strategy: strategy
           )
-          IO.puts("Player #{n}: #{name}")
       
           receive do
-            {:result, _moves, _id, _scores, _state} = result -> result
-            _ -> nil
+            {:result, moves, id, scores, _state} -> 
+              {:result, moves, id, name, scores}
+            _ ->
+              IO.puts("Died: #{name}")
+              {:dead, nil, n, name, nil}
           end
         end)
       end)
-        |> Enum.map(fn t -> Task.await(t, :infinity) end)
-        |> Enum.filter(fn result -> not is_nil(result) end)
+      |> Enum.map(fn t -> Task.await(t, :infinity) end)
+      |> Enum.filter(fn result -> not is_nil(result) end)
     end
 
     def run_one_empty(map) do
-        games =
-          get_game_candidates()
+        games = get_game_candidates(map, 3)
 
         if Enum.empty?(games) do
             IO.puts("No empty games for #{map}")
@@ -73,20 +75,20 @@ defmodule Compete.Experiment do
 
         IO.puts("Playing #{game.map_name}:#{game.port} with #{game.seats} players.")
         result = compete(game, strategies)
+        |> save_scores
 
-        case hd(result) do
-            {:result, _, _, scores, _} -> IO.puts(pretty_scores(scores))
-            x ->
-                IO.puts("what's this result?\n#{inspect(x)}")
-        end
+        result
+        |> pretty_scores
+        |> IO.puts
     end
 
-    def run_generation(_, 0), do: nil
-    def run_generation(strategies, iterations) do
-        candidates = get_game_candidates()
+    def run_generation(_, _map, 0), do: nil
+    def run_generation(strategies, map, iterations) do
+        IO.puts("Running iteration #{iterations} for #{map}")
+        candidates = get_game_candidates(map, 3)
         if Enum.empty?(candidates) do
             IO.puts("no games with 3 or more available seats!")
-            run_generation(strategies, iterations)
+            run_generation(strategies, map, iterations)
         else 
           game = hd(candidates)
           IO.puts("#{game.map_name}:#{game.port}/#{game.seats}")
@@ -96,33 +98,60 @@ defmodule Compete.Experiment do
           if scores do          
               [
                 %{
+                    strategies: strategies |> Map.keys,
                     scores: scores,
                     map: game.map_name,
                     port: game.port
                 }
-                | run_generation(strategies, iterations - 1)
+                | run_generation(strategies, map, iterations - 1)
               ]
           else
             IO.puts("Trying generation again")
-            run_generation(strategies, iterations)
+            run_generation(strategies, map, iterations)
           end
         end
     end
 
-    defp get_game_candidates(min_available_seats \\ 3) do
+    def pretty_result(result) do
+      inspect(result)
+    end
+
+    defp get_game_candidates(min_available_seats) do
       Livegames.list()
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
         |> Enum.filter( &(&1.seats - &1.players >= min_available_seats) )
         |> Enum.shuffle()
     end
+    defp get_game_candidates(map, min_available_seats) do
+      games = get_game_candidates(min_available_seats)
+      if (map) do
+        games
+        |> Enum.filter( &(&1.map_name == map) )
+      else
+        games
+      end
+    end
 
-    defp save_scores([{:result, _, _, scores, _} | _]) do
+    defp save_scores([]), do: []
+    defp save_scores([{:result, _, _id, _name, scores} | others]) do
+        other_ids = others
+        |> Enum.map(fn other -> 
+          case other do
+            {:result, _, id, name, _} -> {id, name}
+            {:dead, _, id, name, _} -> {id, name}
+          end
+        end)
+        |> IO.inspect
+        |> Map.new
         scores
         |> Enum.map(fn %{"punter" => p, "score" => s} -> {p, s} end)
+        |> Enum.map(fn {id, score} -> 
+            {id, {Map.get(other_ids, id), score}}
+          end)
+        |> IO.inspect
         |> Map.new
     end
-    defp save_scores(result) do
-        IO.puts("Problem handling game result: #{inspect(result)}")
-        nil
+    defp save_scores([dead | others]) do
+      save_scores(others ++ [dead])
     end
 end
