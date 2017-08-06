@@ -1,26 +1,24 @@
 defmodule MineRoutes do
 
+    alias Punting.DataStructure.ScoreKeeper
 
     def start(game) do
         max_length =  (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
-        start(game["mines"], game["availabe"], max_length)
-
-    end
-    def start(mines, edge_map, max_length) do
         case max_length > 6 do
             true -> max_length = 6
             false -> nil
         end
+        start(game["mines"], game["available"], max_length)
+
+    end
+    def start(game, max_length) do
+        start(game["mines"], game["available"], max_length)
+    end
+    def start(mines, edge_map, max_length) do
         all_trees = build_trees(mines, edge_map, max_length)
-        mine_to_mine_routes = all_trees
-        |> Enum.reduce([], fn(item, a) -> find_mine_routes_to_specified_sites(item, mines, a) end)
-        other_routes = all_trees
-        |> Enum.reduce([], fn(item, a) -> find_mines_routes_not_ending_at_specific_sites(item, mines, a) end)
-        |> Enum.map(fn(path) -> Enum.reverse(path) end)
-        Enum.count(mine_to_mine_routes)
-        Enum.count(other_routes)
-        mine_route_map = mine_to_mine_routes
-        |> trees_mapped_by_length
+        mine_to_mine_routes = m2m_routes(all_trees, mines)
+        other_routes = other_routes(all_trees, mines)
+        mine_route_map = make_route_length_map(mine_to_mine_routes)
         %{
             "trees_with_mine_bookends" => mine_to_mine_routes,
             "mine_route_map" => mine_route_map,
@@ -28,7 +26,52 @@ defmodule MineRoutes do
         }
     end
 
+    # returns a map of all paths from given mines on
+    # the given edge map
+    # start calls this will all mines. On larger maps
+    # you may want to use with fewer mines to ensure that
+    # processing complete quickly
+    def build_trees(mines, edge_map, max_length) do
+        build_trees(mines, edge_map, max_length, false)
+    end
+    def build_trees(mines, edge_map, max_length, score_keeper) do
+        acc = []
+        lists = mines
+        |> Enum.map(fn(mine) -> build_tree(acc, mine, edge_map, mines, max_length, score_keeper) end)
+        |> flatten_me([])
+        |> Enum.uniq
+    end
 
+    # this method return all trees to all mines, you must specify
+    # the max length. Calls to start will default to a length of 6
+    def get_all_trees(game, max_length) do
+        build_trees(game["mines"], game["available"], max_length)
+    end
+    def get_all_trees(game, max_length, score_keeper) do
+
+        build_trees(game["mines"], game["available"], max_length, score_keeper)
+    end
+
+    # send in a list of trees and the mines
+    def m2m_routes(trees, mines) do
+        trees
+            |> Enum.reduce([], fn(item, a) -> find_mine_routes_to_specified_sites(item, mines, a) end)
+    end
+
+    # send in a list of trees and the mines
+    # routes are returned with the mine in the front of the list
+    def other_routes(trees, mines) do
+        trees
+            |> Enum.reduce([], fn(item, a) -> find_mines_routes_not_ending_at_specific_sites(item, mines, a) end)
+            |> Enum.map(fn(path) -> Enum.reverse(path) end)
+    end
+
+    # send in a list of trees and the mines
+    # routes are returned with the mine in the front of the list
+    def other_routes_mine_last(trees, mines) do
+        trees
+            |> Enum.reduce([], fn(item, a) -> find_mines_routes_not_ending_at_specific_sites(item, mines, a) end)
+    end
 
 
     def our_info(game) do
@@ -45,7 +88,7 @@ defmodule MineRoutes do
         max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         case Enum.count(game[id]) == %{} do
             true -> nil
-            false -> build_trees(game["mines"], game[id], max_length)
+            false -> build_trees(game["mines"], game[id], max_length, true)
         end
         # |> Enum.map(fn(path) -> IO.inspect "here we go"; IO.inspect path; List.reverse(path) end)
         # we want to track our maps to mines, when a sub map connects to another
@@ -60,6 +103,8 @@ defmodule MineRoutes do
         |> Enum.into(%{}, fn pair -> pair end)
     end
 
+    # must have our map to calculate. Don't call this by itself
+    # use the our_info method to get both the map and the aliases
     def mine_aliases(our_current_tree, mines) do
         mines
         |> Enum.map(fn(mine) -> flatten_paths_for_aliases(mine,our_current_tree)end)
@@ -76,10 +121,16 @@ defmodule MineRoutes do
             end
         end)
     end
+
     # assumes only ever plays mines
     # treats any site adjacent to a mine as a mine
     def onMoveMinePlaysOnly(game) do
+        max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
+        onMoveMinePlaysOnly(game, max_length)
+    end
 
+    # use this one to limit the cal
+    def onMoveMinePlaysOnly(game, max_length) do
         max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         id = game["id"]
         taken_ids = game
@@ -89,14 +140,6 @@ defmodule MineRoutes do
             |> Enum.reduce(game["mines"], fn(taken, mines) -> [taken | mines] end)
             |> Enum.uniq
         start(all_mines, game["available"], max_length)
-    end
-
-    def build_trees(mines, edge_map, max_length) do
-        acc = []
-        lists = mines
-        |> Enum.map(fn(mine) -> build_tree(acc, mine, edge_map, mines, max_length) end)
-        |> flatten_me([])
-        |> Enum.uniq
     end
 
     def find_mine_routes_to_specified_sites([], mines, acc) do
@@ -126,6 +169,11 @@ defmodule MineRoutes do
         end
     end
 
+    def make_route_length_map(routes) do
+        routes
+        |> trees_mapped_by_length
+    end
+
     def trees_mapped_by_length(trees) do
         trees
         |> Enum.reduce(%{}, fn(tree, a) -> add_tree_length_map(Enum.count(tree), tree, a) end)
@@ -139,25 +187,36 @@ defmodule MineRoutes do
         [terminal_list| acc]
     end
 
+    def update_score_keeper( mine_route, starting_mine, false) do
+    end
+    def update_score_keeper( mine_route, starting_mine, score_keeper) do
+        ScoreKeeper.add_score(score_keeper, mine_route, starting_mine)
+    end
+
     # acc is a list of sites in the path
-    def check_for_subtrees(acc, site, edge_map, mines, max_length, starting_mine) do
+    def check_for_subtrees(acc, site, edge_map, mines, max_length, starting_mine, score_keeper) do
         case (site in mines) && Enum.count(acc) != 1 do
             false -> edge_map
                 |> Map.get(site)
-                |> Enum.map(fn(next_site) -> build_tree(acc, next_site, edge_map, mines, max_length, starting_mine) end)
-            true -> acc
+                |> Enum.map(fn(next_site) -> build_tree(acc, next_site, edge_map, mines, max_length, starting_mine, score_keeper) end)
+            true -> update_score_keeper(acc, starting_mine, score_keeper)
+                acc
         end
     end
     def build_tree([], mine, edge_map, mines, max_length) do
+        build_tree([], mine, edge_map, mines, max_length, false)
+    end
+    def build_tree([], mine, edge_map, mines, max_length, score_keeper) do
         case Enum.count(edge_map) == 0 do
-            false -> [mine] |> check_for_subtrees(mine, edge_map, mines, max_length, mine)
+            false -> [mine] |> check_for_subtrees(mine, edge_map, mines, max_length, mine, score_keeper)
             true -> []
         end
     end
-    def build_tree(acc, site, edge_map, mines, max_length, starting_mine) do
+    def build_tree(acc, site, edge_map, mines, max_length, starting_mine, score_keeper) do
         case site in acc || Enum.count(acc) > max_length do
-            false -> [site | acc] |> check_for_subtrees(site, edge_map, mines, max_length, starting_mine)
-            true -> acc
+            false -> [site | acc] |> check_for_subtrees(site, edge_map, mines, max_length, starting_mine, score_keeper)
+            true -> update_score_keeper(acc, starting_mine, score_keeper)
+                acc
         end
     end
 

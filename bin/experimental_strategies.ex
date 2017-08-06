@@ -55,10 +55,7 @@ defmodule Compete.Experiment do
 
     def run_one_empty(map) do
         games =
-          Livegames.list_empty()
-          |> Enum.filter( &(Enum.empty?(&1.extensions)) )
-          |> Enum.filter( &(&1.map_name == map) )
-          |> Enum.shuffle
+          get_game_candidates()
 
         if Enum.empty?(games) do
             IO.puts("No empty games for #{map}")
@@ -86,12 +83,9 @@ defmodule Compete.Experiment do
 
     def run_generation(_, 0), do: nil
     def run_generation(strategies, iterations) do
-        candidates = Livegames.list_empty()
-        |> Enum.filter( &(Enum.empty?(&1.extensions)) )
-        |> Enum.shuffle()
-        
+        candidates = get_game_candidates()
         if Enum.empty?(candidates) do
-            IO.puts("no empty games!")
+            IO.puts("no games with 3 or more available seats!")
             run_generation(strategies, iterations)
         else 
           game = hd(candidates)
@@ -113,6 +107,13 @@ defmodule Compete.Experiment do
             run_generation(strategies, iterations)
           end
         end
+    end
+
+    defp get_game_candidates(min_available_seats \\ 3) do
+      Livegames.list()
+        |> Enum.filter( &(Enum.empty?(&1.extensions)) )
+        |> Enum.filter( &(&1.seats - &1.players >= min_available_seats) )
+        |> Enum.shuffle()
     end
 
     defp save_scores([{:result, _, _, scores, _} | _]) do

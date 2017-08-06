@@ -1,7 +1,6 @@
 defmodule Punting.Strategy.CovetMines do
   def move(game) do
     with nil <- grab_each_mine(game),
-         nil <- connect_mines(game),
          nil <- extend_routes(game) do
       nil
     end
@@ -38,63 +37,53 @@ defmodule Punting.Strategy.CovetMines do
 
   # Stage 2
 
-  defp connect_mines(game) do
-    move =
-      game["trees_with_mine_bookends"]
-      |> Enum.find_value(fn route ->
-        route
-        |> Enum.chunk_every(2, 1)
-        |> Enum.find(fn
-          [s1, s2] ->
-            available?(s1, s2, game) && (ours?(s1, game) || ours?(s2, game))
-          [_n] ->
-            false
-        end)
-      end)
-    if is_nil(move) do
-      nil
-    else
-      List.to_tuple(move)
-    end
-  end
-
-  defp available?(source, target, game) do
-    Enum.member?(game["available"][source], target)
-  end
-
-  defp ours?(site, game) do
-    Map.has_key?(game[game["id"]], site)
-  end
-
-  # Stage 3
-
   defp extend_routes(game) do
-    walk_our_routes(game, Enum.map(game["mines"], &[&1]), [ ])
+    starts = Map.keys(game[game["id"]])
+    walk_our_routes(game, Enum.map(starts, &[&1]), MapSet.new(starts), [ ])
+    |> IO.inspect
     |> Enum.sort_by(fn route -> -length(route) end)
-    |> Enum.find_value(fn [site | _route] ->
-      choices = List.wrap(game["available"][site])
-      if choices == [ ] do
-        nil
-      else
-        {site, hd(choices)}
-      end
+    |> Enum.find_value(fn route ->
+      Enum.find_value(route, fn site ->
+        available = List.wrap(game["available"][site])
+        if available == [ ] do
+          nil
+        else
+          {site, hd(available)}
+        end
+      end)
     end)
   end
 
-  defp walk_our_routes(_game, [ ], full_routes), do: full_routes
+  defp walk_our_routes(_game, [ ], _visited, full_routes), do: full_routes
   defp walk_our_routes(
     game,
     [[now | _before] = route | walking],
+    visited,
     full_routes
   ) do
     our_steps =
-      game["available"][now]
-      |> Enum.filter(fn site -> ours?(site, game) end)
+      game["initial"][now]
+      |> Enum.filter(fn site ->
+        !MapSet.member?(visited, site) && ours?(site, game)
+      end)
     if our_steps == [ ] do
-      walk_our_routes(game, walking, [route | full_routes])
+      walk_our_routes(game, walking, visited, [route | full_routes])
     else
       new_routes = Enum.map(our_steps, fn site -> [site | route] end)
-      walk_our_routes(game, walking ++ new_routes, full_routes)
+      walk_our_routes(
+        game,
+        new_routes ++ walking,
+        MapSet.union(visited, MapSet.new(our_steps)),
+        full_routes
+      )
     end
+  end
+
+  # defp available?(source, target, game) do
+  #   Enum.member?(game["available"][source], target)
+  # end
+
+  defp ours?(site, game) do
+    Map.has_key?(game[game["id"]], site)
   end
 end
