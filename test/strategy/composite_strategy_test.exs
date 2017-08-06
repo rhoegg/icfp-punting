@@ -1,57 +1,42 @@
-defmodule CompositeStrategyTest do
+defmodule PuntingTest.Strategy.CompositeStrategyTest do
   use ExUnit.Case
+  alias Punting.Strategy.Composite
+  alias PuntingTest.Strategy.{AlwaysOneTwo, NeverTwoThree, NoUseFunction}
 
   test "uses one strategy" do
-    move = Punting.Strategy.Composite.move(nil,
-        PuntingTest.Strategy.AlwaysOneTwo)
+    move = Composite.move(nil,
+        AlwaysOneTwo)
     assert move == {1, 2}
   end
 
   test "does not use strategy unless use? matches" do
-    move = Punting.Strategy.Composite.move(nil,
-        PuntingTest.Strategy.NeverTwoThree)
+    move = Composite.move(nil,
+        NeverTwoThree)
     assert move == nil
   end
 
   test "no use? function means always" do
-    move = Punting.Strategy.Composite.move(nil,
-        PuntingTest.Strategy.NoUseFunction)
+    move = Composite.move(nil,
+        NoUseFunction)
     assert move == {42, 43}
   end
 
   test "uses first that matches" do
-    move = Punting.Strategy.Composite.move(nil,
+    move = Composite.move(nil,
         [
-            PuntingTest.Strategy.NeverTwoThree,
-            PuntingTest.Strategy.AlwaysOneTwo,
-            PuntingTest.Strategy.NoUseFunction
+            NeverTwoThree,
+            AlwaysOneTwo,
+            NoUseFunction
         ])
     assert move == {1, 2}
   end
-end
 
-defmodule PuntingTest.Strategy.NeverTwoThree do
-  def use?(_game) do
-    false
-  end
-
-  def move(_game) do
-    {2, 3}
-  end
-end
-
-defmodule PuntingTest.Strategy.AlwaysOneTwo do
-  def use?(_game) do
-    true
-  end
-
-  def move(_game) do
-    {1, 2}
-  end
-end
-
-defmodule PuntingTest.Strategy.NoUseFunction do
-  def move(_game) do
-    {42, 43}
+  test "uses first that matches and returns a move" do
+    move = Composite.move(nil,
+        [
+            Punting.Strategy.AlwaysPass,
+            AlwaysOneTwo
+        ])
+    assert move == {1, 2}
   end
 end

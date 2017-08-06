@@ -1,12 +1,12 @@
 defmodule Punting.Player do
   use GenServer
+  require Logger
 
   defstruct mode:       nil,
             mode_arg:   nil,
             mode_state: nil,
-            strategy:   Punting.Strategy.AlwaysPass,
+            strategy:   Punting.Strategy.BasicMineConnections,
             scores:     :halt,
-            buffer:     "",
             game:       nil
 
   ### Server
@@ -33,70 +33,57 @@ defmodule Punting.Player do
 
   def handle_info(
     :process_message,
-    %{mode: mode, mode_state: mode_state, buffer: buffer} = player
+    %{mode: mode, mode_state: mode_state} = player
   ) do
-    message    = mode.receive_message(mode_state)
-    new_player = process_messages(buffer <> message, player)
-    if is_nil(new_player) do
-      {:stop, :normal, nil}
-    else
-      send(self(), :process_message)
-      {:noreply, new_player}
+    message = mode.receive_message(mode_state)
+    Logger.debug "IN:  #{inspect message}"
+    new_game = process_message(message, player)
+    case message do
+      {:stop, _moves, _scores, _state} ->
+        {:stop, :normal, nil}
+      _non_stop_message ->
+        send(self(), :process_message)
+        {:noreply, %__MODULE__{player | game: new_game}}
     end
   end
 
   ### Helpers
 
-  defp process_messages(buffer, player) do
-    case Punting.Parser.parse(buffer) do
-      {nil, ^buffer} ->
-        %__MODULE__{player | buffer: buffer}
-      {message, remainder} ->
-        new_game = process_message(message, player)
-        if is_tuple(message) && elem(message, 0) == :stop do
-          nil
-        else
-          if remainder == "" do
-            %__MODULE__{player | buffer: "", game: new_game}
-          else
-            process_messages(remainder, player)
-          end
-        end
-    end
-  end
-
   defp process_message({:setup, _id, _punters, _map} = setup, player) do
     new_game = DataStructure.process(setup)
+    Logger.debug "OUT:  ready #{new_game["id"]}"
     player.mode.send_ready(player.mode_state, new_game["id"], new_game)
     new_game
   end
   defp process_message({:move, moves, state}, player) do
-    new_game =
-      DataStructure.process(
-        {
-          :move,
-          moves,
-          player.mode.deserialize(state) || player.game
-        }
-      )
+    new_game = DataStructure.process({:move, moves, state || player.game})
     move =
-      case player.strategy.move(new_game) do
+      case strategy_move(player.strategy).(new_game) do
         nil              -> new_game["id"]
         {source, target} -> {new_game["id"], source, target}
         _                -> raise "Error:  Bad strategy:  #{player.strategy}"
       end
+    Logger.debug "OUT:  move #{inspect move}"
     player.mode.send_move(player.mode_state, move, new_game)
     new_game
   end
-  defp process_message({:stop, _moves, _scores, _state} = message, player) do
+  defp process_message({:stop, moves, scores, state}, player) do
+    result = {:result, moves, player.game["id"], scores, state}
     case player.scores do
       pid when is_pid(pid) ->
-        send(pid, message)
+        send(pid, result)
       :halt ->
-        IO.inspect(message)
+        IO.inspect(result)
         System.halt
     end
     player.game
   end
   defp process_message(_message, player), do: player.game
+
+  defp strategy_move(strategy) do
+    case strategy do
+      module when is_atom(module) -> fn game -> module.move(game) end
+      f      when is_function(f)  -> f.(:move)
+    end
+  end
 end

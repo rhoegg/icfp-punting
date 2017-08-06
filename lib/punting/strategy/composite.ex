@@ -1,15 +1,12 @@
 defmodule Punting.Strategy.Composite do
     def move(game, rules) do
-        match(game, List.wrap(rules)).move(game)
+        maybe_move(game, List.wrap(rules))
     end
 
-    def match(_game, []), do: Punting.Strategy.AlwaysPass
-    def match(game, [head | tail]) do
-        if should_use?(game, head) do
-            head
-        else
-            match(game, tail)
-        end
+    def maybe_move(game, []), do: Punting.Strategy.AlwaysPass.move(game)
+    def maybe_move(game, [head | tail]) do
+        if(should_use?(game, head), do: head.move(game))
+            || maybe_move(game, tail)
     end
 
     def should_use?(game, rule) do
