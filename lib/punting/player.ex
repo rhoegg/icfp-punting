@@ -12,11 +12,11 @@ defmodule Punting.Player do
 
   ### Server
 
-  def start_link(mode, options \\ [ ]) do
+  def start_link(options \\ [ ]) do
     GenServer.start_link(
       __MODULE__,
       {
-        mode,
+        options[:mode],
         options[:mode_arg],
         options[:scores]   || :halt,
         options[:strategy] || Punting.Strategy.AlwaysPass

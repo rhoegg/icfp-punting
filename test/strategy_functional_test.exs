@@ -31,7 +31,7 @@ defmodule StrategyFunctionalTest do
 
   def go_play(port, strategy) do
     Punting.Player.start_link(
-      Punting.OnlineMode,
+      mode:     Punting.OnlineMode,
       mode_arg: port,
       scores:   self(),
       strategy: strategy

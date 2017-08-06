@@ -19,10 +19,23 @@ defmodule Punting.Application do
         Punting.OfflineMode
       end
 
+    name     = System.get_env("ICFP_STRATEGY")
+    strategy =
+      if name do
+        try do
+          String.to_existing_atom("Elixir.Punting.Strategy.#{name}")
+        rescue
+          ArgumentError ->
+            Punting.Strategy.AlwaysPass
+        end
+      else
+        Punting.Strategy.AlwaysPass
+      end
+
     # List all child processes to be supervised
     children =
       case args do
-        [:prod] -> [{Punting.Player, mode}, {PythonPhone, nil}]
+        [:prod] -> [{Punting.Player, mode: mode, strategy: strategy}]
         _       -> [ ]
       end
 
