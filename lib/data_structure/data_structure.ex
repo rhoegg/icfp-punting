@@ -37,21 +37,27 @@ defmodule DataStructure do
     max_turns = total_rivers / punters
 
    %{
-      "initial"     => initial,
-      "available"   => initial,
-      "total_turns" => max_turns,
-      "turns_taken" => 0,
-      "mines"       => mines,
-      "id"          => id,
-      id            => %{},
+      "initial"           => initial,
+      "available"         => initial,
+      "total_turns"       => max_turns,
+      "turns_taken"       => 0,
+      "mines"             => mines,
+      "id"                => id,
+      id                  => %{ },
       "number_of_punters" => punters,
       "total_rivers" => total_rivers,
-    } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
+      "total_rivers"      => total_rivers,
+      "futures"           => [ ]
+    } #|> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
   def process({:move, moves, state}) do
     moves
     |> Enum.map_reduce(state, &do_move/2)
     |> elem(1)
+  end
+
+  def add_futures(data_structure, futures) do
+    Map.put(data_structure, "futures", futures)
   end
 
   defp add_river(river, nil) do

@@ -7,7 +7,8 @@ defmodule Punting.Player do
             mode_state: nil,
             strategy:   Punting.Strategy.AlwaysPass,
             scores:     :halt,
-            game:       nil
+            game:       nil,
+            futures:    false
 
   ### Server
 
@@ -54,19 +55,41 @@ defmodule Punting.Player do
     case message do
       {:stop, _moves, _scores, _state} ->
         {:stop, :normal, nil}
-      _non_stop_message ->
+      other_message ->
+        new_futures =
+          if is_tuple(other_message) && elem(other_message, 0) == :setup do
+            elem(other_message, 4)["futures"]
+          end
         send(self(), :process_message)
-        {:noreply, %__MODULE__{player | game: new_game}}
+        {:noreply, %__MODULE__{player | game: new_game, futures: new_futures}}
     end
   end
 
   ### Helpers
 
-  defp process_message({:setup, _id, _punters, _map} = setup, player) do
-    new_game = DataStructure.process(setup)
-    Logger.debug "OUT:  ready #{new_game["id"]}"
-    player.mode.send_ready(player.mode_state, new_game["id"], new_game)
-    new_game
+  defp process_message({:setup, id, punters, map, settings}, player) do
+    new_game = DataStructure.process({:setup, id, punters, map})
+    game_with_futures =
+      if settings["futures"] do
+        bets =
+          case strategy_futures(player.strategy) do
+            nil -> [ ]
+            f   -> f.(new_game)
+          end
+        Logger.debug "OUT:  ready #{new_game["id"]} #{inspect bets}"
+        player.mode.send_ready(
+          player.mode_state,
+          new_game["id"],
+          Enum.map(bets, fn {s, t} -> %{"source" => s, "target" => t} end),
+          new_game
+        )
+        DataStructure.add_futures(new_game, bets)
+      else
+        Logger.debug "OUT:  ready #{new_game["id"]}"
+        player.mode.send_ready(player.mode_state, new_game["id"], new_game)
+        new_game
+      end
+    game_with_futures
   end
   defp process_message({:move, moves, state}, player) do
     new_game = DataStructure.process({:move, moves, state || player.game})
@@ -74,7 +97,9 @@ defmodule Punting.Player do
       case strategy_move(player.strategy).(new_game) do
         nil              -> new_game["id"]
         {source, target} -> {new_game["id"], source, target}
-        bad_move                -> raise "Error:  Bad strategy:  #{player.strategy} produced move #{IO.inspect(bad_move)}"
+        bad_move         ->
+          raise "Error:  Bad strategy:  #{player.strategy} " <>
+                "Produced move:  #{IO.inspect(bad_move)}"
       end
     Logger.debug "OUT:  move #{inspect move}"
     player.mode.send_move(player.mode_state, move, new_game)
@@ -93,8 +118,21 @@ defmodule Punting.Player do
   end
   defp process_message(_message, player), do: player.game
 
+  defp strategy_futures(strategy) do
+    case strategy do
+      module when is_atom(module) ->
+        if Enum.member?(module.__info__(:functions), {:futures, 1}) do
+          fn game -> module.futures(game) end
+        else
+          nil
+        end
+      f when is_function(f) ->
+        f.(:futures)
+    end
+  end
+
   defp strategy_move(strategy) do
-    case IO.inspect(strategy) do
+    case strategy do
       module when is_atom(module) -> fn game -> module.move(game) end
       f      when is_function(f)  -> f.(:move)
     end
