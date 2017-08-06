@@ -5,7 +5,7 @@ defmodule Punting.Player do
   defstruct mode:       nil,
             mode_arg:   nil,
             mode_state: nil,
-            strategy:   Punting.Strategy.BasicMineConnections,
+            strategy:   Punting.Strategy.AlwaysPass,
             scores:     :halt,
             game:       nil
 
@@ -14,15 +14,28 @@ defmodule Punting.Player do
   def start_link(mode, options \\ [ ]) do
     GenServer.start_link(
       __MODULE__,
-      {mode, options[:mode_arg], options[:scores] || :halt}
+      {
+        mode,
+        options[:mode_arg],
+        options[:scores]   || :halt,
+        options[:strategy] || Punting.Strategy.AlwaysPass
+      }
     )
   end
 
   ### Client
 
-  def init({mode, mode_arg, scores}) do
+  def init({mode, mode_arg, scores, strategy}) do
     send(self(), :handshake)
-    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg, scores: scores}}
+    {
+      :ok,
+      %__MODULE__{
+        mode:     mode,
+        mode_arg: mode_arg,
+        scores:   scores,
+        strategy: strategy
+      }
+    }
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
@@ -61,7 +74,7 @@ defmodule Punting.Player do
       case strategy_move(player.strategy).(new_game) do
         nil              -> new_game["id"]
         {source, target} -> {new_game["id"], source, target}
-        _                -> raise "Error:  Bad strategy:  #{player.strategy}"
+        bad_move                -> raise "Error:  Bad strategy:  #{player.strategy} produced move #{IO.inspect(bad_move)}"
       end
     Logger.debug "OUT:  move #{inspect move}"
     player.mode.send_move(player.mode_state, move, new_game)
@@ -81,7 +94,7 @@ defmodule Punting.Player do
   defp process_message(_message, player), do: player.game
 
   defp strategy_move(strategy) do
-    case strategy do
+    case IO.inspect(strategy) do
       module when is_atom(module) -> fn game -> module.move(game) end
       f      when is_function(f)  -> f.(:move)
     end

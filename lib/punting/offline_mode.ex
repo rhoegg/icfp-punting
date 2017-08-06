@@ -26,15 +26,11 @@ defmodule Punting.OfflineMode do
   end
 
   defp read_message do
-    {:ok, header} = IO.read(10)
+    header = IO.read(10)
     case Integer.parse(header) do
       {size, ":" <> start_of_data} ->
-        {:ok, rest_of_data} =
+        rest_of_data =
           IO.read(size - byte_size(start_of_data))
-        file = File.open!("input.log", [:append])
-        IO.puts file, (DateTime.utc_now |> to_string)
-        IO.puts file, start_of_data <> rest_of_data
-        File.close(file)
         Punting.OnlineMode.parse_json(start_of_data <> rest_of_data)
         |> deserialize_state
       _error ->
@@ -45,10 +41,6 @@ defmodule Punting.OfflineMode do
   defp send_message(message, state \\ nil)
   defp send_message(message, nil) do
     json = Poison.encode!(message)
-    file = File.open!("output.log", [:append])
-    IO.puts file, (DateTime.utc_now |> to_string)
-    IO.puts file, json
-    File.close(file)
     IO.write("#{byte_size(json)}:#{json}")
   end
   defp send_message(message, state) do
