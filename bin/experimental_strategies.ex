@@ -1,4 +1,4 @@
-alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
+alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom,SpiderMan}
 alias Punting.Strategy.Compose
 alias Punting.Strategy.Python.Isaac.Awesome
 
@@ -17,7 +17,8 @@ defmodule Compete.Experiment do
             "B" => BuildFromMinesOrRandom,
             "V" => VoyagerOrRandom,
             "Ct5 V" => GrabMinesThenVoyager,
-            "S B" => SeekerThenBuildThenRandom
+            "S B" => SeekerThenBuildThenRandom,
+            "N" => SpiderMan,
         }
     end
 

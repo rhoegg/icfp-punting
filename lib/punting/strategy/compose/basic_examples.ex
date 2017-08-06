@@ -34,7 +34,7 @@ defmodule Punting.Strategy.Compose.Examples.GrabMinesThenVoyager do
     end
 end
 
-defmodule Punting.Strategy.Compose.Examples. HoardThenVoyager do
+defmodule Punting.Strategy.Compose.Examples.HoardThenVoyager do
   alias Punting.Strategy.Composite
   alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
   alias Punting.Strategy.{Voyager, RandomChoice}
@@ -55,6 +55,20 @@ defmodule Punting.Strategy.Compose.Examples.SeekerThenBuildThenRandom do
     Composite.move(game, [
           MineSeeker,
           BuildFromMines,
+          RandomChoice
+        ])
+  end
+end
+
+defmodule Punting.Strategy.Compose.Examples.SpiderMan do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.BuildToMinesWeDontOwn, as: MineSeeker
+  alias Punting.Strategy.{Voyager, BuildFromMines, RandomChoice}
+  def move(game) do
+    Composite.move(game, [
+          MineSeeker,
+          BuildFromMines,
+          Voyager,
           RandomChoice
         ])
   end
