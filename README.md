@@ -27,3 +27,20 @@ We extracted strategies out as modules, so we can play them against one another 
 ## Strategies
 Composable strategies in lib/punting/strategy
 Futures only - Well-connected point to a well-connected mine and try to connect them.
+
+## Convenience bash loops, for running games ##
+### loop until you connect ###
+```bash
+while true ; do
+  mix run ./bin/compete.exs -i 10 -m gothenburg-sparse.json
+  sleep 1
+done
+```
+
+## fill in the last empty slot, to free up games ##
+```bash
+for ICFP_PORT in {9031..9040} ; do # or whatever
+  MIX_ENV=prod ICFP_ONLINE=1  mix run --no-halt &
+done
+```
+

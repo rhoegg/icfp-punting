@@ -49,6 +49,7 @@ defmodule Livegames do
             {"td", _, [who]},
             _,
             {"td", _, extension_cell},
+            {"td", _, timeout },
             {"td", _, [port_string]},
             {"td", _, [{"a", _, [map_name]}]}
         ] = cells
@@ -58,6 +59,7 @@ defmodule Livegames do
             players: player_count,
             seats: seat_count, 
             port: String.to_integer(port_string),
+            timeout: timeout,
             extensions: parse_extensions(extension_cell),
             map_name: map_name
         }

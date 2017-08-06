@@ -22,8 +22,8 @@ defmodule Punting.Strategy.BasicMineConnections do
     case Map.values(game["mine_route_map"]) |> hd |> hd do
       [_source | []]      -> Punting.Strategy.RandomChoice.move(game)
       [source | targets ] ->  
-        IO.inspect(source)
-        IO.inspect(targets)
+        Punting.Logger.log("strategy",inspect(source))
+        Punting.Logger.log("strategy",inspect(targets))
         target = hd(targets)
         Punting.Logger.log("strategy", "source #{source} target #{target}")
         {source, target}
