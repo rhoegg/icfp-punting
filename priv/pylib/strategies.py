@@ -5,9 +5,9 @@ from networkx.algorithms.connectivity import minimum_st_edge_cut
 import json
 from graph_utils import *
 from scoring import score_available_map, get_score
-import logging
+#import logging
 
-DEBUG=True
+#DEBUG=True
 
 def rank_segments(graph, source, target, path=None):
     if path is None:
@@ -162,8 +162,8 @@ def move_toward_future(our_graph, current_graph,
                                             future_site)
     #Loop over those new bridges
     for bridge in new_bridges:
-        logging.debug("found bridge "+str(bridge))
-        logging.debug(str(segments_along_shortest_path))
+        #logging.debug("found bridge "+str(bridge))
+        #logging.debug(str(segments_along_shortest_path))
         #If we do not own a bridge on the shortest path, get it
         if bridge in segments_along_shortest_path and bridge not in our_graph.edges_iter():
             return json.dumps({"claim":{"punter":our_id,
@@ -176,7 +176,7 @@ def move_toward_future(our_graph, current_graph,
     #on our shortest path to get.
     #So grab the first segment along our shortest path
     for segment in segments_along_shortest_path:
-        logging.debug("segment "+str(segment))
+        #logging.debug("segment "+str(segment))
         if segment not in our_graph.edges_iter():
             return json.dumps({"claim":{"punter":our_id,
                                         "source":segment[0],

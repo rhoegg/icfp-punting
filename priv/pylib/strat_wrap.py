@@ -1,6 +1,6 @@
 import strategies
 import process_jsons
-import logging
+#import logging
 
 def one_bet(game, **kwargs):
     graph = process_jsons.initial_state_map(game)
@@ -20,7 +20,7 @@ def move_one_future(game, **kwargs):
     future_mine=process_jsons.get_futures(game)[0][0]
     future_site=process_jsons.get_futures(game)[0][1]
     our_id=process_jsons.my_id(game)
-    logging.debug(repr(our_graph))
+    #logging.debug(repr(our_graph))
     return strategies.move_toward_future(our_graph, current_graph,
                                          future_mine,future_site, our_id,
                                          **kwargs)
