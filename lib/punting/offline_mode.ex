@@ -24,6 +24,9 @@ defmodule Punting.OfflineMode do
       state
     )
   end
+  def send_move(_mode_state, {id, route}, state) do
+    send_message(%{"splurge" => %{"punter" => id, "route" => route}}, state)
+  end
   def send_move(_mode_state, id, state) do
     send_message(%{"pass" => %{"punter" => id}}, state)
   end

@@ -28,13 +28,18 @@ defmodule DataStructure do
   Handles processing of messaging, supports {:setup, id, punters, game}
   and {:move, moves, state}
   """
-  def process({:setup, id, punters, %{"rivers" => rivers, "mines" => mines}}) do
+  def process(event, splurges \\ false)
+  def process(
+    {:setup, id, punters, %{"rivers" => rivers, "mines" => mines}},
+    splurges
+  ) do
     initial =
       rivers
       |> Enum.map_reduce(%{}, &add_river/2)
       |> elem(1)
     total_rivers = Enum.count(rivers)
     max_turns = total_rivers / punters
+    passes = Enum.into(0..(punters - 1), %{ }, fn n -> {n, 0} end)
 
    %{
       "initial"           => initial,
@@ -45,12 +50,14 @@ defmodule DataStructure do
       "id"                => id,
       id                  => %{ },
       "number_of_punters" => punters,
-      "total_rivers" => total_rivers,
       "total_rivers"      => total_rivers,
-      "futures"           => [ ]
-    } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
+      "total_rivers"      => total_rivers,
+      "futures"           => [ ],
+      "splurges"          => splurges,
+      "passes"            => passes
+   } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
-  def process({:move, moves, state}) do
+  def process({:move, moves, state}, _splurges) do
     moves
     |> Enum.map_reduce(state, &do_move/2)
     |> elem(1)
@@ -77,11 +84,16 @@ defmodule DataStructure do
       |> Map.put("available", remove_move(move, acc["available"]))
       |> Map.put("turns_taken", (acc["turns_taken"] + 1))
       |> Map.put(punter, add_river(move, acc[punter]) |> elem(1))
+      |> put_in(["passes", punter], 0)
 
     {move, acc}
   end
-  defp do_move(%{"pass" => %{"punter" => _punter}} = move, acc) do
-    {move, acc}
+  defp do_move(%{"pass" => %{"punter" => punter}} = move, acc) do
+    if acc["splurges"] do
+      {move, update_in(acc, ["passes", punter], &(&1 + 1))}
+    else
+      {move, acc}
+    end
   end
 
   defp remove_move(%{"source" => source, "target" => target}, acc) do
