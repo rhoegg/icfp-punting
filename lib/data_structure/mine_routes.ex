@@ -70,7 +70,8 @@ defmodule MineRoutes do
 
         max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         id = game["id"]
-        taken_ids = game[id]
+        taken_ids = game
+            |> Map.get(id, Map.new)
             |> Map.keys
         all_mines = taken_ids
             |> Enum.reduce(game["mines"], fn(taken, mines) -> [taken | mines] end)
