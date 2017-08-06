@@ -20,7 +20,7 @@ defmodule PythonPhone do
 
     def fire_it_up do
         cmd = "python3"
-        program = "priv/pylib/echo_stdio.py"
+        program = "priv/pylib/move_server.py"
         Porcelain.spawn_shell(
             cmd <> " " <> program, 
             in: :receive, 
