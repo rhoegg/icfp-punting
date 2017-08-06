@@ -122,7 +122,7 @@ defmodule MineRoutes do
     def add_tree_length_map(tree_length, tree, acc) do
         case Map.has_key?(acc, tree_length) do
             true ->  Map.put(acc, tree_length, [tree | Map.get(acc, tree_length)])
-            false -> Map.put(acc, tree_length, tree)
+            false -> Map.put(acc, tree_length, [tree])
         end
     end
 
