@@ -7,13 +7,13 @@ Team ID: bcf56290-bef0-40d0-8812-4e4ced85789b
 Team name: The Mikinators
 
 Team members:
-Paul Dawson
-Clayton Flesher
-James Edward Gray II
-Isaac Hall
-Ed Livemgood
-Caleb Nordlich
-Miki Rezentes
+* Paul Dawson
+* Clayton Flesher
+* James Edward Gray II
+* Isaac Hall
+* Ed Livemgood
+* Caleb Nordlich
+* Miki Rezentes
 
 ## Entry Description
 
