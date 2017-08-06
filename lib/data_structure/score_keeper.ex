@@ -9,6 +9,13 @@ defmodule Punting.DataStructure.ScoreKeeper do
     GenServer.call(pid, :score)
   end
 
+  def make_id(source, target) do
+    [source,target]
+    |> Enum.sort
+    |> Enum.map(&Integer.to_string/1)
+    |> Enum.join("-")
+  end
+
   def get_score(pid, id) do
     GenServer.call(pid, {:score, id})
   end
