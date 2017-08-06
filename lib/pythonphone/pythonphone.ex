@@ -1,6 +1,8 @@
 defmodule PythonPhone do
     use GenServer
-    defstruct ~w[port buffer]a
+    defstruct ~w[process buffer listeners]a
+
+    # Client
 
     def start_link do
         GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
@@ -9,50 +11,66 @@ defmodule PythonPhone do
     def init(_args) do
       state =
         %__MODULE__{
-          port: fire_it_up(),
+          process: fire_it_up(),
           buffer: [],
+          listeners: MapSet.new
         }
-        IO.puts("PythonPhone starting up!")
         {:ok, state}
     end
 
     def fire_it_up do
-        Port.open({:spawn, "python3 ./priv/pylib/echo_stdio.py"}, [:stream, :binary])
+        cmd = "python3"
+        program = "priv/pylib/echo_stdio.py"
+        Porcelain.spawn_shell(
+            cmd <> " " <> program, 
+            in: :receive, 
+            out: {:send, self()}
+        )
+    end
+
+    def subscribe(pid) do
+        GenServer.cast(__MODULE__, {:subscribe, pid})
     end
 
     def talk(msg) do
         GenServer.cast(__MODULE__, {:talk, msg})
     end
 
+    def marshal(msg) do
+        Poison.encode!(msg)
+    end
+
+    def unmarshal(msg) do
+        Poison.decode!(msg)
+    end
+
+    # Server
+
     def handle_cast({:talk, msg}, state) do
-        IO.puts("Trying to talk #{msg}")
-        Port.command(state.port, msg <> "\n")
+        out = marshal(msg)
+        IO.puts("sending message #{out}")
+
+        #Port.command(state.port, "out")
+        state.process
+        |> Porcelain.Process.send_input(out <> "\n")
         {:noreply, state}
     end
 
-    def listen(lines \\ 1, partial \\ "") do
-        IO.puts("Listening...")
-        {clean, messages} = receive do
-            {_, {:data, data}} -> 
-                {
-                    String.ends_with?(data, "\n"),
-                    String.split(partial <> data, "\n")
-                }
-        end
-        IO.puts("Got stuff #{messages}")
-
-        complete_messages = 
-            Enum.count(messages) - (if clean, do: 0, else: 1)
-
-        if complete_messages >= lines do
-            messages
-        else
-            listen(lines, (if clean, do: "", else: tl(messages)))
-        end
+    def handle_cast({:subscribe, pid}, state) do
+        new_state = %{
+            state
+            | listeners: MapSet.put(state.listeners, pid)
+        }
+        {:noreply, new_state}
     end
 
-    def echo do
-        talk("{ \"thing\": \"echo\"}")
-        listen(1)
+    def handle_info({_pid, :data, :out, data}, state) do
+        msg = unmarshal(data)
+        IO.puts(data)
+        Enum.each(state.listeners, fn listener ->
+            IO.puts "sending to listener"
+            send listener, {:reply, msg}
+        end)
+        {:noreply, state}
     end
 end

@@ -14,7 +14,4 @@ defmodule PuntingTest.Strategy.RollDiceStrategyTest do
       assert do_move.(nil) == {1, 2}
   end
 
-  def loadDice(result) do
-      Application.put_env(:punting, :next_dice_roll, result)
-  end
 end
