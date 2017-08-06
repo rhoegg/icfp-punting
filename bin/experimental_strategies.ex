@@ -119,7 +119,7 @@ defmodule Compete.Experiment do
           Process.flag(:trap_exit, true)
 
           Punting.Player.start_link(
-            Punting.OnlineMode,
+            mode:     Punting.OnlineMode,
             mode_arg: game.port,
             scores:   self(),
             strategy: strategy
