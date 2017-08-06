@@ -45,11 +45,11 @@ def pack(tag, bets=None, move=None, state=None):
 
 def process_line(stuff):
     tag, strtg, func, kwargs, gm, state, cmmt=unpack(stuff)
-    #logging.debug("tag %s strtg %s func %s cmmt %s"%(tag, strtg,func, cmmt))
+    logging.debug("tag %s strtg %s func %s cmmt %s"%(tag, strtg,func, cmmt))
     #logging.debug(stratmap[strtg][func].__name__)
     
     res = stratmap[strtg][func](gm, **kwargs)
-    #logging.debug("result = %s"%(res))
+    logging.debug("result = %s"%(res))
     if "bet" in func:
         return pack(tag, bets=res)
     else:
@@ -60,8 +60,9 @@ if __name__ == '__main__':
     line = input()
 
     while line:
+        logging.debug(line)
         reply = process_line(line)
-        #logging.debug(reply)
+        logging.debug(reply)
         print(reply)
         line = input()
         

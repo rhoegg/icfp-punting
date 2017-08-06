@@ -20,6 +20,18 @@ defmodule PuntingTest.Strategy.Isaac.BasicFuturesTest do
     end
 
     test "makes moves for game" do
-        
+        move = BasicFutures.move(%{
+	    "id"=>0,
+	    "initial" =>%{'1'=>[2,4], '2'=>[1,5], '3'=>[5,6],
+	    	          '4'=>[1,8], '5'=>[3,6,8,9], '6'=>[3,5],
+                          '7'=>[8], '8'=>[4,5,7,9], '9'=>[5,8]},
+            "available" => %{'1'=>[2,4], '2'=>[1,5], '3'=>[5,6],
+	    	          '4'=>[1,8], '5'=>[3,6,8,9], '6'=>[3,5],
+                          '7'=>[8], '8'=>[4,5,7,9], '9'=>[5,8]},
+            "0" => %{1=>[4], 4=>[1]},
+            "futures"=>[[1,9]],
+            "mines"=>[1]
+	})
+        assert !Enum.empty?(move)
     end
 end

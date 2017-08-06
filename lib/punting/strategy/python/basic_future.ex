@@ -19,6 +19,20 @@ defmodule Punting.Strategy.Isaac.BasicFutures do
     end
 
     def move(game) do
-        [{1, 2}]
+        PythonPhone.subscribe(self())
+        PythonPhone.talk(%{
+            strategy: __MODULE__ |> Module.split |> List.last,
+            tag: __MODULE__,
+            function: "move",
+            kwargs: %{},
+            game: game,
+            state: %{},
+            comment: "Move Isaac"
+        })
+
+        tag = Atom.to_string(__MODULE__)
+        receive do
+            {:reply, %{"tag" => tag} = msg} -> msg
+        end
     end
 end

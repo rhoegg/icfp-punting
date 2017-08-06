@@ -1,6 +1,6 @@
 import networkx
 #import strategies
-
+import logging
 
 def state_to_edges(state_dict):
     return [(key,y) for key, lst in map(lambda x: (int(x[0]), x[1]),
@@ -33,8 +33,8 @@ def my_id(json_state):
 
 def my_rivers(json_state):
     id1 = my_id(json_state)
-    if id1 is not None and id1 in json_state:
-        return state_to_edges(json_state['id1'])
+    if id1 is not None and str(id1) in json_state:
+        return networkx.Graph(state_to_edges(json_state[str(id1)]))
 
 def label_edge(graph, edge, attr_name, attr_value):
     s1,s2 = edge

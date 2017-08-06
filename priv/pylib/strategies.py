@@ -152,15 +152,16 @@ def move_toward_future(our_graph, current_graph,
     except networkx.NetworkXNoPath:
         return json.dumps("ABORT FUTURE")
     
-    segments_along_shortest_path = zip(p[:-1],p[1:])
+    segments_along_shortest_path = list(zip(p[:-1],p[1:]))
     #Get a bridge along the current shortest path
-    new_bridges = networkx.Minimum_edge_cut(not_theirs, future_mine,
+    new_bridges = networkx.minimum_edge_cut(not_theirs, future_mine,
                                             future_site)
     #Loop over those new bridges
     for bridge in new_bridges:
+        logging.debug("found bridge "+str(bridge))
+        logging.debug(str(segments_along_shortest_path))
         #If we do not own a bridge on the shortest path, get it
         if bridge in segments_along_shortest_path and bridge not in our_graph.edges_iter():
-            
             return json.dumps({"claim":{"punter":our_id,
                                         "source":bridge[0],
                                         "target":bridge[1]}})
@@ -171,6 +172,7 @@ def move_toward_future(our_graph, current_graph,
     #on our shortest path to get.
     #So grab the first segment along our shortest path
     for segment in segments_along_shortest_path:
+        logging.debug("segment "+str(segment))
         if segment not in our_graph.edges_iter():
             return json.dumps({"claim":{"punter":our_id,
                                         "source":segment[0],
