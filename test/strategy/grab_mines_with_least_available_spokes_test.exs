@@ -7,15 +7,22 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
         "rivers"=>[%{"source"=>3,"target"=>4},%{"source"=>0,"target"=>1},%{"source"=>2,"target"=>3},
                    %{"source"=>1,"target"=>3},%{"source"=>5,"target"=>6},%{"source"=>4,"target"=>5},
                    %{"source"=>3,"target"=>5},%{"source"=>6,"target"=>7},%{"source"=>5,"target"=>7},
-                   %{"source"=>1,"target"=>7},%{"source"=>0,"target"=>7},%{"source"=>1,"target"=>2}],
+                   %{"source"=>1,"target"=>7},%{"source"=>0,"target"=>7},%{"source"=>1,"target"=>2},%{"source"=>5,"target"=>2}],
         "mines"=>[1,5]}
 
     setup_message = {:setup, 0, 2, game_map}
     initial_state = DataStructure.process(setup_message)
-    assert {1, 7} == Punting.Strategy.GrabMinesWithLeastAvailableSpokes.move(initial_state)
-    moves = [%{"claim"=>%{"punter"=>0,"source"=>1,"target"=>7}},%{"claim"=>%{"punter"=>1,"source"=>1,"target"=>3}}]
+    {source, destination} = move(initial_state)
+    assert {1, 3} == {source, destination}
+
+    moves = [
+      %{"claim"=>%{"punter"=>0,"source"=>1,"target"=>3}},
+      %{"claim"=>%{"punter"=>1,"source"=>1,"target"=>7}}
+    ]
     new_state = DataStructure.process({:move, moves, initial_state})
-    assert {1, 2} == Punting.Strategy.GrabMinesWithLeastAvailableSpokes.move(new_state)
+    {new_source, new_destination} = move(new_state)
+    assert {1, 2} == {new_source, new_destination}
+
     final_moves = [
       %{"claim"=>%{"punter"=>0,"source"=>1,"target"=>7}},
       %{"claim"=>%{"punter"=>1,"source"=>1,"target"=>3}},
@@ -23,6 +30,16 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
       %{"claim"=>%{"punter"=>1,"source"=>6,"target"=>5}}
     ]
     final_state = DataStructure.process({:move, final_moves, new_state})
-    assert {1, 0} == Punting.Strategy.GrabMinesWithLeastAvailableSpokes.move(final_state)
+    {final_source, final_destination} = move(final_state)
+    assert {0, 1} == {final_source, final_destination}
   end
+
+  defp move(game) do
+    Punting.Strategy.GrabMinesWithLeastAvailableSpokes.move(game)
+    |> normalize
+  end
+
+  defp normalize(nil), do: nil
+  defp normalize({x, y} = _river) when x > y, do: {y, x}
+  defp normalize({_, _} = river), do: river
 end

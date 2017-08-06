@@ -6,6 +6,7 @@ defmodule Punting.Strategy.AlwaysPass do
 
   # Pass:  nil
   # Move:  {source, target}
+  # Move:  [site_1, site_2, ...]
   def move(_game) do
     nil
   end
