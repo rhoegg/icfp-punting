@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-#import sys
+import sys
 
-line = input()
-while True:
+line = input("")
+
+
+while line:
     print(line)
-    line = input()
+    line = input("")
+    
     
 
