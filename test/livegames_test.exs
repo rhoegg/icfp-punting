@@ -14,13 +14,13 @@ defmodule LivegamesTest do
 
   test "lists empty games" do
       games = Livegames.list_empty()
-      assert Enum.count(games) == 107
+      assert Enum.count(games) == 2
   end
 
   test "games have a map name" do
       sierpinski_games = Livegames.list()
       |> Enum.filter( &(&1.map_name == "Sierpinski-triangle.json") )
-      assert Enum.count(sierpinski_games) == 20
+      assert Enum.count(sierpinski_games) == 27
   end
 
   test "games have the map itself" do
@@ -34,7 +34,7 @@ defmodule LivegamesTest do
       games_with_futures_extensions = Livegames.list()
         |> Enum.filter( &( &1.extensions == ["futures"]) )
 
-      assert games_with_futures_extensions |> Enum.count == 120
+      assert games_with_futures_extensions |> Enum.count == 108
   end
 end
 

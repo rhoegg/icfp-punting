@@ -48,9 +48,7 @@ defmodule PythonPhone do
 
     def handle_cast({:talk, msg}, state) do
         out = marshal(msg)
-        IO.puts("sending message #{out}")
 
-        #Port.command(state.port, "out")
         state.process
         |> Porcelain.Process.send_input(out <> "\n")
         {:noreply, state}
@@ -66,9 +64,7 @@ defmodule PythonPhone do
 
     def handle_info({_pid, :data, :out, data}, state) do
         msg = unmarshal(data)
-        IO.puts(data)
         Enum.each(state.listeners, fn listener ->
-            IO.puts "sending to listener"
             send listener, {:reply, msg}
         end)
         {:noreply, state}
