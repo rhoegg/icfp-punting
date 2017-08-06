@@ -9,7 +9,6 @@ defmodule Punting.OnlineMode do
       choose_port(port),
       active: false, mode: :binary, packet: :raw
     )
-    IO.inspect(%{"me" => name})
     send_json(socket, %{"me" => name})
     %__MODULE__{socket: socket}
   end
@@ -28,6 +27,9 @@ defmodule Punting.OnlineMode do
 
   def send_ready(%__MODULE__{socket: socket}, id, _state) do
     send_json(socket, %{"ready" => id})
+  end
+  def send_ready(%__MODULE__{socket: socket}, id, bets, _state) do
+    send_json(socket, %{"ready" => id, "futures" => bets})
   end
 
   def send_move(%__MODULE__{socket: socket}, {id, source, target}, _state) do
@@ -52,8 +54,10 @@ defmodule Punting.OnlineMode do
   def parse_message(%{"you" => name}) do
     {:you, name}
   end
-  def parse_message(%{"punter" => id, "punters" => punters, "map" => map}) do
-    {:setup, id, punters, map}
+  def parse_message(
+    %{"punter" => id, "punters" => punters, "map" => map} = setup
+  ) do
+    {:setup, id, punters, map, setup["settings"] || %{ }}
   end
   def parse_message(%{"move" => move} = message) do
     {:move, Map.fetch!(move, "moves"), message["state"]}

@@ -14,6 +14,9 @@ defmodule Punting.OfflineMode do
   def send_ready(_mode_state, id, state) do
     send_message(%{"ready" => id}, state)
   end
+  def send_ready(_mode_state, id, bets, state) do
+    send_message(%{"ready" => id, "futures" => bets}, state)
+  end
 
   def send_move(_mode_state, {id, source, target}, state) do
     send_message(

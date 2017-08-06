@@ -13,7 +13,7 @@ defmodule Punting.Application do
     end
 
     mode =
-      if System.get_env("ICFP_ONLINE") do
+      if System.get_env("ICFP_PORT") do
         Punting.OnlineMode
       else
         Punting.OfflineMode
