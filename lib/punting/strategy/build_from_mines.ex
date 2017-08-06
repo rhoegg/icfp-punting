@@ -10,20 +10,20 @@ defmodule Punting.Strategy.BuildFromMines do
       initial_game["available"],
       initial_game["total_turns"]
     )
-    get_step(initial_game, updated_game, mines_to_me)
+    get_step(initial_game, updated_game)
   end
 
-  def get_step(initial, game_state, mines_to_me) do
+  def get_step(initial, game_state) do
     steps = game_state["trees_with_mine_bookends"]
     |> Enum.filter(&( length(&1) <= available_steps(initial) ))
     |> Enum.sort(&( length(&1) <= length(&2)))
 
-    if steps = [] do
+    if steps == [] do
       nil
     else
       steps
       |> hd      # just take first for now. Add evaluator later.
-      |> next_step(initial)
+      |> next_step
     end
   end
 
@@ -33,10 +33,10 @@ defmodule Punting.Strategy.BuildFromMines do
     |> Float.round
   end
 
-  defp next_step([source, destination | _rest], _initial) do
+  defp next_step([source, destination | _rest]) do
     {source, destination}
   end
-  defp next_step([], initial) do
+  defp next_step([]) do
     nil
   end
 end
