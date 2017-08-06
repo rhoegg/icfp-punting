@@ -86,12 +86,13 @@ defmodule Compete.Experiment do
 
     def run_generation(_, 0), do: nil
     def run_generation(strategies, iterations) do
-        candidates = Livegames.list_empty()
+        candidates = Livegames.list()
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
+        |> Enum.filter( &(&1.seats - &1.players >= 3) )
         |> Enum.shuffle()
         
         if Enum.empty?(candidates) do
-            IO.puts("no empty games!")
+            IO.puts("no games with 3 or more available seats!")
             run_generation(strategies, iterations)
         else 
           game = hd(candidates)
