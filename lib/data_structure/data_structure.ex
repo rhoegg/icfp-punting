@@ -51,7 +51,6 @@ defmodule DataStructure do
       id                  => %{ },
       "number_of_punters" => punters,
       "total_rivers"      => total_rivers,
-      "total_rivers"      => total_rivers,
       "futures"           => [ ],
       "splurges"          => splurges,
       "passes"            => passes
