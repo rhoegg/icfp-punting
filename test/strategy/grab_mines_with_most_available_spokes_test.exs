@@ -12,7 +12,7 @@ defmodule Punting.Strategy.GrabMinesWithMostAvailableSpokesTest do
 
     setup_message = {:setup, 0, 2, game_map}
     initial_state = DataStructure.process(setup_message)
-    assert {5, 6} == Punting.Strategy.GrabMinesWithMostAvailableSpokes.move(initial_state)
+    assert {5, 7} == Punting.Strategy.GrabMinesWithMostAvailableSpokes.move(initial_state)
     moves = [%{"claim"=>%{"punter"=>0,"source"=>5,"target"=>6}},%{"claim"=>%{"punter"=>1,"source"=>5,"target"=>3}}]
     new_state = DataStructure.process({:move, moves, initial_state})
     assert {1, 2} == Punting.Strategy.GrabMinesWithMostAvailableSpokes.move(new_state)
