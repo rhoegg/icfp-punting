@@ -1,6 +1,16 @@
 defmodule MineRoutes do
 
+
+    def start(game) do
+        max_length =  (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
+        start(game["mines"], game["availabe"], max_length)
+
+    end
     def start(mines, edge_map, max_length) do
+        case max_length > 10 do
+            true -> max_length = 10
+            false -> nil
+        end
         all_trees = build_trees(mines, edge_map, max_length)
         mine_to_mine_routes = all_trees
         |> Enum.reduce([], fn(item, a) -> find_mine_routes_to_specified_sites(item, mines, a) end)
@@ -12,12 +22,14 @@ defmodule MineRoutes do
         mine_route_map = mine_to_mine_routes
         |> trees_mapped_by_length
         %{
-            "all_trees" => all_trees,
             "trees_with_mine_bookends" => mine_to_mine_routes,
             "mine_route_map" => mine_route_map,
             "other_routes"  => other_routes
         }
     end
+
+
+
 
     def our_info(game) do
         existing_map = our_tree(game)
