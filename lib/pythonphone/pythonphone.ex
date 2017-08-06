@@ -6,7 +6,7 @@ defmodule PythonPhone do
     end
 
     def fire_it_up do
-        Port.open({:spawn, "sleep 1; echo done"}, [:stream, :binary])
+        Port.open({:spawn, "python3 ./priv/pylib/echo_stdio.py"}, [:stream, :binary])
     end
 
     def talk(msg) do
@@ -15,7 +15,7 @@ defmodule PythonPhone do
 
     def handle_cast({:talk, msg}, state) do
         IO.puts("Trying to talk #{msg}")
-        Port.command(state.port, "msg" <> "\n")
+        Port.command(state.port, msg <> "\n")
         {:noreply, state}
     end
 
