@@ -1,6 +1,6 @@
-defmodule Punting.Strategy.BuildFromMinesTest do
+defmodule Punting.Strategy.BuildToMinesWeDontOwnTest do
   use ExUnit.Case, async: true
-  
+
   test "finds_a_path" do
     game_map =
       %{"sites"=>[%{"id"=>4},%{"id"=>1},%{"id"=>3},%{"id"=>6},%{"id"=>5},%{"id"=>0},%{"id"=>7},%{"id"=>2}],
@@ -11,12 +11,12 @@ defmodule Punting.Strategy.BuildFromMinesTest do
         "mines"=>[1,5]}
     setup_message = {:setup, 0, 2, game_map}
     initial_state = DataStructure.process(setup_message)
-    assert {5, 7} == Punting.Strategy.BuildFromMines.move(initial_state)
+    assert {5, 7} == Punting.Strategy.BuildToMinesWeDontOwn.move(initial_state)
     moves = [
       %{"claim"=>%{"punter"=>0,"source"=>5,"target"=>7}},
       %{"claim"=>%{"punter"=>1,"source"=>1,"target"=>3}}
     ]
     new_state = DataStructure.process({:move, moves, initial_state})
-    assert {1, 7} == Punting.Strategy.BuildFromMines.move(new_state)
+    assert {7, 1} == Punting.Strategy.BuildToMinesWeDontOwn.move(new_state)
   end
 end
