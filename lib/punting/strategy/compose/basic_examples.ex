@@ -1,4 +1,7 @@
-defmodule BuildFromMinesOrRandom do
+defmodule Punting.Strategy.Compose.Examples.BuildFromMinesOrRandom do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.{BuildFromMines, RandomChoice}
+
     def move(game) do
         Composite.move(game, [
             BuildFromMines,
@@ -7,7 +10,9 @@ defmodule BuildFromMinesOrRandom do
     end
 end
 
-defmodule VoyagerOrRandom do
+defmodule Punting.Strategy.Compose.Examples.VoyagerOrRandom do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.{Voyager, RandomChoice}
     def move(game) do
         Composite.move(game, [
             Voyager,
@@ -16,17 +21,23 @@ defmodule VoyagerOrRandom do
     end
 end
 
-defmodule GrabMinesThenVoyager do
+defmodule Punting.Strategy.Compose.Examples.GrabMinesThenVoyager do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.GrabMinesWithMostAvailableSpokes, as: MineCollector
+  alias Punting.Strategy.{Compose, MineCollector, Voyager, RandomChoice}
     def move(game) do
         Composite.move(game, [
-            Combine.first_n_turns(MineCollector, 5),
+            Compose.first_n_turns(MineCollector, 5),
             Voyager,
             RandomChoice
         ])
     end
 end
 
-defmodule HoardThenVoyager do
+defmodule Punting.Strategy.Compose.Examples. HoardThenVoyager do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
+  alias Punting.Strategy.{MineHoarder, Voyager, RandomChoice}
     def move(game) do
         Composite.move(game, [
             MineHoarder,
@@ -36,7 +47,10 @@ defmodule HoardThenVoyager do
     end
 end
 
-defmodule SeekerThenBuildThenRandom do
+defmodule Punting.Strategy.Compose.Examples.SeekerThenBuildThenRandom do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.BuildToMinesWeDontOwn, as: MineSeeker
+  alias Punting.Strategy.{MineSeeker, BuildFromMines, RandomChoice}
   def move(game) do
     Composite.move(game, [
           MineSeeker,

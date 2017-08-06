@@ -1,9 +1,4 @@
-alias Punting.Strategy.{BuildFromMines,Voyager,RollDice,RandomChoice,Composite}
-alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
-alias Punting.Strategy.GrabMinesWithMostAvailableSpokes, as: MineCollector
-alias Punting.Strategy.BuildToMinesWeDontOwn, as: MineSeeker
-
-alias Punting.Strategy.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
+alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
 alias Punting.Strategy.Compose
 
 

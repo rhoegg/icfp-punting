@@ -39,7 +39,7 @@ done
 
 ## fill in the last empty slot, to free up games ##
 ```bash
-for ICFP_PORT in {9031..9040} ; do # or whatever
+for ICFP_PORT in {9595..9040} ; do
   MIX_ENV=prod ICFP_ONLINE=1  mix run --no-halt &
 done
 ```

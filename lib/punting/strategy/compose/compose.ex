@@ -1,4 +1,5 @@
 defmodule Punting.Strategy.Compose do
+  alias Punting.Strategy.RollDice
     
     def first_n_turns(strategy, n) do
         fn :move ->

@@ -1,4 +1,8 @@
  defmodule Punting.Strategy.Compose.Examples do
+  alias Punting.Strategy.Composite
+  alias Punting.Strategy.Compose
+  alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
+  alias Punting.Strategy.{RandomChoice, Voyager, BuildFromMines}
 
     def grab_mines_then_roll_voyager_vs_build() do
         grab_turns = :rand.uniform(16)
