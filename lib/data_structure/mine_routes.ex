@@ -20,15 +20,15 @@ defmodule MineRoutes do
     end
 
     def our_info(game) do
-        existing_map = our_map(game)
+        existing_map = our_tree(game)
         %{
-            "our_map" => existing_map,
-            "mine_aliases" => mine_aliases(existing_map, game["mines"])
+            "our_tree" => existing_map,
+            "aliases" => mine_aliases(existing_map, game["mines"])
         }
     end
 
     # returns a list of maps that shows paths we have from mines
-    def our_map(game) do
+    def our_tree(game) do
         id = game["id"]
         max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         case Enum.count(game[id]) == %{} do
@@ -48,15 +48,15 @@ defmodule MineRoutes do
         |> Enum.into(%{}, fn pair -> pair end)
     end
 
-    def mine_aliases(our_map, mines) do
+    def mine_aliases(our_current_tree, mines) do
         mines
-        |> Enum.map(fn(mine) -> flatten_paths_for_aliases(mine,our_map)end)
+        |> Enum.map(fn(mine) -> flatten_paths_for_aliases(mine,our_current_tree)end)
         |> Enum.map(fn(paths) -> Enum.uniq(List.flatten(paths)) end)
         |> build_alias_map(mines)
     end
 
-    def flatten_paths_for_aliases(mine, our_map) do
-        our_map
+    def flatten_paths_for_aliases(mine, our_current_tree) do
+        our_current_tree
         |> Enum.reduce([], fn(path, a) ->
             case List.first(path) == mine do
                 true -> [path | a]
@@ -67,6 +67,7 @@ defmodule MineRoutes do
     # assumes only ever plays mines
     # treats any site adjacent to a mine as a mine
     def onMoveMinePlaysOnly(game) do
+
         max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         id = game["id"]
         taken_ids = game[id]
