@@ -38,6 +38,9 @@ defmodule Punting.OnlineMode do
       %{"claim" => %{"punter" => id, "source" => source, "target" => target}}
     )
   end
+  def send_move(%__MODULE__{socket: socket}, {id, route}, _state) do
+    send_json(socket, %{"splurge" => %{"punter" => id, "route" => route}})
+  end
   def send_move(%__MODULE__{socket: socket}, id, _state) do
     send_json(socket, %{"pass" => %{"punter" => id}})
   end

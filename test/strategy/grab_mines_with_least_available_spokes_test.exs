@@ -12,13 +12,16 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
 
     setup_message = {:setup, 0, 2, game_map}
     initial_state = DataStructure.process(setup_message)
-    {m, _} = move(initial_state)
-    assert m == 1
+    {source, destination} = move(initial_state)
+    assert {1, 3} == {source, destination}
 
-    moves = [%{"claim"=>%{"punter"=>0,"source"=>1,"target"=>7}},%{"claim"=>%{"punter"=>1,"source"=>1,"target"=>3}}]
+    moves = [
+      %{"claim"=>%{"punter"=>0,"source"=>1,"target"=>3}},
+      %{"claim"=>%{"punter"=>1,"source"=>1,"target"=>7}}
+    ]
     new_state = DataStructure.process({:move, moves, initial_state})
-    {m, _} = move(new_state)
-    assert m == 1
+    {new_source, new_destination} = move(new_state)
+    assert {1, 2} == {new_source, new_destination}
 
     final_moves = [
       %{"claim"=>%{"punter"=>0,"source"=>1,"target"=>7}},
@@ -27,8 +30,8 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
       %{"claim"=>%{"punter"=>1,"source"=>6,"target"=>5}}
     ]
     final_state = DataStructure.process({:move, final_moves, new_state})
-    {m, _} = move(final_state)
-    assert m == 1
+    {final_source, final_destination} = move(final_state)
+    assert {0, 1} == {final_source, final_destination}
   end
 
   defp move(game) do
@@ -37,6 +40,6 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
   end
 
   defp normalize(nil), do: nil
-  defp normalize({x, y} = river) when x > y, do: {y, x}
+  defp normalize({x, y} = _river) when x > y, do: {y, x}
   defp normalize({_, _} = river), do: river
 end

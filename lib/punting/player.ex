@@ -68,7 +68,8 @@ defmodule Punting.Player do
   ### Helpers
 
   defp process_message({:setup, id, punters, map, settings}, player) do
-    new_game = DataStructure.process({:setup, id, punters, map})
+    new_game =
+      DataStructure.process({:setup, id, punters, map}, settings["splurges"])
     game_with_futures =
       if settings["futures"] do
         bets =
@@ -95,10 +96,11 @@ defmodule Punting.Player do
     new_game = DataStructure.process({:move, moves, state || player.game})
     move =
       case strategy_move(player.strategy).(new_game) do
-        nil              -> new_game["id"]
-        {source, target} -> {new_game["id"], source, target}
-        bad_move         ->
-          raise "Error:  Bad strategy:  #{inspect(player.strategy)} " <>
+        nil                       -> new_game["id"]
+        {source, target}          -> {new_game["id"], source, target}
+        route when is_list(route) -> {new_game["id"], route}
+        bad_move                  ->
+          raise "Error:  Bad strategy:  #{player.strategy} " <>
                 "Produced move:  #{inspect(bad_move)}"
       end
     Logger.debug "OUT:  move #{inspect move}"
