@@ -21,6 +21,7 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
     ]
     new_state = DataStructure.process({:move, moves, initial_state})
     {new_source, new_destination} = move(new_state)
+    assert {1, 2} == {new_source, new_destination}
 
     final_moves = [
       %{"claim"=>%{"punter"=>0,"source"=>1,"target"=>7}},
@@ -39,6 +40,6 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokesTest do
   end
 
   defp normalize(nil), do: nil
-  defp normalize({x, y} = river) when x > y, do: {y, x}
+  defp normalize({x, y} = _river) when x > y, do: {y, x}
   defp normalize({_, _} = river), do: river
 end
