@@ -9,7 +9,7 @@ defmodule Punting.Strategy.Voyager do
     def make_move([], _), do: nil
     def make_move(trail, available) do
         x = trail |> hd |> hd
-        {x, Map.get(available, x) |> hd}
+        {x, Map.get(available, x) || [nil] |> hd}
     end
 
     def find_longest_trail(moves) do

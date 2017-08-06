@@ -14,11 +14,17 @@ defmodule Punting.Strategy.BuildFromMines do
   end
 
   def get_step(initial, game_state, mines_to_me) do
-    game_state["trees_with_mine_bookends"]
+    steps = game_state["trees_with_mine_bookends"]
     |> Enum.filter(&( length(&1) <= available_steps(initial) ))
     |> Enum.sort(&( length(&1) <= length(&2)))
-    |> hd      # just take first for now. Add evaluator later.
-    |> next_step(initial)
+
+    if steps = [] do
+      nil
+    else
+      steps
+      |> hd      # just take first for now. Add evaluator later.
+      |> next_step(initial)
+    end
   end
 
   def available_steps(initial) do
