@@ -2,18 +2,31 @@ defmodule Punting.Strategy.Voyager do
     def move(%{"id" => id, "available" => available} = game) do
         game
         |> Map.get(id, %{})
-        |> find_longest_trail
+        |> find_trail(available)
         |> make_move(available)
     end
 
+    def make_move(nil, _), do: nil
     def make_move([], _), do: nil
     def make_move(trail, available) do
         x = trail |> hd |> hd
-        {x, Map.get(available, x) || [nil] |> hd}
+        if available_river?(x, available) do
+            {x, Map.get(available, x) |> hd}
+        else
+            nil
+        end
     end
 
-    def find_longest_trail(moves) do
+    def find_trail(moves, available) do
         find_trails(moves)
+        |> Enum.filter(fn trail ->
+            available_river?(hd(trail), available)
+        end)
+    end
+
+    defp available_river?(p, available) do
+        moves = Map.get(available, p)
+        moves && ! Enum.empty?(moves)
     end
 
     def find_trails(moves) do

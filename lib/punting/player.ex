@@ -98,8 +98,8 @@ defmodule Punting.Player do
         nil              -> new_game["id"]
         {source, target} -> {new_game["id"], source, target}
         bad_move         ->
-          raise "Error:  Bad strategy:  #{player.strategy} " <>
-                "Produced move:  #{IO.inspect(bad_move)}"
+          raise "Error:  Bad strategy:  #{inspect(player.strategy)} " <>
+                "Produced move:  #{inspect(bad_move)}"
       end
     Logger.debug "OUT:  move #{inspect move}"
     player.mode.send_move(player.mode_state, move, new_game)

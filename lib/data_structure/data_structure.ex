@@ -48,7 +48,7 @@ defmodule DataStructure do
       "total_rivers" => total_rivers,
       "total_rivers"      => total_rivers,
       "futures"           => [ ]
-    } #|> Map.merge(MineRoutes.start(mines, initial, max_turns))
+    } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
   def process({:move, moves, state}) do
     moves

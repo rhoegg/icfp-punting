@@ -10,7 +10,7 @@ defmodule Punting.Strategy.GrabMinesWithLeastAvailableSpokes do
       initial_game["available"],
       initial_game["total_turns"]
     )
-    updated_game["all_trees"]
+    updated_game["other_routes"]
     |> Enum.filter( &(Enum.member?(mines_to_me, hd(&1))) )
     |> get_step
   end

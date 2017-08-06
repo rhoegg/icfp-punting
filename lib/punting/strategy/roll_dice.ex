@@ -29,7 +29,7 @@ defmodule Punting.Strategy.RollDice do
         sides: sides, 
         success: success, 
         fail: fail,
-        seed: seed || :random.seed(:os.timestamp)}
+        seed: seed || :rand.seed(:exrop) }
     {:ok, state}
   end
 
