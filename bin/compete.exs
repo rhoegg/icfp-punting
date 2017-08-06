@@ -38,12 +38,13 @@ defmodule GrabMinesForThreeMoves do
     end
 end
 
-map = "lambda.json"
+map = "sample.json"
 
 game =
   Livegames.list_empty()
   |> Enum.filter( &(Enum.empty?(&1.extensions)) )
   |> Enum.filter( &(&1.map_name == "lambda.json") )
+  |> Enum.shuffle
 |> hd
 if game == nil do
     IO.puts("No empty games for #{map}")
@@ -60,7 +61,7 @@ strategies = [
 result =
   Range.new(0, game.seats - 1)
   |> Enum.zip(Stream.concat(strategies, Stream.cycle(List.wrap(RandomChoice))))
-  |> Enum.map(fn {n, strategy} = x->
+  |> Enum.map(fn {n, strategy} ->
     Task.async(fn ->
       Process.flag(:trap_exit, true)
 

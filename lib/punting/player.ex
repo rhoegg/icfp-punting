@@ -14,15 +14,15 @@ defmodule Punting.Player do
   def start_link(mode, options \\ [ ]) do
     GenServer.start_link(
       __MODULE__,
-      {mode, options[:mode_arg], options[:scores] || :halt}
+      {mode, options[:mode_arg], options[:scores] || :halt, options[:strategy]}
     )
   end
 
   ### Client
 
-  def init({mode, mode_arg, scores}) do
+  def init({mode, mode_arg, scores, strategy}) do
     send(self(), :handshake)
-    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg, scores: scores}}
+    {:ok, %__MODULE__{mode: mode, mode_arg: mode_arg, scores: scores, strategy: strategy}}
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
@@ -81,7 +81,7 @@ defmodule Punting.Player do
   defp process_message(_message, player), do: player.game
 
   defp strategy_move(strategy) do
-    case strategy do
+    case IO.inspect(strategy) do
       module when is_atom(module) -> fn game -> module.move(game) end
       f      when is_function(f)  -> f.(:move)
     end
