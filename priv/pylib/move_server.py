@@ -40,6 +40,8 @@ def pack(tag, bets=None, move=None, state=None):
         d['move']=move
     if state is not None:
         d['state']=state
+    if bets is None and move is None:
+        d['type']='pass'
     return json.dumps(d)
 
 

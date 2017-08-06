@@ -63,6 +63,8 @@ def compute_futures(graph, mines, n_players,
                     fsources.append(source)
                     ftargets.append(target)
                     break
+    if len(fsources)==0 or ftargets==0:
+        return None
     return list(map(list, zip(fsources, ftargets)))
     
     
@@ -137,7 +139,9 @@ def compute_future_old(graph, mines, n_players, min_degree = 3,
             fsource = source
             ftarget = target
             break
-            
+    if fsource is None or ftarget is None:
+        return None
+        
     return [[fsource, ftarget]]
     
 
@@ -150,8 +154,9 @@ def move_toward_future(our_graph, current_graph,
     try:
         p = networkx.shortest_path(not_theirs, future_mine, future_site)
     except networkx.NetworkXNoPath:
-        return json.dumps("ABORT FUTURE")
-    
+        #return json.dumps("ABORT FUTURE")
+        return None
+        
     segments_along_shortest_path = list(zip(p[:-1],p[1:]))
     #Get a bridge along the current shortest path
     new_bridges = networkx.minimum_edge_cut(not_theirs, future_mine,
@@ -178,7 +183,7 @@ def move_toward_future(our_graph, current_graph,
                                         "source":segment[0],
                                         "target":segment[1]}})
     #If we have made it here, then hopefully we have reached our future.
-    return json.dumps("END FUTURE")
+    return None
 
 
             
@@ -206,7 +211,7 @@ def future_score_move(available_map, our_graph, futures, my_id):
                                      "source":max_edge[0],
                                      "target":max_edge[1]}})
     else:
-        return json.dumps({"pass":{"punter":my_id}})
+        return None
 
         
 
