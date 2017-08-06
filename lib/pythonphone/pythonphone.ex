@@ -1,8 +1,19 @@
 defmodule PythonPhone do
     use GenServer
+    defstruct ~w[port buffer]a
 
     def start_link do
-        GenServer.start_link(__MODULE__, %{port: fire_it_up(), buffer: []}, name: __MODULE__)
+        GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
+    end
+
+    def init(_args) do
+      state =
+        %__MODULE__{
+          port: fire_it_up(),
+          buffer: [],
+        }
+        IO.puts("PythonPhone starting up!")
+        {:ok, state}
     end
 
     def fire_it_up do

@@ -22,7 +22,7 @@ defmodule Punting.Application do
     # List all child processes to be supervised
     children =
       case args do
-        [:prod] -> [{Punting.Player, mode}]
+        [:prod] -> [{Punting.Player, mode}, {PythonPhone, nil}]
         _       -> [ ]
       end
 
