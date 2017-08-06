@@ -1,6 +1,5 @@
 alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
 alias Punting.Strategy.Compose
-alias Punting.Strategy.Python.Isaac.Awesome
 
 
 defmodule Compete.Experiment do
