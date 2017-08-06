@@ -1,4 +1,6 @@
 import networkx
+from functools import partial
+import itertools as it
 
 def combine_graphs(graph1, graph2):
     G = networkx.Graph()
@@ -7,7 +9,7 @@ def combine_graphs(graph1, graph2):
     return G
     
 def mine_degrees(graph_degree, mines):
-    return sorted([(k,v) for k,v in graph_degree if k in mines],
+    return sorted([(k,v) for k,v in graph_degree.items() if k in mines],
                   key = lambda x: x[1],
                   reverse=True)
     
@@ -40,6 +42,12 @@ def mine_to_target_distances(graph, mine, sorted_targets):
 
 def mine_to_target_with_path(graph, mine, sorted_targets):
     sources_targets = ((mine,y[0]) for y in sorted_targets)
+    dmap = map(lambda x:(x,networkx.shortest_path(graph, *x)),
+               sources_targets)
+    return list(dmap)
+
+def mines_to_target_with_path(graph, mines, sorted_targets):
+    sources_targets = ((m,y[0]) for m in mines for y in sorted_targets if y in mines)
     dmap = map(lambda x:(x,networkx.shortest_path(graph, *x)),
                sources_targets)
     return list(dmap)
