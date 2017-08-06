@@ -7,8 +7,8 @@ defmodule MineRoutes do
 
     end
     def start(mines, edge_map, max_length) do
-        case max_length > 10 do
-            true -> max_length = 10
+        case max_length > 6 do
+            true -> max_length = 6
             false -> nil
         end
         all_trees = build_trees(mines, edge_map, max_length)
