@@ -3,94 +3,16 @@ alias Punting.Strategy.GrabMinesWithLeastAvailableSpokes, as: MineHoarder
 alias Punting.Strategy.GrabMinesWithMostAvailableSpokes, as: MineCollector
 alias Punting.Strategy.BuildToMinesWeDontOwn, as: MineSeeker
 
-defmodule BuildFromMinesOrRandom do
-    def move(game) do
-        Composite.move(game, [
-            BuildFromMines,
-            RandomChoice
-        ])
-    end
-end
+alias Punting.Strategy.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
+alias Punting.Strategy.Compose
 
-defmodule VoyagerOrRandom do
-    def move(game) do
-        Composite.move(game, [
-            Voyager,
-            RandomChoice
-        ])
-    end
-end
-
-defmodule GrabMinesThenVoyager do
-    def move(game) do
-        Composite.move(game, [
-            Compete.Experiment.first_n_turns(MineCollector, 5),
-            Voyager,
-            RandomChoice
-        ])
-    end
-end
-
-defmodule HoardThenVoyager do
-    def move(game) do
-        Composite.move(game, [
-            MineHoarder,
-            Voyager,
-            RandomChoice
-        ])
-    end
-end
-
-defmodule SeekerThenBuildThenRandom do
-  def move(game) do
-    Composite.move(game, [
-          MineSeeker,
-          BuildFromMines,
-          RandomChoice
-        ])
-  end
-end
 
 defmodule Compete.Experiment do
-    def grab_mines_then_roll_voyager_vs_build() do
-        grab_turns = :rand.uniform(16)
-        target = :rand.uniform(6)
-        {
-            "Gt#{grab_turns} d#{target}/6(VB)",
-            fn :move -> fn game ->
-                Composite.move(game, [
-                    first_n_turns(MineHoarder, grab_turns),
-                    roll_d6(target, Voyager, BuildFromMines),
-                    RandomChoice
-                ])
-            end end
-        }
-    end
-
-    def roll_d6(target, win_strategy, lose_strategy) do
-        RollDice.strategy(target, 6, win_strategy, lose_strategy)
-    end
-
-    def first_n_turns(strategy, n) do
-        fn :move ->
-            fn(%{"turns_taken" => turns} = game) ->
-                if turns < n, do: resolve(strategy).(game), else: nil
-            end
-        end
-    end
 
     def pretty_scores(scores) do
         scores
         |> Enum.map(fn %{"punter" => p, "score" => s} -> "#{p}: #{s}" end)
         |> Enum.join("\n")
-    end
-
-    defp resolve(strategy) when is_function(strategy) do
-        strategy.(:move)
-    end
-
-    defp resolve(strategy) when is_atom(strategy) do
-        fn game -> strategy.move(game) end
     end
 
     def base_strategies() do
@@ -106,7 +28,7 @@ defmodule Compete.Experiment do
     def spice_up(strategies, 0), do: strategies
     def spice_up(strategies, n) do
         [
-            grab_mines_then_roll_voyager_vs_build()
+            Compose.Examples.grab_mines_then_roll_voyager_vs_build()
             | spice_up(strategies, n - 1)
         ]
     end
