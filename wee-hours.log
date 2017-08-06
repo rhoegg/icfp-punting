@@ -1,0 +1,2698 @@
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+03:45:48.018 [error] GenServer #PID<0.199.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:45:48.018 [error] GenServer #PID<0.200.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9011/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+03:46:05.847 [error] GenServer #PID<0.205.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+03:46:05.848 [error] GenServer #PID<0.207.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:05.848 [error] GenServer #PID<0.208.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:05.849 [error] GenServer #PID<0.206.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+gothenburg-sparse.json:9112/16
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 4: H V
+Player 3: B
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+Player 8: Ct5 V
+Player 9: B
+Player 10: H V
+Player 11: Gt1 d1/6(VB)
+Player 12: Gt11 d4/6(VB)
+Player 14: Ct5 V
+Player 13: V
+Player 15: B
+
+03:46:23.708 [error] GenServer #PID<0.225.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+03:46:23.709 [error] GenServer #PID<0.238.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.709 [error] GenServer #PID<0.240.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.710 [error] GenServer #PID<0.235.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.710 [error] GenServer #PID<0.239.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.711 [error] GenServer #PID<0.233.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.711 [error] GenServer #PID<0.237.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.711 [error] GenServer #PID<0.232.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.712 [error] GenServer #PID<0.229.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.712 [error] GenServer #PID<0.231.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.713 [error] GenServer #PID<0.228.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.713 [error] GenServer #PID<0.226.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.713 [error] GenServer #PID<0.236.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.714 [error] GenServer #PID<0.234.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.714 [error] GenServer #PID<0.230.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:23.714 [error] GenServer #PID<0.227.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+03:46:42.049 [error] GenServer #PID<0.247.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:42.049 [error] GenServer #PID<0.246.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:42.050 [error] GenServer #PID<0.245.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+03:46:42.050 [error] GenServer #PID<0.248.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+randomMedium.json:9041/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+nara-sparse.json:9091/16
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 5: Gt1 d1/6(VB)
+Player 4: H V
+Player 6: Gt11 d4/6(VB)
+Player 8: Ct5 V
+Player 9: B
+Player 7: V
+Player 10: H V
+Player 11: Gt1 d1/6(VB)
+Player 12: Gt11 d4/6(VB)
+Player 14: Ct5 V
+Player 13: V
+Player 15: B
+randomMedium.json:9041/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+circle.json:9034/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:00:51.548 [error] GenServer #PID<0.1145.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:00:51.548 [error] GenServer #PID<0.1148.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:00:51.549 [error] GenServer #PID<0.1147.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:00:51.550 [error] GenServer #PID<0.1146.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9011/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:01:08.087 [error] GenServer #PID<0.1156.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:01:08.088 [error] GenServer #PID<0.1155.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:01:08.088 [error] GenServer #PID<0.1154.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:01:08.089 [error] GenServer #PID<0.1153.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+randomMedium.json:9041/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+circle.json:9034/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:02:46.105 [error] GenServer #PID<0.1240.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:02:46.106 [error] GenServer #PID<0.1239.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:03:28.065 [error] GenServer #PID<0.1280.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:03:28.065 [error] GenServer #PID<0.1279.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:03:28.066 [error] GenServer #PID<0.1278.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:03:28.066 [error] GenServer #PID<0.1281.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+circle.json:9031/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+
+04:03:43.435 [error] GenServer #PID<0.1288.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Trying generation again
+
+04:03:43.436 [error] GenServer #PID<0.1287.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:03:43.436 [error] GenServer #PID<0.1290.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:03:43.437 [error] GenServer #PID<0.1289.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:04:02.257 [error] GenServer #PID<0.1296.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:04:02.257 [error] GenServer #PID<0.1295.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:04:02.258 [error] GenServer #PID<0.1298.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:04:02.258 [error] GenServer #PID<0.1297.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9014/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:05:20.114 [error] GenServer #PID<0.1303.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:05:20.114 [error] GenServer #PID<0.1304.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:05:20.115 [error] GenServer #PID<0.1306.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:05:20.115 [error] GenServer #PID<0.1305.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:05:42.068 [error] GenServer #PID<0.1309.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:05:42.069 [error] GenServer #PID<0.1310.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:06:02.536 [error] GenServer #PID<0.1318.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:06:02.537 [error] GenServer #PID<0.1317.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:06:02.538 [error] GenServer #PID<0.1316.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:06:02.538 [error] GenServer #PID<0.1319.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+randomMedium.json:9041/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+lambda.json:9011/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:07:36.638 [error] GenServer #PID<0.1381.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:07:36.638 [error] GenServer #PID<0.1380.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:07:36.639 [error] GenServer #PID<0.1379.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:07:36.639 [error] GenServer #PID<0.1382.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9005/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:08:19.263 [error] GenServer #PID<0.1420.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:08:19.264 [error] GenServer #PID<0.1419.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:08:38.622 [error] GenServer #PID<0.1424.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:08:38.622 [error] GenServer #PID<0.1423.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:08:57.735 [error] GenServer #PID<0.1430.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:08:57.736 [error] GenServer #PID<0.1429.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:08:57.736 [error] GenServer #PID<0.1432.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:08:57.737 [error] GenServer #PID<0.1431.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:09:20.896 [error] GenServer #PID<0.1436.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:09:20.897 [error] GenServer #PID<0.1435.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+circle.json:9034/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+04:10:01.555 [error] GenServer #PID<0.1464.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+
+04:10:01.556 [error] GenServer #PID<0.1465.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Trying generation again
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:10:44.434 [error] GenServer #PID<0.1503.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:10:44.435 [error] GenServer #PID<0.1506.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:10:44.435 [error] GenServer #PID<0.1505.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:10:44.436 [error] GenServer #PID<0.1504.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+
+04:11:28.792 [error] GenServer #PID<0.1542.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Trying generation again
+
+04:11:28.793 [error] GenServer #PID<0.1543.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9014/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:11:46.474 [error] GenServer #PID<0.1551.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:11:46.475 [error] GenServer #PID<0.1550.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:11:46.476 [error] GenServer #PID<0.1549.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:11:46.476 [error] GenServer #PID<0.1552.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Problem handling game result: []
+Trying generation again
+
+04:12:03.704 [error] GenServer #PID<0.1556.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:12:03.704 [error] GenServer #PID<0.1555.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+nara-sparse.json:9094/16
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 6: Gt11 d4/6(VB)
+Player 5: Gt1 d1/6(VB)
+Player 7: V
+Player 8: Ct5 V
+Player 10: H V
+Player 9: B
+Player 11: Gt1 d1/6(VB)
+Player 13: V
+Player 14: Ct5 V
+Player 15: B
+Player 12: Gt11 d4/6(VB)
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:24:27.843 [error] GenServer #PID<0.2286.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:24:27.844 [error] GenServer #PID<0.2285.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:24:27.845 [error] GenServer #PID<0.2288.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:24:27.845 [error] GenServer #PID<0.2287.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+randomMedium.json:9045/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Problem handling game result: []
+Trying generation again
+
+04:26:09.591 [error] GenServer #PID<0.2382.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:26:09.592 [error] GenServer #PID<0.2381.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:26:09.592 [error] GenServer #PID<0.2384.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:26:09.593 [error] GenServer #PID<0.2383.0> terminating
+** (MatchError) no match of right hand side value: {:error, :etimedout}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+randomMedium.json:9045/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+nara-sparse.json:9094/16
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+Player 8: Ct5 V
+Player 9: B
+Player 10: H V
+Player 11: Gt1 d1/6(VB)
+Player 12: Gt11 d4/6(VB)
+Player 13: V
+Player 14: Ct5 V
+Player 15: B
+
+04:28:17.325 [error] GenServer #PID<0.2468.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.339 [error] GenServer #PID<0.2458.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.340 [error] GenServer #PID<0.2471.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.352 [error] GenServer #PID<0.2463.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.353 [error] GenServer #PID<0.2470.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.353 [error] GenServer #PID<0.2466.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Problem handling game result: []
+Trying generation again
+
+04:28:17.353 [error] GenServer #PID<0.2469.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.362 [error] GenServer #PID<0.2461.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.364 [error] GenServer #PID<0.2462.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.364 [error] GenServer #PID<0.2467.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.365 [error] GenServer #PID<0.2465.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.377 [error] GenServer #PID<0.2460.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.377 [error] GenServer #PID<0.2459.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.377 [error] GenServer #PID<0.2456.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.377 [error] GenServer #PID<0.2457.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+04:28:17.379 [error] GenServer #PID<0.2464.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+boston-sparse.json:9061/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+
+04:28:20.202 [error] GenServer #PID<0.2556.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.207 [error] GenServer #PID<0.2551.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.207 [error] GenServer #PID<0.2552.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.207 [error] GenServer #PID<0.2554.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.208 [error] GenServer #PID<0.2555.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.210 [error] GenServer #PID<0.2553.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:20.211 [error] GenServer #PID<0.2549.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:20.212 [error] GenServer #PID<0.2550.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+04:28:22.461 [error] GenServer #PID<0.2563.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:22.463 [error] GenServer #PID<0.2562.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:22.467 [error] GenServer #PID<0.2564.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:22.467 [error] GenServer #PID<0.2561.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+boston-sparse.json:9061/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+
+04:28:24.716 [error] GenServer #PID<0.2580.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.716 [error] GenServer #PID<0.2578.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.717 [error] GenServer #PID<0.2575.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.717 [error] GenServer #PID<0.2579.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.720 [error] GenServer #PID<0.2576.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:24.720 [error] GenServer #PID<0.2574.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.721 [error] GenServer #PID<0.2577.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:24.721 [error] GenServer #PID<0.2573.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+04:28:26.938 [error] GenServer #PID<0.2583.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:26.939 [error] GenServer #PID<0.2584.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+04:28:29.024 [error] GenServer #PID<0.2590.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:29.025 [error] GenServer #PID<0.2588.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:29.028 [error] GenServer #PID<0.2589.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9005/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+04:28:31.131 [error] GenServer #PID<0.2593.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:31.134 [error] GenServer #PID<0.2594.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+tube.json:9072/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+Player 3: B
+
+04:28:33.260 [error] GenServer #PID<0.2610.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.266 [error] GenServer #PID<0.2604.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.267 [error] GenServer #PID<0.2606.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.268 [error] GenServer #PID<0.2607.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.269 [error] GenServer #PID<0.2603.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.270 [error] GenServer #PID<0.2605.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:33.271 [error] GenServer #PID<0.2608.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:33.271 [error] GenServer #PID<0.2609.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+04:28:36.131 [error] GenServer #PID<0.2614.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:36.134 [error] GenServer #PID<0.2613.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+lambda.json:9011/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+04:28:38.483 [error] GenServer #PID<0.2621.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:38.483 [error] GenServer #PID<0.2622.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+04:28:38.488 [error] GenServer #PID<0.2620.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+
+04:28:38.489 [error] GenServer #PID<0.2619.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+boston-sparse.json:9061/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+
+05:44:21.800 [error] GenServer #PID<0.2632.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9003/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9003/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+boston-sparse.json:9062/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+05:54:04.058 [error] GenServer #PID<0.3575.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+05:54:50.495 [error] GenServer #PID<0.3581.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+05:56:17.488 [error] GenServer #PID<0.3693.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+lambda.json:9013/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+lambda.json:9011/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9005/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9005/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9005/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+05:59:36.811 [error] GenServer #PID<0.3937.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+randomSparse.json:9052/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+boston-sparse.json:9062/8
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 4: H V
+Player 5: Gt1 d1/6(VB)
+Player 6: Gt11 d4/6(VB)
+Player 7: V
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+boston-sparse.json:9062/8
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Player 7: V
+Player 5: Gt1 d1/6(VB)
+Player 0: Gt11 d4/6(VB)
+Player 4: H V
+Player 6: Gt11 d4/6(VB)
+
+06:11:14.499 [error] GenServer #PID<0.4426.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:19:03.049 [error] GenServer #PID<0.4679.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9003/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:19:21.992 [error] GenServer #PID<0.4703.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:19:21.992 [error] GenServer #PID<0.4704.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:19:24.299 [error] GenServer #PID<0.4708.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9023/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:19:30.167 [error] GenServer #PID<0.4721.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+randomSparse.json:9051/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9003/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9001/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:22:12.965 [error] GenServer #PID<0.4907.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Problem handling game result: []
+
+06:22:12.969 [error] GenServer #PID<0.4908.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Trying generation again
+Sierpinski-triangle.json:9021/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+randomSparse.json:9051/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+randomMedium.json:9042/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:24:26.514 [error] GenServer #PID<0.5041.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:24:26.515 [error] GenServer #PID<0.5040.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:24:26.535 [error] GenServer #PID<0.5042.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+randomMedium.json:9042/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+randomMedium.json:9042/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+randomMedium.json:9045/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:26:51.582 [error] GenServer #PID<0.5178.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+06:26:51.584 [error] GenServer #PID<0.5181.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:27:46.781 [error] GenServer #PID<0.5187.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+no empty games!
+no empty games!
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:28:18.301 [error] GenServer #PID<0.5218.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:28:18.306 [error] GenServer #PID<0.5219.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+no empty games!
+no empty games!
+no empty games!
+no empty games!
+no empty games!
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:28:32.541 [error] GenServer #PID<0.5222.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:28:32.545 [error] GenServer #PID<0.5223.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:28:34.997 [error] GenServer #PID<0.5226.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:28:34.999 [error] GenServer #PID<0.5227.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+Sierpinski-triangle.json:9022/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:28:37.608 [error] GenServer #PID<0.5232.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+no empty games!
+no empty games!
+no empty games!
+no empty games!
+no empty games!
+no empty games!
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:29:29.109 [error] GenServer #PID<0.5264.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:29:35.528 [error] GenServer #PID<0.5275.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+randomMedium.json:9042/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:31:02.280 [error] GenServer #PID<0.5336.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+06:31:02.286 [error] GenServer #PID<0.5337.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+randomMedium.json:9041/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+no empty games!
+no empty games!
+Sierpinski-triangle.json:9025/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:32:58.043 [error] GenServer #PID<0.5431.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:33:21.856 [error] GenServer #PID<0.5436.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:33:21.857 [error] GenServer #PID<0.5437.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+no empty games!
+no empty games!
+lambda.json:9012/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:33:29.449 [error] GenServer #PID<0.5445.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:33:51.507 [error] GenServer #PID<0.5465.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:33:51.511 [error] GenServer #PID<0.5464.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+randomMedium.json:9043/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+circle.json:9031/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:34:56.044 [error] GenServer #PID<0.5527.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+no empty games!
+no empty games!
+no empty games!
+circle.json:9031/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:35:27.289 [error] GenServer #PID<0.5548.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+no empty games!
+no empty games!
+circle.json:9031/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:36:00.427 [error] GenServer #PID<0.5560.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:36:23.434 [error] GenServer #PID<0.5581.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:36:49.184 [error] GenServer #PID<0.5612.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:36:49.184 [error] GenServer #PID<0.5613.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:36:52.537 [error] GenServer #PID<0.5616.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:36:52.538 [error] GenServer #PID<0.5617.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+
+06:36:55.399 [error] GenServer #PID<0.5621.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:37:21.611 [error] GenServer #PID<0.5627.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+no empty games!
+Sierpinski-triangle.json:9024/3
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+no empty games!
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:38:03.187 [error] GenServer #PID<0.5671.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:38:09.237 [error] GenServer #PID<0.5680.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9002/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+
+06:38:22.973 [error] GenServer #PID<0.5695.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+
+06:38:22.976 [error] GenServer #PID<0.5694.0> terminating
+** (MatchError) no match of right hand side value: {:error, :econnrefused}
+    (punting) lib/punting/online_mode.ex:7: Punting.OnlineMode.handshake/2
+    (punting) lib/punting/player.ex:43: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :handshake
+Problem handling game result: []
+Trying generation again
+circle.json:9031/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+circle.json:9032/4
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+Player 2: Ct5 V
+Player 3: B
+
+06:38:50.533 [error] GenServer #PID<0.5724.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+06:38:50.537 [error] GenServer #PID<0.5725.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+
+06:38:50.538 [error] GenServer #PID<0.5726.0> terminating
+** (MatchError) no match of right hand side value: {:error, :closed}
+    (punting) lib/punting/online_mode.ex:17: Punting.OnlineMode.receive_message/1
+    (punting) lib/punting/player.ex:52: Punting.Player.handle_info/2
+    (stdlib) gen_server.erl:616: :gen_server.try_dispatch/4
+    (stdlib) gen_server.erl:686: :gen_server.handle_msg/6
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: :process_message
+sample.json:9004/2
+Player 0: Gt11 d4/6(VB)
+Player 1: V
+[%{map: "randomMedium.json", port: 9041,
+   scores: %{0 => 343, 1 => 71, 2 => 753, 3 => 89}},
+ %{map: "Sierpinski-triangle.json", port: 9021,
+   scores: %{0 => 736, 1 => 707, 2 => 158}},
+ %{map: "nara-sparse.json", port: 9091,
+   scores: %{0 => 15, 1 => 0, 2 => 1677, 3 => 2183, 4 => 0, 5 => 0, 6 => 0,
+     7 => 1, 8 => 0, 9 => 700, 10 => 550, 11 => 1, 12 => 0, 13 => 0, 14 => 262,
+     15 => 741}},
+ %{map: "randomMedium.json", port: 9041,
+   scores: %{0 => 60, 1 => 109, 2 => 403, 3 => 1089}},
+ %{map: "circle.json", port: 9034,
+   scores: %{0 => 38, 1 => 16, 2 => 86, 3 => 92}},
+ %{map: "randomMedium.json", port: 9041,
+   scores: %{0 => 384, 1 => 51, 2 => 113, 3 => 75}},
+ %{map: "circle.json", port: 9034,
+   scores: %{0 => 0, 1 => 188, 2 => 58, 3 => 85}},
+ %{map: "Sierpinski-triangle.json", port: 9025,
+   scores: %{0 => 679, 1 => 26, 2 => 121}},
+ %{map: "randomMedium.json", port: 9041,
+   scores: %{0 => 629, 1 => 214, 2 => 32, 3 => 113}},
+ %{map: "Sierpinski-triangle.json", port: 9024,
+   scores: %{0 => 138, 1 => 483, 2 => 100}},
+ %{map: "circle.json", port: 9034,
+   scores: %{0 => 31, 1 => 12, 2 => 108, 3 => 124}},
+ %{map: "Sierpinski-triangle.json", port: 9022,
+   scores: %{0 => 576, 1 => 298, 2 => 769}},
+ %{map: "Sierpinski-triangle.json", port: 9025,
+   scores: %{0 => 574, 1 => 279, 2 => 79}},
+ %{map: "nara-sparse.json", port: 9094,
+   scores: %{0 => 1, 1 => 629, 2 => 574, 3 => 3178, 4 => 5, 5 => 0, 6 => 1,
+     7 => 0, 8 => 2, 9 => 1, 10 => 0, 11 => 0, 12 => 456, 13 => 0, 14 => 0,
+     15 => 1}},
+ %{map: "randomMedium.json", port: 9045,
+   scores: %{0 => 19, 1 => 2382, 2 => 117, 3 => 204}},
+ %{map: "Sierpinski-triangle.json", port: 9022,
+   scores: %{0 => 765, 1 => 978, 2 => 326}},
+ %{map: "randomMedium.json", port: 9045,
+   scores: %{0 => 595, 1 => 42, 2 => 43, 3 => 120}},
+ %{map: "boston-sparse.json", port: 9061,
+   scores: %{0 => 353, 1 => 867, 2 => 3150, 3 => 35, 4 => 1533, 5 => 10, 6 => 6,
+     7 => 196}}, %{map: "sample.json", port: 9004, scores: %{0 => 8, 1 => 8}},
+ %{map: "sample.json", port: 9002, scores: %{0 => 27, 1 => 27}},
+ %{map: "sample.json", port: 9004, scores: %{0 => 22, 1 => 27}},
+ %{map: "Sierpinski-triangle.json", port: 9021,
+   scores: %{0 => 352, 1 => 321, 2 => 513}},
+ %{map: "sample.json", port: 9002, scores: %{0 => 22, 1 => 25}},
+ %{map: "sample.json", port: 9003, scores: %{0 => 27, 1 => 27}},
+ %{map: "sample.json", port: 9004, scores: %{0 => 9, 1 => 27}},
+ %{map: "sample.json", port: 9002, scores: %{0 => 22, 1 => 27}},
+ %{map: "sample.json", port: 9003, scores: %{0 => 5, 1 => 8}},
+ %{map: "sample.json", port: 9004, scores: %{0 => 22, 1 => 27}},
+ %{map: "boston-sparse.json", port: 9062,
+   scores: %{0 => 717, 1 => 494, 2 => 0, 3 => 17, 4 => 38, 5 => 2, 6 => 716,
+     7 => 0}},
+ %{map: "Sierpinski-triangle.json", port: 9022,
+   scores: %{0 => 115, 1 => 78, 2 => 99}},
+ %{map: "sample.json", port: 9001, scores: %{0 => 27, 1 => 27}},
+ %{map: "Sierpinski-triangle.json", port: 9021,
+   scores: %{0 => 1425, 1 => 631, 2 => 312}},
+ %{map: "sample.json", port: 9001, scores: %{0 => 22, 1 => 25}},
+ %{map: "lambda.json", port: 9012,
+   scores: %{0 => 243, 1 => 21, 2 => 12, 3 => 174}},
+ %{map: "Sierpinski-triangle.json", port: 9021,
+   scores: %{0 => 589, 1 => 140, 2 => 876}},
+ %{map: "Sierpinski-triangle.json", port: 9022,
+   scores: %{0 => 69, 1 => 1062, 2 => 328}},
+ %{map: "sample.json", port: 9001, scores: %{0 => 22, 1 => 27}},
+ %{map: "lambda.json", port: 9012,
+   scores: %{0 => 0, 1 => 7, 2 => 231, 3 => 31}},
+ %{map: "lambda.json", port: 9013,
+   scores: %{0 => 54, 1 => 22, 2 => 97, 3 => 151}},
+ %{map: "Sierpinski-triangle.json", port: 9025,
+   scores: %{0 => 727, 1 => 124, 2 => 389}},
+ %{map: "Sierpinski-triangle.json", port: 9024,
+   scores: %{0 => 722, 1 => 93, 2 => 110}},
+ %{map: "lambda.json", port: 9011,
+   scores: %{0 => 12, 1 => 1, 2 => 147, 3 => 28}},
+ %{map: "sample.json", port: 9005, scores: %{0 => 27, 1 => 27}},
+ %{map: "Sierpinski-triangle.json", port: 9025,
+   scores: %{0 => 154, 1 => 114, 2 => 150}},
+ %{map: "sample.json", port: 9005, scores: %{0 => 22, 1 => 27}},
+ %{map: "lambda.json", port: 9012, scores: %{0 => 135, 1 => 143, ...}},
+ %{map: "Sierpinski-triangle.json", port: 9025, scores: %{0 => 104, ...}},
+ %{map: "sample.json", port: 9005, ...},
+ %{map: "Sierpinski-triangle.json", ...}, %{...}, ...]
