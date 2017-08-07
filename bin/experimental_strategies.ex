@@ -43,7 +43,7 @@ defmodule Compete.Experiment do
 
     def compete(game, strategies) do
       players = game.seats - game.players
-      |> (fn x -> if x > 5, do: x, else: 5 end).()
+      |> (fn x -> if x <= 5, do: x, else: 5 end).()
 
       Range.new(0, players)
       |> Enum.zip(Stream.cycle(strategies))
