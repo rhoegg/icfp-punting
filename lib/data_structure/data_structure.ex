@@ -44,6 +44,7 @@ defmodule DataStructure do
    %{
       "initial"           => initial,
       "available"         => initial,
+      "ours_or_available" => initial,
       "total_turns"       => max_turns,
       "turns_taken"       => 0,
       "mines"             => mines,
@@ -54,7 +55,7 @@ defmodule DataStructure do
       "futures"           => [ ],
       "splurges"          => splurges,
       "passes"            => passes
-   } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
+   } # |> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
   def process({:move, moves, state}, _splurges) do
     moves
@@ -84,6 +85,17 @@ defmodule DataStructure do
       |> Map.put("turns_taken", (acc["turns_taken"] + 1))
       |> Map.put(punter, add_river(move, acc[punter]) |> elem(1))
       |> put_in(["passes", punter], 0)
+
+    acc =
+      if punter != acc["id"] do
+        acc
+        |> Map.put(
+          "ours_or_available",
+          remove_move(move, acc["ours_or_available"])
+        )
+      else
+        acc
+      end
 
     {move, acc}
   end
