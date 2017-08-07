@@ -1,13 +1,33 @@
-alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom,SpiderMan}
+alias Punting.Strategy.Compose.Examples.{VoyagerOrRandom,SpiderMan}
 alias Punting.Strategy.Compose
-alias Punting.Strategy.Isaac.MultiFutures
-alias Punting.Strategy.Isaac.BasicFutures
-alias Punting.Strategy.{BackToTheFuture,Composite,CovetMines}
+alias Punting.Strategy.{BackToTheFuture,Composite,CovetMines,MineHoarder,Voyager,RandomChoice}
 
 defmodule Covet do
   def move(game) do
     Composite.move(game, [
         CovetMines,
+        RandomChoice
+    ])
+  end
+end
+
+defmodule HoardThenSpiderman do
+  def move(game) do
+    mines = Map.get(game, "mines") |> Enum.count
+    Composite.move(game, [
+        Compose.first_n_turns(MineHoarder, mines * 2),
+        SpiderMan,
+        RandomChoice
+    ])
+  end
+end
+
+defmodule HoardThenVoyager do
+  def move(game) do
+    mines = Map.get(game, "mines") |> Enum.count
+    Composite.move(game, [
+        Compose.first_n_turns(MineHoarder, mines * 2),
+        Voyager,
         RandomChoice
     ])
   end
@@ -23,17 +43,19 @@ defmodule Compete.Experiment do
 
     def base_strategies() do
         %{
-            "N" => SpiderMan,
-            "M" => Covet,
-            "BF" => BackToTheFuture
+            "S" => SpiderMan,
+            "C" => Covet,
+            "B" => BackToTheFuture,
+            "V" => HoardThenVoyager,
+            "W" => HoardThenSpiderman
         }
     end
 
-    def spice_up(strategies, 0), do: strategies
-    def spice_up(strategies, n) do
+    def spice_up(0), do: []
+    def spice_up(n) do
         [
-            Compose.Examples.grab_mines_then_roll_voyager_vs_build()
-            | spice_up(strategies, n - 1)
+            Compose.Examples.grab_mines_then_roll_voyager_vs_spiderman()
+            | spice_up(n - 1)
         ]
     end
 
@@ -42,7 +64,7 @@ defmodule Compete.Experiment do
       |> (fn x -> if x <= 4, do: x, else: 4 end).()
 
       Range.new(0, players)
-      |> Enum.zip(Stream.cycle(strategies))
+      |> Enum.zip(Stream.cycle(IO.inspect(strategies)))
       |> Enum.map(fn {n, {name, strategy}} ->
         Task.async(fn ->
           Process.flag(:trap_exit, true)
@@ -80,10 +102,11 @@ defmodule Compete.Experiment do
             IO.puts("No empty games for #{map}")
         end
 
-        strategies = base_strategies()
-        |> Map.to_list
-        |> spice_up(2)
-        |> Enum.shuffle
+        strategies = 
+          base_strategies() 
+          |> Map.to_list 
+          |> Enum.concat(spice_up(2))
+          |> Enum.shuffle
 
         IO.puts("Playing #{game.map_name}:#{game.port} with #{game.seats} players.")
         result = compete(game, strategies)
@@ -122,10 +145,6 @@ defmodule Compete.Experiment do
             run_generation(strategies, map, iterations)
           end
         end
-    end
-
-    def pretty_result(result) do
-      inspect(result)
     end
 
     defp get_game_candidates(max_players) do

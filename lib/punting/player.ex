@@ -40,7 +40,7 @@ defmodule Punting.Player do
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
-    mode_state = mode.handshake(mode_arg, "The Mikinators")
+    mode_state = mode.handshake(mode_arg, "Techlahoma Practice")
     send(self(), :process_message)
     {:noreply, %__MODULE__{player | mode_state: mode_state}}
   end
@@ -113,7 +113,6 @@ defmodule Punting.Player do
       pid when is_pid(pid) ->
         send(pid, result)
       :halt ->
-        # IO.inspect(result)
         System.halt
     end
     player.game
