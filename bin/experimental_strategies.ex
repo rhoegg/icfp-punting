@@ -40,7 +40,10 @@ defmodule Compete.Experiment do
     end
 
     def compete(game, strategies) do
-      Range.new(0, game.seats - 1)
+      players = game.seats - game.players
+      |> (fn x -> if x > 5, do: x, else: 5 end).()
+
+      Range.new(0, players)
       |> Enum.zip(Stream.cycle(strategies))
       |> Enum.map(fn {n, {name, strategy}} ->
         Task.async(fn ->
@@ -94,7 +97,7 @@ defmodule Compete.Experiment do
 
     def run_generation(_, _map, 0), do: nil
     def run_generation(strategies, map, iterations) do
-        IO.puts("Running iteration #{iterations} for #{map}")
+        IO.puts("Running iteration #{iterations} for #{map || 'any map'}")
         candidates = get_game_candidates(map, 2)
         if Enum.empty?(candidates) do
             IO.puts("no games with players or less!")
