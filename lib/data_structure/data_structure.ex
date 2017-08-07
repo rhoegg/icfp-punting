@@ -54,7 +54,7 @@ defmodule DataStructure do
       "futures"           => [ ],
       "splurges"          => splurges,
       "passes"            => passes
-   } |> Map.merge(MineRoutes.start(mines, initial, max_turns))
+   }# |> Map.merge(MineRoutes.start(mines, initial, max_turns))
   end
   def process({:move, moves, state}, _splurges) do
     moves
