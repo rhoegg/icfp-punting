@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bin/punting "$@"
+ROOT=/home/punter/rel1 BINDIR=/home/punter/rel1/erts-8.2/bin ./beam.smp -Bd -- -root /home/punter/rel1 -- -home /home/punter -- -noshell -boot /home/punter/rel1/releases/0.1.0/punting -boot_var ERTS_LIB_DIR /home/punter/rel1/erts-8.2/../lib -pa /home/punter/sites/punting/rel1/lib/punting-0.1.0/consolidated -smp auto -config /home/punter/rel1/releases/0.1.0/sys.config -mode embedded -extra -- foreground 2> /dev/null
