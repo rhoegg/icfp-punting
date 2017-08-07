@@ -14,14 +14,16 @@ defmodule Punting.OnlineMode do
   end
 
   def receive_message(%__MODULE__{socket: socket}) do
-    {:ok, header} = :gen_tcp.recv(socket, 10)
-    case Integer.parse(header) do
-      {size, ":" <> start_of_data} ->
-        {:ok, rest_of_data} =
-          :gen_tcp.recv(socket, size - byte_size(start_of_data))
-        parse_json(start_of_data <> rest_of_data)
-      _error ->
-        raise "Error:  No message length"
+    case :gen_tcp.recv(socket, 10) do
+      {:ok, header} ->
+        case Integer.parse(header) do
+          {size, ":" <> start_of_data} ->
+            {:ok, rest_of_data} =
+              :gen_tcp.recv(socket, size - byte_size(start_of_data))
+            parse_json(start_of_data <> rest_of_data)
+          _error ->
+            raise "Error:  No message length"
+        end
     end
   end
 

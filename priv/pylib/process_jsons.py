@@ -1,6 +1,6 @@
 import networkx
 #import strategies
-import logging
+#import logging
 
 def state_to_edges(state_dict):
     return [(key,y) for key, lst in map(lambda x: (int(x[0]), x[1]),

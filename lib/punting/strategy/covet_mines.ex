@@ -40,7 +40,6 @@ defmodule Punting.Strategy.CovetMines do
   defp extend_routes(game) do
     starts = Map.keys(game[game["id"]])
     walk_our_routes(game, Enum.map(starts, &[&1]), MapSet.new(starts), [ ])
-    |> IO.inspect
     |> Enum.sort_by(fn route -> -length(route) end)
     |> Enum.find_value(fn route ->
       Enum.find_value(route, fn site ->
