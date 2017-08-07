@@ -10,6 +10,11 @@ defmodule MineRoutes do
         start(game["mines"], game["available"], max_length)
     end
     def start(mines, edge_map, max_length) do
+        max_length = 
+          case max_length > 9 do
+              true -> 9
+              false -> max_length
+          end
         all_trees = build_trees(mines, edge_map, max_length)
         mine_to_mine_routes = m2m_routes(all_trees, mines)
         other_routes = other_routes(all_trees, mines)
@@ -21,7 +26,10 @@ defmodule MineRoutes do
         }
     end
     def max_length(game) do
-        [ (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"] ,7] 
+        [ (game["total_rivers"] - game["turns_taken"]) / 
+          game["number_of_punters"] ,
+          9
+        ] 
         |> Enum.min
     end
 
