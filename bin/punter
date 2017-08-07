@@ -1,3 +1,5 @@
 #!/bin/sh
 
-ROOT=/home/punter/rel1 BINDIR=/home/punter/rel1/erts-9.0/bin /home/punter/rel1/erts-9.0/beam.smp -Bd -- -root /home/punter/rel1 -- -home /home/punter -- -noshell -boot /home/punter/rel1/releases/0.1.0/punting -boot_var ERTS_LIB_DIR /home/punter/rel1/erts-9.0/../lib -pa /home/punter/sites/punting/rel1/lib/punting-0.1.0/consolidated -smp auto -config /home/punter/rel1/releases/0.1.0/sys.config -mode embedded -extra -- foreground 2> /dev/null
+DIR="$(cd "$(dirname "$0")" && pwd -P)"
+
+ROOT=$DIR BINDIR=$DIR/erts-9.0/bin $DIR/erts-9.0/bin/beam.smp -Bd -- -root $DIR -- -home $DIR -- -noshell -boot $DIR/releases/0.1.0/punting -boot_var ERTS_LIB_DIR $DIR/erts-9.0/../lib -pa $DIR/lib/punting-0.1.0/consolidated -smp auto -config $DIR/releases/0.1.0/sys.config -mode embedded -extra -- foreground 2> /dev/null
