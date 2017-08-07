@@ -11,7 +11,11 @@ if iterations do
     |> Enum.concat(Compete.Experiment.spice_up(4))
     |> Enum.shuffle
   Compete.Experiment.run_generation(strategies, map, String.to_integer(iterations))
-  |> IO.inspect
+  |> Enum.each(fn result -> 
+    if result do
+      IO.puts(Compete.Experiment.pretty_result(result) <> "\n\n")
+    end
+  end)
 else
   Compete.Experiment.run_one_empty(map)
 end
