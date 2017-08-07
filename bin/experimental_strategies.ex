@@ -23,10 +23,6 @@ defmodule Compete.Experiment do
 
     def base_strategies() do
         %{
-            "H V" => HoardThenVoyager,
-            "B" => BuildFromMinesOrRandom,
-            "V" => VoyagerOrRandom,
-            "S B" => SeekerThenBuildThenRandom,
             "N" => SpiderMan,
             "M" => Covet,
             "BF" => BackToTheFuture
@@ -43,7 +39,7 @@ defmodule Compete.Experiment do
 
     def compete(game, strategies) do
       players = game.seats - game.players
-      |> (fn x -> if x <= 5, do: x, else: 5 end).()
+      |> (fn x -> if x <= 4, do: x, else: 4 end).()
 
       Range.new(0, players)
       |> Enum.zip(Stream.cycle(strategies))
@@ -134,7 +130,7 @@ defmodule Compete.Experiment do
 
     defp get_game_candidates(max_players) do
       Livegames.list()
-        |> Enum.filter( &(&1.seats > 2) )
+        |> Enum.filter( &(&1.seats > 2 && &1.seats < 9) )
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
         |> Enum.filter( &(&1.players <= max_players) )
         |> Enum.shuffle()
