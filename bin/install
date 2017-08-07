@@ -1,6 +1,3 @@
 #!/usr/bin/env sh
 
-echo "Nothing to see here."
-
-cd priv/netx/networkx-master
-python3 setup.py install --user
+echo "Nothing to install.  Aren't binaries grand?"

@@ -5,7 +5,7 @@ defmodule Punting.Player do
   defstruct mode:       nil,
             mode_arg:   nil,
             mode_state: nil,
-            strategy:   Punting.Strategy.AlwaysPass,
+            strategy:   Punting.Strategy.BackToTheFuture,
             scores:     :halt,
             game:       nil,
             futures:    false
@@ -19,7 +19,7 @@ defmodule Punting.Player do
         options[:mode],
         options[:mode_arg],
         options[:scores]   || :halt,
-        options[:strategy] || Punting.Strategy.AlwaysPass
+        options[:strategy] || Punting.Strategy.BackToTheFuture
       }
     )
   end

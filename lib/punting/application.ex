@@ -26,10 +26,10 @@ defmodule Punting.Application do
           String.to_existing_atom("Elixir.Punting.Strategy.#{name}")
         rescue
           ArgumentError ->
-            Punting.Strategy.AlwaysPass
+            Punting.Strategy.BackToTheFuture
         end
       else
-        Punting.Strategy.AlwaysPass
+        Punting.Strategy.BackToTheFuture
       end
 
     # List all child processes to be supervised
