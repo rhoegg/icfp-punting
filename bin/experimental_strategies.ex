@@ -1,7 +1,17 @@
-alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom}
+alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,GrabMinesThenVoyager,HoardThenVoyager,SeekerThenBuildThenRandom,SpiderMan}
 alias Punting.Strategy.Compose
 alias Punting.Strategy.Isaac.MultiFutures
 alias Punting.Strategy.Isaac.BasicFutures
+alias Punting.Strategy.{Composite,CovetMines}
+
+defmodule Covet do
+  def move(game) do
+    Composite.move(game, [
+        CovetMines,
+        RandomChoice
+    ])
+  end
+end
 
 defmodule Compete.Experiment do
 
@@ -18,8 +28,13 @@ defmodule Compete.Experiment do
             "V" => VoyagerOrRandom,
             "Ct5 V" => GrabMinesThenVoyager,
             "S B" => SeekerThenBuildThenRandom,
-	    "M"  => MultiFutures,
+
+	    "?"  => MultiFutures,
             "F"  => BasicFutures
+
+            "N" => SpiderMan,
+            "M" => Covet
+
         }
     end
 
@@ -59,7 +74,7 @@ defmodule Compete.Experiment do
     end
 
     def run_one_empty(map) do
-        games = get_game_candidates(map, 3)
+        games = get_game_candidates(map, 2)
 
         if Enum.empty?(games) do
             IO.puts("No empty games for #{map}")
@@ -87,12 +102,13 @@ defmodule Compete.Experiment do
     def run_generation(_, _map, 0), do: nil
     def run_generation(strategies, map, iterations) do
         IO.puts("Running iteration #{iterations} for #{map}")
-        candidates = get_game_candidates(map, 3)
+        candidates = get_game_candidates(map, 2)
         if Enum.empty?(candidates) do
-            IO.puts("no games with 3 or more available seats!")
+            IO.puts("no games with players or less!")
             run_generation(strategies, map, iterations)
         else 
-          game = hd(candidates)
+          game = candidates
+          |> hd
           IO.puts("#{game.map_name}:#{game.port}/#{game.seats}")
           scores = game
             |> compete(strategies)
@@ -100,7 +116,6 @@ defmodule Compete.Experiment do
           if scores do          
               [
                 %{
-                    strategies: strategies |> Map.keys,
                     scores: scores,
                     map: game.map_name,
                     port: game.port
@@ -118,14 +133,15 @@ defmodule Compete.Experiment do
       inspect(result)
     end
 
-    defp get_game_candidates(min_available_seats) do
+    defp get_game_candidates(max_players) do
       Livegames.list()
+        |> Enum.filter( &(&1.seats > 2) )
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
-        |> Enum.filter( &(&1.seats - &1.players >= min_available_seats) )
+        |> Enum.filter( &(&1.players <= max_players) )
         |> Enum.shuffle()
     end
-    defp get_game_candidates(map, min_available_seats) do
-      games = get_game_candidates(min_available_seats)
+    defp get_game_candidates(map, max_players) do
+      games = get_game_candidates(max_players)
       if (map) do
         games
         |> Enum.filter( &(&1.map_name == map) )
@@ -143,14 +159,12 @@ defmodule Compete.Experiment do
             {:dead, _, id, name, _} -> {id, name}
           end
         end)
-        |> IO.inspect
         |> Map.new
         scores
         |> Enum.map(fn %{"punter" => p, "score" => s} -> {p, s} end)
         |> Enum.map(fn {id, score} -> 
             {id, {Map.get(other_ids, id), score}}
           end)
-        |> IO.inspect
         |> Map.new
     end
     defp save_scores([dead | others]) do
