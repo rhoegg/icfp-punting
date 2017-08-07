@@ -28,13 +28,8 @@ defmodule Compete.Experiment do
             "V" => VoyagerOrRandom,
             "Ct5 V" => GrabMinesThenVoyager,
             "S B" => SeekerThenBuildThenRandom,
-
-	    "?"  => MultiFutures,
-            "F"  => BasicFutures
-
             "N" => SpiderMan,
             "M" => Covet
-
         }
     end
 
