@@ -117,7 +117,7 @@ defmodule Compete.Experiment do
         |> IO.puts
     end
 
-    def run_generation(_, _map, 0), do: nil
+    def run_generation(_, _map, 0), do: []
     def run_generation(strategies, map, iterations) do
         IO.puts("Running iteration #{iterations} for #{map || 'any map'}")
         candidates = get_game_candidates(map, 2)
