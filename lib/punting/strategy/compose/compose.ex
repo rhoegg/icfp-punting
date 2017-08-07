@@ -9,6 +9,21 @@ defmodule Punting.Strategy.Compose do
         end
     end
 
+    def own_fewer_mines(strategy, n) do
+        fn :move ->
+            fn(game) ->
+                my_mines =
+                    Map.get(game, Map.get(game, "id"))
+                    |> Map.keys
+                    |> Enum.filter(fn owned -> 
+                        Enum.member?(Map.get(game, "mines"), owned)
+                    end)
+                    |> Enum.count
+                if my_mines < n, do: resolve(strategy).(game), else: nil
+            end
+        end
+    end
+
     defp resolve(strategy) when is_function(strategy) do
         strategy.(:move)
     end
