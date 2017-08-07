@@ -151,7 +151,7 @@ defmodule Compete.Experiment do
       Livegames.list()
         |> Enum.filter( &(&1.seats > 2 && &1.seats < 9) )
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
-        |> Enum.filter( &(&1.players <= max_players) )
+#        |> Enum.filter( &(&1.players <= max_players) )
         |> Enum.shuffle()
     end
     defp get_game_candidates(map, max_players) do
@@ -183,5 +183,9 @@ defmodule Compete.Experiment do
     end
     defp save_scores([dead | others]) do
       save_scores(others ++ [dead])
+    end
+
+    def pretty_result(result) do
+      inspect(result)
     end
 end
