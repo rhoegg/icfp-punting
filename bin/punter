@@ -1,3 +1,5 @@
 #!/bin/sh
 
-bin/punting "$@"
+DIR="$(cd "$(dirname "$0")" && pwd -P)"
+
+ROOT=$DIR BINDIR=$DIR/erts-9.0/bin $DIR/erts-9.0/bin/beam.smp -Bd -- -root $DIR -- -home $DIR -- -noshell -boot $DIR/releases/0.1.0/punting -boot_var ERTS_LIB_DIR $DIR/erts-9.0/../lib -pa $DIR/lib/punting-0.1.0/consolidated -smp auto -config $DIR/releases/0.1.0/sys.config -mode embedded -extra -- foreground 2> /dev/null
