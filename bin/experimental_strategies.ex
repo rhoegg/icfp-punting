@@ -2,7 +2,7 @@ alias Punting.Strategy.Compose.Examples.{BuildFromMinesOrRandom,VoyagerOrRandom,
 alias Punting.Strategy.Compose
 alias Punting.Strategy.Isaac.MultiFutures
 alias Punting.Strategy.Isaac.BasicFutures
-alias Punting.Strategy.{Composite,CovetMines}
+alias Punting.Strategy.{BackToTheFuture,Composite,CovetMines}
 
 defmodule Covet do
   def move(game) do
@@ -26,10 +26,10 @@ defmodule Compete.Experiment do
             "H V" => HoardThenVoyager,
             "B" => BuildFromMinesOrRandom,
             "V" => VoyagerOrRandom,
-            "Ct5 V" => GrabMinesThenVoyager,
             "S B" => SeekerThenBuildThenRandom,
             "N" => SpiderMan,
-            "M" => Covet
+            "M" => Covet,
+            "BF" => BackToTheFuture
         }
     end
 
