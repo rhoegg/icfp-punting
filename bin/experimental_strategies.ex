@@ -62,6 +62,7 @@ defmodule Compete.Experiment do
             scores:   self(),
             strategy: strategy
           )
+          IO.puts("Started player #{n} with strategy #{name}")
       
           receive do
             {:result, moves, id, scores, _state} -> 
