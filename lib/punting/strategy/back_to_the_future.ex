@@ -1,9 +1,12 @@
 defmodule Punting.Strategy.BackToTheFuture do
+  alias Punting.Strategy.{Composite, Voyager, RandomChoice}
+
   def futures(game) do
     goal = div(trunc(game["total_turns"]), 3)
     future =
       game["initial"]
       |> Map.keys
+      |> Enum.shuffle
       |> Enum.find_value(fn site ->
         Enum.find_value(game["mines"], fn mine ->
           shortest = pathfind(game, mine, site)
@@ -14,27 +17,30 @@ defmodule Punting.Strategy.BackToTheFuture do
           end
         end)
       end)
-    IO.inspect(future)
     [{:lists.last(future), hd(future)}]
   end
 
   def move(game) do
+    find_future(game) || Composite.move(game, [Voyager, RandomChoice])
+  end
+
+  defp find_future(game) do
     if game["futures"] != [ ] &&
-       !Map.has_key?(game[game["id"]], elem(hd(game["futures"]), 1)) do
+      !Map.has_key?(game[game["id"]], elem(hd(game["futures"]), 1)) do
       {mine, site}      = hd(game["futures"])
-      futures           = pathfind(game, site, mine) |> IO.inspect
+      futures           = pathfind(game, site, mine)
       river_we_dont_own =
         futures
         |> Enum.chunk_every(2, 1)
         |> Enum.find(fn
-          [s1, s2] ->
-            game[game["id"]][s1]
-            |> List.wrap
-            |> Enum.member?(s2)
-            |> Kernel.!
-          [_n] ->
-            false
-        end)
+        [s1, s2] ->
+          game[game["id"]][s1]
+          |> List.wrap
+          |> Enum.member?(s2)
+          |> Kernel.!
+        [_n] ->
+          false
+      end)
       if is_nil(river_we_dont_own) do
         nil
       else

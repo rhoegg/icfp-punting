@@ -113,7 +113,7 @@ defmodule Punting.Player do
       pid when is_pid(pid) ->
         send(pid, result)
       :halt ->
-        IO.inspect(result)
+        # IO.inspect(result)
         System.halt
     end
     player.game
