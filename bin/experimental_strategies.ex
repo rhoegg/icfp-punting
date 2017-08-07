@@ -100,7 +100,8 @@ defmodule Compete.Experiment do
             IO.puts("no games with players or less!")
             run_generation(strategies, map, iterations)
         else 
-          game = hd(candidates)
+          game = candidates
+          |> hd
           IO.puts("#{game.map_name}:#{game.port}/#{game.seats}")
           scores = game
             |> compete(strategies)
@@ -127,6 +128,7 @@ defmodule Compete.Experiment do
 
     defp get_game_candidates(max_players) do
       Livegames.list()
+        |> Enum.filter( &(&1.seats > 2) )
         |> Enum.filter( &(Enum.empty?(&1.extensions)) )
         |> Enum.filter( &(&1.players <= max_players) )
         |> Enum.shuffle()
@@ -150,14 +152,12 @@ defmodule Compete.Experiment do
             {:dead, _, id, name, _} -> {id, name}
           end
         end)
-        |> IO.inspect
         |> Map.new
         scores
         |> Enum.map(fn %{"punter" => p, "score" => s} -> {p, s} end)
         |> Enum.map(fn {id, score} -> 
             {id, {Map.get(other_ids, id), score}}
           end)
-        |> IO.inspect
         |> Map.new
     end
     defp save_scores([dead | others]) do
