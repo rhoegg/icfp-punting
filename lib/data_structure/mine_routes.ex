@@ -3,13 +3,7 @@ defmodule MineRoutes do
     alias Punting.DataStructure.ScoreKeeper
 
     def start(game) do
-        max_length =  (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
-        max_length = 
-          case max_length > 6 do
-              true -> 6 
-              false -> max_length
-          end
-        start(game["mines"], game["available"], max_length)
+        start(game["mines"], game["available"], max_length(game))
 
     end
     def start(game, max_length) do
@@ -17,8 +11,8 @@ defmodule MineRoutes do
     end
     def start(mines, edge_map, max_length) do
         max_length = 
-          case max_length > 6 do
-              true -> 6 
+          case max_length > 9 do
+              true -> 9
               false -> max_length
           end
         all_trees = build_trees(mines, edge_map, max_length)
@@ -30,6 +24,13 @@ defmodule MineRoutes do
             "mine_route_map" => mine_route_map,
             "other_routes"  => other_routes
         }
+    end
+    def max_length(game) do
+        [ (game["total_rivers"] - game["turns_taken"]) / 
+          game["number_of_punters"] ,
+          9
+        ] 
+        |> Enum.min
     end
 
     # returns a map of all paths from given mines on
@@ -91,10 +92,9 @@ defmodule MineRoutes do
     # returns a list of maps that shows paths we have from mines
     def our_tree(game) do
         id = game["id"]
-        max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
         case Enum.count(game[id]) == %{} do
             true -> nil
-            false -> build_trees(game["mines"], game[id], max_length, true)
+            false -> build_trees(game["mines"], game[id], max_length(game), true)
         end
         # |> Enum.map(fn(path) -> IO.inspect "here we go"; IO.inspect path; List.reverse(path) end)
         # we want to track our maps to mines, when a sub map connects to another
@@ -131,8 +131,7 @@ defmodule MineRoutes do
     # assumes only ever plays mines
     # treats any site adjacent to a mine as a mine
     def onMoveMinePlaysOnly(game) do
-        max_length = (game["total_rivers"] - game["turns_taken"]) / game["number_of_punters"]
-        onMoveMinePlaysOnly(game, max_length)
+        onMoveMinePlaysOnly(game, max_length(game))
     end
 
     # use this one to limit the cal
