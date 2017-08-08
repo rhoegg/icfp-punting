@@ -40,7 +40,7 @@ defmodule Punting.Player do
   end
 
   def handle_info(:handshake, %{mode: mode, mode_arg: mode_arg} = player) do
-    mode_state = mode.handshake(mode_arg, "Techlahoma Practice")
+    mode_state = mode.handshake(mode_arg, "Techlahomie")
     send(self(), :process_message)
     {:noreply, %__MODULE__{player | mode_state: mode_state}}
   end
