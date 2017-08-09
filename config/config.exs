@@ -9,6 +9,8 @@ use Mix.Config
 # 3rd-party users, it should be done in your "mix.exs" file.
 
 config :porcelain, driver: Porcelain.Driver.Basic
+config :punting, :ip, {127,0,0,1}
+config :punting, :port, 7190
 
 # You can configure your application as:
 #
