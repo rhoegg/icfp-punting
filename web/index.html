@@ -103,7 +103,7 @@
         mines = boardData.mines.map(function(mine) {
             return site(boardData, mine);
         });
-        mineIcon = svg.selectAll("rect").data(mines);
+        mineIcon = svg.selectAll("rect.mine").data(mines);
         mineIcon.enter().append("rect")
             .attr("class", "mine")
             .attr("x", function(d) { return d.x / 15; })
