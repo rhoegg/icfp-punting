@@ -54,6 +54,7 @@
         var board = d3.select("#board");
         var svg = d3.select("#canvas");
         var siteIcon = svg.selectAll("circle").data(boardData.sites);
+        var t0 = Date.now();
 
         rivers = boardData.rivers.map(function(river) { 
             river.source = site(boardData, river.source);
@@ -63,15 +64,17 @@
         riverIcon = svg.selectAll("line").data(rivers);
 
         riverIcon.enter().append("line")
+            .attr("class", "river")
             .attr("x1", function(d) { return scaleX(d.source.x); })
             .attr("y1", function(d) { return scaleY(d.source.y); })
             .attr("x2", function(d) { return scaleX(d.target.x); })
             .attr("y2", function(d) { return scaleY(d.target.y); })
-            .attr("stroke-width", 5)
+            .attr("stroke-width", 4)
             .attr("stroke", "lightgray");
         riverIcon.exit().remove();
 
         siteIcon.enter().append("circle")
+            .attr("class", "site")
             .attr("cx", function(d) { return scaleX(d.x); })
             .attr("cy", function(d) { return scaleY(d.y); })
             .attr("r", 2)
@@ -83,13 +86,36 @@
         });
         mineIcon = svg.selectAll("rect").data(mines);
         mineIcon.enter().append("rect")
-            .attr("x", function(d) { return scaleX(d.x) - 6; })
-            .attr("y", function(d) { return scaleY(d.y) - 6; })
-            .attr("width", 12).attr("height", 12)
-            .attr("fill", "red").attr("fill-opacity", 0.6);
+            .attr("class", "mine")
+            .attr("x", function(d) { return d.x / 15; })
+            .attr("y", function(d) { return d.y / 15; })
+            .attr("width", 10).attr("height", 10)
+            .attr("fill", "red").attr("fill-opacity", 0.667)
+            .attr("stroke", "white").attr("stroke-width", "2px")
+            .attr("transform-origin", function(d) {
+                return d.x / 15 + "," + d.y / 15;
+            })
+            .attr("transform", function(d) {
+                var x = d.x / 15 + 450;
+                var y = d.y / 15 - 35000;
+                return "rotate(0, " + x + ", " + y + ") translate(445,-35005)";
+            });
+        mineIcon.exit().remove();
 
+        d3.timer(function() {
+            svg.selectAll("rect.mine")
+                .attr("transform", function(d, i) {
+                    var delta = Date.now() - t0;
+                    var offset = i * 21;
+                    var speed = -0.075;
+                    var x = d.x / 15 + 450;
+                    var y = d.y / 15 - 35000;
+                    var angle = offset + delta * speed;
+                    return "rotate(" + angle + ", " + x + ", " + y + ") translate(445,-35005)";
+                });
         });
-
+    }); 
+ 
 
     </script>
 </body>
