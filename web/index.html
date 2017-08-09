@@ -48,11 +48,30 @@
 
         // not working locally, faked data above
         d3.json("../test/data/maps/tube.json", function(data) {
-            console.log(data);
 
+        var theme = {
+            dark: {
+                background: "black",
+                mine: "red",
+                site: "lightblue",
+                river: "gray"
+            },
+            light: {
+                background: "white",
+                mine: "red",
+                site: "blue",
+                river: "lightgray"
+            }
+        };
+        var activeTheme = theme.dark;
 
         var board = d3.select("#board");
         var svg = d3.select("#canvas");
+        svg.append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("fill", activeTheme.background);
+
         var siteIcon = svg.selectAll("circle").data(boardData.sites);
         var t0 = Date.now();
 
@@ -70,7 +89,7 @@
             .attr("x2", function(d) { return scaleX(d.target.x); })
             .attr("y2", function(d) { return scaleY(d.target.y); })
             .attr("stroke-width", 4)
-            .attr("stroke", "lightgray");
+            .attr("stroke", activeTheme.river);
         riverIcon.exit().remove();
 
         siteIcon.enter().append("circle")
@@ -78,7 +97,7 @@
             .attr("cx", function(d) { return scaleX(d.x); })
             .attr("cy", function(d) { return scaleY(d.y); })
             .attr("r", 2)
-            .style("fill", "blue");
+            .style("fill", activeTheme.site);
         siteIcon.exit().remove();
 
         mines = boardData.mines.map(function(mine) {
@@ -90,7 +109,7 @@
             .attr("x", function(d) { return d.x / 15; })
             .attr("y", function(d) { return d.y / 15; })
             .attr("width", 10).attr("height", 10)
-            .attr("fill", "red").attr("fill-opacity", 0.667)
+            .attr("fill", activeTheme.mine).attr("fill-opacity", 0.667)
             .attr("stroke", "white").attr("stroke-width", "2px")
             .attr("transform-origin", function(d) {
                 return d.x / 15 + "," + d.y / 15;
