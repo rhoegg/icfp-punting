@@ -60,7 +60,7 @@
             river.target = site(boardData, river.target);
             return river;
         });
-        riverIcon = svg.selectAll("line").data(boardData.rivers);
+        riverIcon = svg.selectAll("line").data(rivers);
 
         riverIcon.enter().append("line")
             .attr("x1", function(d) { return scaleX(d.source.x); })
@@ -68,15 +68,25 @@
             .attr("x2", function(d) { return scaleX(d.target.x); })
             .attr("y2", function(d) { return scaleY(d.target.y); })
             .attr("stroke-width", 5)
-            .attr("stroke", "gray");
+            .attr("stroke", "lightgray");
         riverIcon.exit().remove();
 
         siteIcon.enter().append("circle")
-            .attr("cx", function(d) { return d.x / tubeScale + 450; })
-            .attr("cy", function(d) { return (d.y - 525000) / tubeScale; })
+            .attr("cx", function(d) { return scaleX(d.x); })
+            .attr("cy", function(d) { return scaleY(d.y); })
             .attr("r", 2)
             .style("fill", "blue");
         siteIcon.exit().remove();
+
+        mines = boardData.mines.map(function(mine) {
+            return site(boardData, mine);
+        });
+        mineIcon = svg.selectAll("rect").data(mines);
+        mineIcon.enter().append("rect")
+            .attr("x", function(d) { return scaleX(d.x) - 6; })
+            .attr("y", function(d) { return scaleY(d.y) - 6; })
+            .attr("width", 12).attr("height", 12)
+            .attr("fill", "red").attr("fill-opacity", 0.6);
 
         });
 
