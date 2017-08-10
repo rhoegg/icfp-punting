@@ -12,11 +12,17 @@
         #canvas {
             width: 640px;
             height: 480px;
+            padding: 5px;
+            background-color: black;
         }
     </style>
 </head>
 <body>
-    <div id="board"><svg id="canvas"></svg></div>
+    <div id="board">
+        <svg id="canvas">
+            <g id="#mines"></g>
+        </svg>
+    </div>
     <script type="text/javascript">
         boardData = {
             "sites" : [
@@ -29,6 +35,34 @@
             "mines":[64,284,114,204,148]
         };
 
+        function normalizeSites(sites, width, height) {
+            var minX = Math.min(...sites.map(function(s) {return s.x; }));
+            var maxX = Math.max(...sites.map(function(s) {return s.x; }));
+            var minY = Math.min(...sites.map(function(s) {return s.y; }));
+            var maxY = Math.max(...sites.map(function(s) {return s.y; }));
+            var aspectRatio = (maxX - minX) / (maxY - minY);
+            var offsetX = 0;
+            var offsetY = 0;
+
+            if (aspectRatio > (width / height)) {
+                offsetY = height / 2; // center
+                height = height / aspectRatio;
+                offsetY -= height / 2; // half the adjusted height
+            } else {
+                offsetX = width / 2; // center
+                width = width / aspectRatio;
+                offsetX -= width / 2; // half the adjusted width
+            }
+
+            return sites.map(function(site) {
+                return {
+                    id: site.id,
+                    x: ((site.x - minX) / (maxX - minX)) * width + offsetX,
+                    y: ((site.y - minY) / (maxY - minY)) * height + offsetY
+                };
+            });
+        }
+
         function site(board, id) {
             var site = board.sites.filter( function(site) { return site.id == id;} )
             if(site.length > 0) {
@@ -37,17 +71,6 @@
                 return {};
             }
         }
-
-        tubeScale = 15;
-        function scaleX(x) {
-            return x / tubeScale + 450;
-        }
-        function scaleY(y) {
-            return (y - 525000) / tubeScale;
-        }
-
-        // not working locally, faked data above
-        d3.json("../test/data/maps/tube.json", function(data) {
 
         var theme = {
             dark: {
@@ -65,74 +88,69 @@
         };
         var activeTheme = theme.dark;
 
-        var board = d3.select("#board");
+        var board = {
+            sites: normalizeSites(boardData.sites, 640, 480),
+            rivers: boardData.rivers,
+            mines: boardData.mines
+        };
         var svg = d3.select("#canvas");
         svg.append("rect")
             .attr("width", "100%")
             .attr("height", "100%")
             .attr("fill", activeTheme.background);
 
-        var siteIcon = svg.selectAll("circle").data(boardData.sites);
+        var siteIcon = svg.selectAll("circle").data(board.sites);
         var t0 = Date.now();
 
         rivers = boardData.rivers.map(function(river) { 
-            river.source = site(boardData, river.source);
-            river.target = site(boardData, river.target);
+            river.source = site(board, river.source);
+            river.target = site(board, river.target);
             return river;
         });
         riverIcon = svg.selectAll("line").data(rivers);
 
         riverIcon.enter().append("line")
             .attr("class", "river")
-            .attr("x1", function(d) { return scaleX(d.source.x); })
-            .attr("y1", function(d) { return scaleY(d.source.y); })
-            .attr("x2", function(d) { return scaleX(d.target.x); })
-            .attr("y2", function(d) { return scaleY(d.target.y); })
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; })
             .attr("stroke-width", 4)
             .attr("stroke", activeTheme.river);
         riverIcon.exit().remove();
 
         siteIcon.enter().append("circle")
             .attr("class", "site")
-            .attr("cx", function(d) { return scaleX(d.x); })
-            .attr("cy", function(d) { return scaleY(d.y); })
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
             .attr("r", 2)
             .style("fill", activeTheme.site);
         siteIcon.exit().remove();
 
         mines = boardData.mines.map(function(mine) {
-            return site(boardData, mine);
+            return site(board, mine);
         });
         mineIcon = svg.selectAll("rect.mine").data(mines);
         mineIcon.enter().append("rect")
             .attr("class", "mine")
-            .attr("x", function(d) { return d.x / 15; })
-            .attr("y", function(d) { return d.y / 15; })
+            .attr("x", -5).attr("y", -5)
             .attr("width", 10).attr("height", 10)
             .attr("fill", activeTheme.mine).attr("fill-opacity", 0.667)
             .attr("stroke", "white").attr("stroke-width", "2px")
-            .attr("transform-origin", function(d) {
-                return d.x / 15 + "," + d.y / 15;
-            })
-            .attr("transform", function(d) {
-                var x = d.x / 15 + 450;
-                var y = d.y / 15 - 35000;
-                return "rotate(0, " + x + ", " + y + ") translate(445,-35005)";
-            });
         mineIcon.exit().remove();
 
         d3.timer(function() {
             svg.selectAll("rect.mine")
                 .attr("transform", function(d, i) {
                     var delta = Date.now() - t0;
-                    var offset = i * 21;
+                    var offset = i * 21; // enough to see the different rotation starting points
                     var speed = -0.075;
-                    var x = d.x / 15 + 450;
-                    var y = d.y / 15 - 35000;
+                    var x = d.x;
+                    var y = d.y;
                     var angle = offset + delta * speed;
-                    return "rotate(" + angle + ", " + x + ", " + y + ") translate(445,-35005)";
+                    var scale = Math.sin(angle / 360 * 16) * 0.1 + 1;
+                    return "translate(" + x + "," + y + ") scale(" + scale + ") rotate(" + angle + ")";
                 });
-        });
     }); 
  
 
