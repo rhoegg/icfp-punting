@@ -12,24 +12,28 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
     end
 
     def handle_info({:recv, _}, state) do
-        {:ok, packet} = :gen_tcp.recv(state.socket, 0)
-        msg = parse(packet)
-        handshake msg, state.socket
-        send self(), {:recv, []}
+        case :gen_tcp.recv(state.socket, 0) do
+            {:ok, packet} ->
+                send self(), parse(packet)
+                send self(), {:recv, []}
+                {:noreply, state}
+            {:error, error} ->
+                IO.puts("Error: #{error}")
+                {:noreply, state}
+        end
+    end
+
+    def handle_info({:handshake, %{player: player}}, state) do
+        response = %{you: player}
+        :gen_tcp.send(state.socket, encode(response))
         {:noreply, state}
     end
 
     defp parse(packet) do
-        [len | json] = String.split(packet, ":", parts: 2)
+        [_len | json] = String.split(packet, ":", parts: 2)
         parsed = Poison.decode!(json)
         %{"me" => player} = parsed
         {:handshake, %{player: player}}
-    end
-
-    defp handshake(msg, socket) do
-        {:handshake, %{player: player}} = msg
-        response = %{you: player}
-        :gen_tcp.send(socket, encode(response))
     end
 
     defp encode(response) do
