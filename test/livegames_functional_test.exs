@@ -1,7 +1,7 @@
 defmodule LivegamesFunctionalTest do
   use ExUnit.Case, async: true
   
-  @moduletag :functional
+  @moduletag :icfp
 
   test "lists games with ports" do
       games = Livegames.list()

@@ -6,13 +6,16 @@ defmodule Punting.Server.TcpServerTest do
   @moduletag :functional
 
   test "handshake captures player name" do
+    IO.puts("Test: starting PlayerSupervisor...")
+    {:ok, _pid} = Punting.Server.TcpServer.PlayerSupervisor.start
+
     IO.puts("Test: starting TcpServer...")
     {:ok, _server} = TcpServer.start_link
 
     _host = Application.get_env :punting, :ip
     port = Application.get_env :punting, :port
     IO.puts("Test: connecting...")
-    {:ok, socket} = :gen_tcp.connect("localhost", port,
+    {:ok, socket} = :gen_tcp.connect('localhost', port,
       active: false, mode: :binary, packet: :raw)
     IO.puts("Test: connected.")
 

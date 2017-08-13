@@ -1,36 +1,59 @@
+alias Punting.Server.TcpServer.PlayerConnection
+alias Punting.Server.TcpServer.PlayerSupervisor
+
 defmodule Punting.Server.TcpServer do
     use GenServer
 
-    def start_link do
-        GenServer.start_link(__MODULE__, 
-            {
-                Application.get_env(:punting, :ip, {127,0,0,1}), 
-                Application.get_env(:punting, :port, 7190)
-            })
-    end
+    # Server 
 
     def init({ip, port}) do
-        IO.puts("TCP Server: Listening...")
-        {:ok, listen_socket} = :gen_tcp.listen(port, [:binary,{:packet, 0},{:active,true},{:ip,ip}])
-        IO.puts("TCP Server: Accepting Connection...")
-        # looks like we should spawn child processes that each handle 1 player
-        {:ok, socket} = :gen_tcp.accept listen_socket
-        IO.puts("TCP Server: Accepted Connection...")
-        {:ok, %{ip: ip, port: port, socket: socket}}
+        case :gen_tcp.listen(port, [:binary,{:packet, 0},{:active,false},{:ip,ip}]) do
+            {:ok, listen_socket} ->
+                send self(), {:accept, listen_socket}
+                {:ok, {listen_socket, {ip, port}}}
+            {:error, :eaddrinuse} ->
+                {:error, "Address already in use"}
+        end
     end
 
-    def handle_info({:tcp, _socket, _packet}, state) do
-        IO.puts("well shucks")
+    def handle_info({:accept, listen_socket}, state) do
+        {:ok, client_socket} = :gen_tcp.accept(listen_socket)
+
+        PlayerSupervisor.start_worker(:foo, client_socket)
+
+        send self(), {:accept, listen_socket}
+
         {:noreply, state}
     end
 
-    def handle_info({:tcp_closed, _socket}, state) do
-        IO.puts("bye felicia")
-        {:noreply, state}
+    # Client
+
+    def start_link do
+            GenServer.start_link(__MODULE__,
+                {
+                    Application.get_env(:punting, :ip, {127,0,0,1}), 
+                    Application.get_env(:punting, :port, 7190)
+                })
     end
 
-    def handle_info({:tcp_error, _socket, _reason}, state) do
-        IO.puts("damn")
-        {:noreply, state}
+end
+
+defmodule Punting.Server.TcpServer.PlayerSupervisor do
+    use Supervisor
+
+    def init(:ok) do
+        children = [
+            worker(PlayerConnection, [])
+        ]
+
+        supervise(children, strategy: :simple_one_for_one)
     end
+
+    def start do
+        Supervisor.start_link(__MODULE__, :ok, name: __MODULE__)
+    end
+
+    def start_worker(id, socket) do
+        Supervisor.start_child(__MODULE__, [{id, socket}])
+    end    
 end

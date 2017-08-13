@@ -1,7 +1,7 @@
 defmodule StrategyFunctionalTest do
   use ExUnit.Case
 
-  @moduletag :functional
+  @moduletag :icfp
   @moduletag :strategy
 
   test "slacker match" do
