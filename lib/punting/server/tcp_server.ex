@@ -3,7 +3,7 @@ alias Punting.Server.TcpServer.PlayerSupervisor
 
 defmodule Punting.Server.TcpServer do
     use GenServer
-    defstruct ~w[socket ip port name map players workers]a
+    defstruct ~w[socket ip port name map status players workers]a
 
     # Server 
 
@@ -12,30 +12,50 @@ defmodule Punting.Server.TcpServer do
             {:ok, listen_socket} ->
                 map_data = load_map(map)
                 send self(), {:accept, listen_socket}
-                {:ok, %{socket: listen_socket, ip: ip, port: port, name: map, map: map_data, players: players, workers: []}}
+                {:ok, %{
+                    socket: listen_socket, 
+                    ip: ip, 
+                    port: port, 
+                    name: map, 
+                    map: map_data, 
+                    status: "Waiting for punters. (0/#{players})",
+                    players: players, 
+                    workers: []
+                    }
+                }
             {:error, :eaddrinuse} ->
                 {:stop, "Couldn't listen on port #{port}: Address already in use"}
         end
     end
 
-    def handle_info({:accept, listen_socket}, state) do
-        {:ok, client_socket} = :gen_tcp.accept(listen_socket)
+    def handle_call({:status}, _from, state) do
+        {:reply, state.status, state}
+    end
 
-        {:ok, worker_pid} = PlayerSupervisor.start_worker(length(state.workers), client_socket)
-        {:ok, _} = GenServer.call(worker_pid, {:await_handshake, 2000})
+    def handle_info({:accept, listen_socket}, state) do
+        case :gen_tcp.accept(listen_socket, 250) do
+            {:ok, client_socket} ->
+                {:ok, worker_pid} = PlayerSupervisor.start_worker(length(state.workers), client_socket)
+                {:ok, _} = GenServer.call(worker_pid, {:await_handshake, 2000})
+            {:error, :timeout} ->
+                send self(), {:accept, listen_socket}
+        end
+
         {:noreply, state}
     end
 
     def handle_cast({:handshake_completed, :ok, worker}, state) do
         workers = [worker | state.workers]
 
-        if length(workers) < state.players do
+        status = if length(workers) < state.players do
             send self(), {:accept, state.socket}
+            "Waiting for punters. (#{length(workers)}/#{state.players})"
         else
             GenServer.cast self(), {:begin, workers}
+            "Starting"
         end
 
-        {:noreply, %{state | workers: workers}}
+        {:noreply, %{state | workers: workers, status: status}}
     end
 
     def handle_cast({:handshake_completed, result}, state) do

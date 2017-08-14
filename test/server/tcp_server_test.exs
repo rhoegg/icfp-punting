@@ -65,7 +65,6 @@ defmodule Punting.Server.TcpServerTest do
   end
 
   defp connect_and_handshake(player) do
-    _host = Application.get_env :punting, :ip
     port = Application.get_env :punting, :port
 
     IO.puts("Test: connecting...")
@@ -79,6 +78,31 @@ defmodule Punting.Server.TcpServerTest do
     received = recv_msg(socket)
     IO.puts("Test: handshake received.")
     {socket, received}
+  end
+
+  test "game status is Waiting for players before players connect" do
+    {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
+    {:ok, pid} = start_supervised({TcpServer, {2, "sample"}})
+
+    assert "Waiting for punters. (0/2)" == GenServer.call(pid, {:status}, 10000)
+
+    {socket, _received} = connect_and_handshake("test runner")
+    recv_msg(socket)
+
+    assert "Waiting for punters. (1/2)" == GenServer.call(pid, {:status})
+  end
+
+  test "game status is Starting before all players are ready" do
+    {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
+    {:ok, pid} = start_supervised({TcpServer, {2, "sample"}})
+    
+    {socket1, _received} = connect_and_handshake("test runner")
+    {socket2, _received} = connect_and_handshake("test runner")
+
+    recv_msg(socket1)
+    recv_msg(socket2)
+
+    assert "Starting" == GenServer.call(pid, {:status})
   end
 
   defp recv_msg(socket, timeout \\ 10000) do
