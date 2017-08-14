@@ -3,15 +3,15 @@ alias Punting.Server.TcpServer.PlayerSupervisor
 
 defmodule Punting.Server.TcpServer do
     use GenServer
-    defstruct ~w[socket ip port players]a
+    defstruct ~w[socket ip port players workers]a
 
     # Server 
 
-    def init({ip, port}) do
+    def init({ip, port, players}) do
         case :gen_tcp.listen(port, [:binary,{:packet, 0},{:active,false},{:ip,ip}]) do
             {:ok, listen_socket} ->
                 send self(), {:accept, listen_socket}
-                {:ok, %{socket: listen_socket, ip: ip, port: port, players: []}}
+                {:ok, %{socket: listen_socket, ip: ip, port: port, players: players, workers: []}}
             {:error, :eaddrinuse} ->
                 {:stop, "Couldn't listen on port #{port}: Address already in use"}
         end
@@ -20,37 +20,35 @@ defmodule Punting.Server.TcpServer do
     def handle_info({:accept, listen_socket}, state) do
         {:ok, client_socket} = :gen_tcp.accept(listen_socket)
 
-        {:ok, worker_pid} = PlayerSupervisor.start_worker(length(state.players), client_socket)
+        {:ok, worker_pid} = PlayerSupervisor.start_worker(length(state.workers), client_socket)
 
-        players = [worker_pid | state.players]
+        workers = [worker_pid | state.workers]
 
-        if length(players) < 2 do
+        if length(workers) < state.players do
             send self(), {:accept, listen_socket}
         else
-            GenServer.cast self(), {:begin, players}
+            GenServer.cast self(), {:begin, workers}
             IO.puts("TcpServer: sent begin announcement")
         end
 
-        {:noreply, %{state | players: players}}
+        {:noreply, %{state | workers: workers}}
     end
 
-    def handle_cast({:begin, players}, state) do
-        IO.puts("TcpServer: Game starting...")
-        Enum.each(players, fn pid ->
-            IO.puts("TcpServer: Notifying game start for #{inspect(pid)}...")
-            send pid, {:begin, %{players: length(players), map: %{name: "test"}}}
+    def handle_cast({:begin, workers}, state) do
+        Enum.each(workers, fn pid ->
+            send pid, {:begin, %{players: state.players, map: %{name: "test"}}}
         end)
-        IO.puts("TcpServer: notification seems done")
         {:noreply, state}
     end
 
     # Client
 
-    def start_link(_args) do
+    def start_link(players) do
             GenServer.start_link(__MODULE__,
                 {
                     Application.get_env(:punting, :ip, {127,0,0,1}), 
-                    Application.get_env(:punting, :port, 7190)
+                    Application.get_env(:punting, :port, 7190),
+                    players
                 })
     end
 

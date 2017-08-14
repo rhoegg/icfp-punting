@@ -9,7 +9,7 @@ defmodule Punting.Server.TcpServerTest do
 
   test "handshake captures player name" do
     {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
-    {:ok, _pid} = start_supervised(TcpServer)
+    {:ok, _pid} = start_supervised({TcpServer, 4})
 
     {_socket, received} = connect_and_handshake("test runner")
     assert Poison.decode!(received) == %{"you" => "test runner"}
@@ -17,7 +17,7 @@ defmodule Punting.Server.TcpServerTest do
 
   test "game state sent to all players" do
     {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
-    {:ok, _pid} = start_supervised(TcpServer)
+    {:ok, _pid} = start_supervised({TcpServer, 2})
 
     # each player should get the game state once all players have connected
     {socket1, _resp1} = connect_and_handshake("punter1")
@@ -31,6 +31,22 @@ defmodule Punting.Server.TcpServerTest do
 
     assert Map.get(game1, "punters") == 2
     assert Map.get(game2, "punters") == 2
+  end
+
+  test "game can have variable number of players" do
+    {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
+    {:ok, _pid} = start_supervised({TcpServer, 3})
+
+    {socket1, _resp1} = connect_and_handshake("punter1")
+    {socket2, _resp2} = connect_and_handshake("punter2")
+
+    {:error, :timeout} = recv_msg(socket1, 1000)
+    {socket3, _resp3} = connect_and_handshake("punter3")
+    Enum.each([socket1, socket2, socket3], fn socket ->
+      assert Map.get(
+        Poison.decode!(
+          recv_msg(socket)), "punters") == 3, "player"
+    end)
   end
 
   defp connect_and_handshake(player) do
@@ -61,8 +77,8 @@ defmodule Punting.Server.TcpServerTest do
                 _error ->
                     raise "Error: No message length"
             end
-        {:error, :timeout} ->
-          flunk "Timed out waiting for server response"
+        {:error, error} ->
+            {:error, error}
     end  
   end
 end
