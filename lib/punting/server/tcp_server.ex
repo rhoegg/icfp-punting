@@ -3,15 +3,16 @@ alias Punting.Server.TcpServer.PlayerSupervisor
 
 defmodule Punting.Server.TcpServer do
     use GenServer
-    defstruct ~w[socket ip port players workers]a
+    defstruct ~w[socket ip port name map players workers]a
 
     # Server 
 
-    def init({ip, port, players}) do
+    def init({ip, port, players, map}) do
         case :gen_tcp.listen(port, [:binary,{:packet, 0},{:active,false},{:ip,ip}]) do
             {:ok, listen_socket} ->
+                map_data = load_map(map)
                 send self(), {:accept, listen_socket}
-                {:ok, %{socket: listen_socket, ip: ip, port: port, players: players, workers: []}}
+                {:ok, %{socket: listen_socket, ip: ip, port: port, name: map, map: map_data, players: players, workers: []}}
             {:error, :eaddrinuse} ->
                 {:stop, "Couldn't listen on port #{port}: Address already in use"}
         end
@@ -21,34 +22,51 @@ defmodule Punting.Server.TcpServer do
         {:ok, client_socket} = :gen_tcp.accept(listen_socket)
 
         {:ok, worker_pid} = PlayerSupervisor.start_worker(length(state.workers), client_socket)
+        {:ok, _} = GenServer.call(worker_pid, {:await_handshake, 2000})
+        {:noreply, state}
+    end
 
-        workers = [worker_pid | state.workers]
+    def handle_cast({:handshake_completed, :ok, worker}, state) do
+        workers = [worker | state.workers]
 
         if length(workers) < state.players do
-            send self(), {:accept, listen_socket}
+            send self(), {:accept, state.socket}
         else
             GenServer.cast self(), {:begin, workers}
-            IO.puts("TcpServer: sent begin announcement")
         end
 
         {:noreply, %{state | workers: workers}}
     end
 
+    def handle_cast({:handshake_completed, result}, state) do
+        send self(), {:accept, state.socket}
+        {:noreply, state}
+    end
+
     def handle_cast({:begin, workers}, state) do
         Enum.each(workers, fn pid ->
-            send pid, {:begin, %{players: state.players, map: %{name: "test"}}}
+            send pid, {:begin, %{players: state.players, map: state.map}}
         end)
         {:noreply, state}
     end
 
+    defp load_map(name) do
+        :code.priv_dir(:punting)
+        |> Path.join("maps")
+        |> Path.join("#{name}.json")
+        |> File.read!
+        |> Poison.decode!
+    end
+
     # Client
 
-    def start_link(players) do
+    def start_link({players, map}) do
             GenServer.start_link(__MODULE__,
                 {
                     Application.get_env(:punting, :ip, {127,0,0,1}), 
                     Application.get_env(:punting, :port, 7190),
-                    players
+                    players,
+                    map
                 })
     end
 

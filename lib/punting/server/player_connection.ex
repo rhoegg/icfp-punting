@@ -1,11 +1,12 @@
 defmodule Punting.Server.TcpServer.PlayerConnection do
     use GenServer
-    defstruct ~w[id socket]a
+    defstruct ~w[id socket open]a
 
     def init({id, socket}) do
         state = %__MODULE__{
             id: id,
-            socket: socket
+            socket: socket,
+            open: nil
         }
         send self(), {:recv, []}
         {:ok, state}
@@ -15,7 +16,6 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
 
         case recv_msg(state.socket) do
             {:ok, msg} ->
-                IO.puts("PlayerConnection: Received packet")
                 send self(), parse(msg)
                 send self(), {:recv, []}
                 {:noreply, state}
@@ -31,16 +31,36 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
     def handle_info({:handshake, %{player: player}}, state) do
         response = %{you: player}
         :gen_tcp.send(state.socket, encode(response))
-        {:noreply, state}
+        {:noreply, %{state | open: System.os_time(:millisecond)}}
     end
 
-    def handle_info({:begin, %{players: players, map: _map}}, state) do
-        IO.puts("Beginning game for player #{state.id}")
+    def handle_call({:await_handshake, timeout}, {from, _}, state) do
+        send self(), {:await_open, from, System.os_time(:millisecond) + timeout}
+        {:reply, {:ok, nil}, state}
+    end
+
+    def handle_info({:await_open, from, deadline}, state) do
+
+        if deadline < System.os_time(:millisecond) do
+            GenServer.cast(from, {:handshake_completed, :timeout})
+            {:noreply, state}
+        else
+            case state.open do
+                nil -> 
+                    send self(), {:await_open, from, deadline}
+                    {:noreply, state, :hibernate}
+                open -> 
+                    GenServer.cast(from, {:handshake_completed, :ok, self()})
+                    {:noreply, state}
+            end
+        end
+    end
+
+    def handle_info({:begin, %{players: players, map: map}}, state) do
         :gen_tcp.send(state.socket, encode(%{
             punters: players,
-            fake: "fakefakefakefake"
+            map: map
         }))
-        IO.puts("Began game for player #{state.id}")
         {:noreply, state}
     end
 
