@@ -64,22 +64,6 @@ defmodule Punting.Server.TcpServerTest do
     assert Enum.member?(Map.get(map, "sites"), %{"id" => 5, "x" => 1.0, "y" => -2.0})
   end
 
-  defp connect_and_handshake(player) do
-    port = Application.get_env :punting, :port
-
-    IO.puts("Test: connecting...")
-    {:ok, socket} = :gen_tcp.connect('localhost', port,
-      active: false, mode: :binary, packet: :raw)
-    IO.puts("Test: connected.")
-
-    msg = Poison.encode!(%{"me" => player})
-    :gen_tcp.send(socket, "#{byte_size(msg)}:#{msg}\n")
-    IO.puts("Test: handshake sent.")
-    received = recv_msg(socket)
-    IO.puts("Test: handshake received.")
-    {socket, received}
-  end
-
   test "game status is Waiting for players before players connect" do
     {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
     {:ok, pid} = start_supervised({TcpServer, {2, "sample"}})
@@ -105,6 +89,49 @@ defmodule Punting.Server.TcpServerTest do
     assert "Starting" == GenServer.call(pid, {:status})
   end
 
+  test "game status is In progress after all players are ready" do
+    {:ok, _sup_pid} = start_supervised(PlayerSupervisor)
+    {:ok, pid} = start_supervised({TcpServer, {2, "sample"}})
+    GenServer.cast(pid, {:subscribe_events, self()})
+
+    {socket1, _resp1} = connect_and_handshake("punter1")
+    {socket2, _resp2} = connect_and_handshake("punter2")
+
+    %{"punter" => id1} = recv_msg(socket1) |> Poison.decode!
+    IO.puts("Test: got map for 1")
+    %{"punter" => id2} = recv_msg(socket2) |> Poison.decode!
+    IO.puts("Test: got map for 2")
+
+    send_json(socket1, %{ready: id1})
+    IO.puts("Test: sent ready for 1")
+    send_json(socket2, %{ready: id2})
+    IO.puts("Test: sent ready for 2")
+    event = receive do
+        {:event, {:start}} -> :start
+      after
+        2_000 -> :test_timeout
+      end
+    assert event == :start
+
+    assert "Game in progress." == GenServer.call(pid, {:status})
+  end
+
+  defp connect_and_handshake(player) do
+    port = Application.get_env :punting, :port
+
+    IO.puts("Test: connecting...")
+    {:ok, socket} = :gen_tcp.connect('localhost', port,
+      active: false, mode: :binary, packet: :raw)
+    IO.puts("Test: connected.")
+
+    send_json(socket, %{"me" => player})
+    IO.puts("Test: handshake sent.")
+
+    received = recv_msg(socket)
+    IO.puts("Test: handshake received.")
+    {socket, received}
+  end
+
   defp recv_msg(socket, timeout \\ 10000) do
     case :gen_tcp.recv(socket, 10, timeout) do
         {:ok, header} ->
@@ -119,5 +146,12 @@ defmodule Punting.Server.TcpServerTest do
         {:error, error} ->
             {:error, error}
     end  
+  end
+
+  defp send_json(socket, msg) do
+    send_msg(socket, Poison.encode!(msg))
+  end
+  defp send_msg(socket, json) do
+    :gen_tcp.send(socket, "#{byte_size(json)}:#{json}")
   end
 end

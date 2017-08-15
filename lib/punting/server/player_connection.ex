@@ -1,9 +1,10 @@
 defmodule Punting.Server.TcpServer.PlayerConnection do
     use GenServer
-    defstruct ~w[id socket open]a
+    defstruct ~w[server id player socket open]a
 
-    def init({id, socket}) do
+    def init({id, socket, server}) do
         state = %__MODULE__{
+            server: server,
             id: id,
             socket: socket,
             open: nil
@@ -12,10 +13,16 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
         {:ok, state}
     end
 
+    def handle_call({:await_handshake, timeout}, {from, _}, state) do
+        send self(), {:await_open, from, System.os_time(:millisecond) + timeout}
+        {:reply, {:ok, nil}, state}
+    end
+
     def handle_info({:recv, _}, state) do
 
         case recv_msg(state.socket) do
             {:ok, msg} ->
+                IO.puts("PlayerConnection: recv: #{msg}")
                 send self(), parse(msg)
                 send self(), {:recv, []}
                 {:noreply, state}
@@ -31,33 +38,38 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
     def handle_info({:handshake, %{player: player}}, state) do
         response = %{you: player}
         :gen_tcp.send(state.socket, encode(response))
-        {:noreply, %{state | open: System.os_time(:millisecond)}}
-    end
-
-    def handle_call({:await_handshake, timeout}, {from, _}, state) do
-        send self(), {:await_open, from, System.os_time(:millisecond) + timeout}
-        {:reply, {:ok, nil}, state}
+        {:noreply, %{state | player: player, open: System.os_time(:millisecond)}}
     end
 
     def handle_info({:await_open, from, deadline}, state) do
 
         if deadline < System.os_time(:millisecond) do
-            GenServer.cast(from, {:handshake_completed, :timeout})
+            GenServer.cast(from, {:handshake_completed, {:timeout}})
             {:noreply, state}
         else
             case state.open do
                 nil -> 
                     send self(), {:await_open, from, deadline}
                     {:noreply, state, :hibernate}
-                open -> 
-                    GenServer.cast(from, {:handshake_completed, :ok, self()})
+                _open -> 
+                    GenServer.cast(from, 
+                        {:handshake_completed, 
+                            {:ok, self(), state.id, state.player}})
                     {:noreply, state}
             end
         end
     end
 
+    def handle_info({:ready, %{id: id}}, state) do
+        if id == state.id do
+            GenServer.cast(state.server, {:ready, id})
+        end
+        {:noreply, state}
+    end
+
     def handle_info({:begin, %{players: players, map: map}}, state) do
         :gen_tcp.send(state.socket, encode(%{
+            punter: state.id,
             punters: players,
             map: map
         }))
@@ -65,18 +77,20 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
     end
 
     defp parse(json) do
-        parsed = Poison.decode!(json)
-        %{"me" => player} = parsed
-        {:handshake, %{player: player}}
+        case Poison.decode!(json) do
+            %{"me" => player} ->
+                {:handshake, %{player: player}}
+            %{"ready" => id} ->
+                {:ready, %{id: id}}
+        end
     end
 
     defp encode(response) do
         json = Poison.encode!(response)
-        len = String.length(json)
-        "#{len}:#{json}"
+        "#{byte_size(json)}:#{json}"
     end
 
-    defp recv_msg(socket, timeout \\ 500) do
+    defp recv_msg(socket, timeout \\ 200) do
       case :gen_tcp.recv(socket, 10, timeout) do
           {:ok, header} ->
             case Integer.parse(header) do
@@ -85,7 +99,7 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
                     :gen_tcp.recv(socket, size - byte_size(start_of_data))
                     {:ok, start_of_data <> rest_of_data}
                   _error ->
-                      raise "Error: No message length"
+                      raise "Error: No message length: #{inspect(header)}"
               end
           {:error, :timeout} ->
             {:timeout, ""}
@@ -95,7 +109,7 @@ defmodule Punting.Server.TcpServer.PlayerConnection do
     end
 
     # Client
-    def start_link({id, socket}) do
-        GenServer.start_link(__MODULE__, {id, socket})
+    def start_link({id, socket, server}) do
+        GenServer.start_link(__MODULE__, {id, socket, server})
     end
 end
